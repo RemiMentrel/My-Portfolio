@@ -1,0 +1,242 @@
+<html>
+    <head>
+        <style>
+            img {
+                display: block;
+                max-width: 100%;
+            }
+
+            .cc_page {
+                background-image: url('../images/background-neutral-filter.jpg');
+                background-attachment: fixed;
+                background-size: cover;
+                background-repeat: no-repeat;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                position: relative;
+                }
+        
+                .section {
+                    text-align: center;
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    }
+        
+                    .rm-c-container {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        grid-gap: 20px;
+                        gap: 20px;
+                        width: 100%;
+                        max-width: 715px;
+                        height: auto;
+                        margin: 0 auto;
+                    }
+                
+                        .rm-c-FlipCard {
+                            display: block;
+                            width: 100%;
+                            margin: 0 auto;
+                            perspective: 1000px;
+                        }
+
+                            .rm-c-FlipCard:hover .rm-c-FlipCard-inner, 
+                            .rm-c-FlipCard:focus .rm-c-FlipCard-inner {
+                                transform: rotateY(180deg);
+                            }
+        
+                            .rm-c-FlipCard-inner {
+                                position: relative;
+                                display: flex;
+                                width: 100%;
+                                padding-bottom: 100%;
+                                text-align: center;
+                                transition: transform 0.8s;
+                                transform-style: preserve-3d;
+                            }
+
+                            .rm-c-FlipCard[data-animated] .rm-c-FlipCard-inner {
+                                animation-name: rm-a-FlipCard;
+                                animation-duration: 2s;
+                                animation-iteration-count: 2;
+                                animation-direction: alternate;
+                                animation-delay: 2s;
+                            }
+                            
+                            .rm-c-FlipCard-inner img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                object-position: center;
+                            }
+            
+                            .rm-c-FlipCard-front, .rm-c-FlipCard-back {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                border: 1px solid #fff;
+                                border-radius: 50%;
+                                overflow: hidden;
+                                -webkit-backface-visibility: hidden; /* Safari */
+                                backface-visibility: hidden;
+                            }
+                            
+                            .rm-c-FlipCard-back {
+                                transform: rotateY(180deg);
+                            }
+
+
+                            @keyframes rm-a-FlipCard {
+                                0%, 40% {
+                                    transform: rotateY(0deg);
+                                }
+                                60%, 100% {
+                                    transform: rotateY(180deg);
+                                }
+                            }
+        </style>
+    </head>
+
+    <body class="cc_page">
+        <section class="section">
+            <ul class="rm-c-container">
+
+                <div class="rm-c-FlipCard" data-animated>
+                    <div class="rm-c-FlipCard-inner">
+                        <div class="rm-c-FlipCard-front">
+                            <img src="../images/Logo-PORTFOLIO-blanc.svg" alt="img_1_a">
+                        </div>
+
+                        <div class="rm-c-FlipCard-back">
+                            <img src="../images/motomash.jpg" alt="img_1_b">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rm-c-FlipCard">
+                    <div class="rm-c-FlipCard-inner">
+                        <div class="rm-c-FlipCard-front">
+                            <img src="../images/Logo-PORTFOLIO-blanc.svg" alt="img_2_a">
+                        </div>
+
+                        <div class="rm-c-FlipCard-back">
+                            <img src="../images/draw-lyon.jpg" alt="img_2_b">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rm-c-FlipCard">
+                    <div class="rm-c-FlipCard-inner">
+                        <div class="rm-c-FlipCard-front">
+                            <img src="../images/Logo-PORTFOLIO-blanc.svg" alt="img_3_a">
+                        </div>
+
+                        <div class="rm-c-FlipCard-back">
+                            <img src="../images/motomash.jpg" alt="img_3_b">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rm-c-FlipCard">
+                    <div class="rm-c-FlipCard-inner">
+                        <div class="rm-c-FlipCard-front">
+                            <img src="../images/Logo-PORTFOLIO-blanc.svg" alt="img_4_a">
+                        </div>
+
+                        <div class="rm-c-FlipCard-back">
+                            <img src="../images/motomash.jpg" alt="img_4_b">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rm-c-FlipCard">
+                    <div class="rm-c-FlipCard-inner">
+                        <div class="rm-c-FlipCard-front">
+                            <img src="../images/Logo-PORTFOLIO-blanc.svg" alt="img_5_a">
+                        </div>
+
+                        <div class="rm-c-FlipCard-back">
+                            <img src="../images/motomash.jpg" alt="img_5_b">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rm-c-FlipCard">
+                    <div class="rm-c-FlipCard-inner">
+                        <div class="rm-c-FlipCard-front">
+                            <img src="../images/Logo-PORTFOLIO-blanc.svg" alt="img_6_a">
+                        </div>
+
+                        <div class="rm-c-FlipCard-back">
+                            <img src="../images/flower.jpg" alt="img_6_b">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rm-c-FlipCard">
+                    <div class="rm-c-FlipCard-inner">
+                        <div class="rm-c-FlipCard-front">
+                            <img src="../images/Logo-PORTFOLIO-blanc.svg" alt="img_7_a">
+                        </div>
+
+                        <div class="rm-c-FlipCard-back">
+                            <img src="../images/motomash.jpg" alt="img_7_b">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rm-c-FlipCard">
+                    <div class="rm-c-FlipCard-inner">
+                        <div class="rm-c-FlipCard-front">
+                            <img src="../images/Logo-PORTFOLIO-blanc.svg" alt="img_8_a">
+                        </div>
+
+                        <div class="rm-c-FlipCard-back">
+                            <img src="../images/horse.jpg" alt="img_8_b">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rm-c-FlipCard">
+                    <div class="rm-c-FlipCard-inner">
+                        <div class="rm-c-FlipCard-front">
+                            <img src="../images/Logo-PORTFOLIO-blanc.svg" alt="img_9_a">
+                        </div>
+
+                        <div class="rm-c-FlipCard-back">
+                            <img src="../images/tokyoghoul.jpg" alt="img_9_b">
+                        </div>
+                    </div>
+                </div>
+
+            </ul>
+        </section>
+    </body>
+</html>
+
+<!--
+
+<div id="block-img" class="rm-c-block-img">
+    <a href="#img_1_popin" id="img_1" class="rm-c-img-1"><img src="../images/tokyoghoul.jpg" alt="Tokyo-Ghoul"></a>
+    <a class="rm-c-popin" href="#img_1" id="img_1_popin"><img src="../images/tokyoghoul.jpg" alt="Tokyo-Ghoul"></a>
+    <a href="#img_2_popin" id="img_2" class="rm-c-img-2"><img src="../images/motomash.jpg" alt="Mash"></a>
+    <a class="rm-c-popin" href="#img_2" id="img_2_popin"><img src="../images/motomash.jpg" alt="Mash"></a>
+    <div class="rm-c-Cadre-img"></div>
+    <div class="rm-c-Cadre-img"></div>
+    <a href="#img_3_popin" id="img_3" class="rm-c-img-3"><img src="../images/justaturtle.jpg" alt="Just-a-turtle"></a>
+    <a class="rm-c-popin" href="#img_3" id="img_3_popin"><img src="../images/justaturtle.jpg" alt="Just-a-turtle"></a>
+    <a href="#img_4_popin" id="img_4" class="rm-c-img-4"><img src="../images/draw-lyon.jpg" alt="Statut-Lyon"></a>
+    <a class="rm-c-popin" href="#img_4" id="img_4_popin"><img src="../images/draw-lyon.jpg" alt="Statut-Lyon"></a>
+    <div class="rm-c-Cadre-img"></div>
+    <a href="#img_5_popin" id="img_5" class="rm-c-img-5"><img src="../images/flower.JPG" alt="flower"></a>
+    <a class="rm-c-popin" href="#img_5" id="img_5_popin"><img src="../images/flower.JPG" alt="flower"></a>
+    <a href="#img_6_popin" id="img_6" class="rm-c-img-6"><img src="../images/horse.jpg" alt="Horse"></a>
+    <a class="rm-c-popin" href="#img_6" id="img_6_popin"><img src="../images/horse.jpg" alt="Horse"></a>
+</div>
+
+->
