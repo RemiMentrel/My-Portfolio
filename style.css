@@ -22,6 +22,12 @@ html {
         }
 }
 
+@media screen and (max-width: 414px) {
+
+        
+
+}
+
   body {
     padding-top: 115px;
   }
@@ -600,13 +606,7 @@ html {
           .rm-c-container-GH{
             display: flex;
             flex-direction: row;
-          }
-
-          .rm-c-barre-GH-text {
-            width: 2px;
-            height: 191px;
-            background-color: #CDAC47;
-            margin: 0 30px 0 30px;
+            align-items: center;
           }
 
           .rm-c-title-Text-Mark-GH {
@@ -614,17 +614,20 @@ html {
           }
 
           .rm-c-container-GH-text {
-            flex-direction: column;
-            width: 300px;
+            width: 362px;
             font-family: 'Montserrat', sans-serif;
             color: #314561;
             line-height: 1.4rem;
+            border-left: 2px solid #CDAC47;
+            padding-left: 30px;
+            margin-left: 30px;
           }
 
             .rm-c-img-GH {
               width: 100%;
               max-width: 450px;
               height: auto;
+              flex: 1 1 auto;
             }
 
           .rm-c-container-GH-2 {
@@ -860,7 +863,7 @@ html {
 
     .rm-c-Logo_Section {
       display: block;
-      margin-top: 50px;
+      margin-top: 80px;
       width: 100%;
       max-height: 800px;
       background-color: white;
@@ -871,7 +874,7 @@ html {
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        margin-top: 15px;
+        margin-top: 5px;
       }
 
         .rm-c-TextStick{
@@ -913,7 +916,19 @@ html {
             width: 100%;
             height: auto;
             max-width: 450px;
+            margin: 0 30 0 0px;
             font-family: 'Montserrat', sans-serif;
+            font-size: 1.10rem;
+            line-height: 1.4em;
+          }
+
+          .rm-c-Text-Mark-GM-2 {
+            width: 100%;
+            height: auto;
+            max-width: 450px;
+            margin: 0 30 0 0px;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
             font-size: 1.10rem;
             line-height: 1.4em;
           }
@@ -929,3 +944,24 @@ html {
             border-radius: 50%;
             overflow: hidden;
           }
+
+    .rm-c-elements_motion {
+      display: flex;
+      flex-direction: row;
+      margin: 80px 0;
+      align-items: center;
+    }
+
+      .rm-c-text_motion {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .rm-c-img-motion {
+        width: 100%;
+        height: auto;
+        margin-right: 40px;
+        border-radius: 20px;
+        max-width: 300px;
+        overflow: hidden;
+      }
