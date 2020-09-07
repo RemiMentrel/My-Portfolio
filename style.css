@@ -646,17 +646,11 @@ html {
             width: 340px;
           }
 
-          .rm-c-barre-GH-text-2 {
-            width: 2px;
-            height: 191px;
-            background-color: white;
-            margin: 0 45px 0 45px;
-          }
-
               .rm-c-img-GH-2 {
                 width: 100%;
                 max-width: 500px;
                 border-radius: 15px;
+                margin-left: 30px;
               }
   
   body.cc_page::after, body.gm_page::after {
