@@ -1,18 +1,39 @@
-/**GLOBAL*/
+// Base styles
 
-* {
-    box-sizing: border-box;
-  }
+@import 'base/_normalize';
+@import 'base/_fonts';
+@import 'base/_generic';
 
-html {
-    font-size: 16px;
-    scroll-behavior: smooth;
-}
+// Components
 
-@font-face {
-  font-family: "Bodoni MT";
-  src: url("/font-family/bod-pstc.ttf") format("truetype");
-}
+@import 'components/common/_Content';
+@import 'components/common/_Header';
+@import 'components/common/_Menu';
+
+@import 'components/index/_Animation';
+@import 'components/index/_HomeText';
+
+@import 'components/biography/_Biography';
+
+@import 'components/projects/_Projects';
+@import 'components/projects/_ProjectMiniature';
+@import 'components/projects/_Project';
+
+@import 'components/contacts/_Contacts';
+
+// Utils
+
+@import 'utils/_a11yhidden';
+@import 'utils/_wrapper';
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 1280px) {
 
@@ -28,281 +49,16 @@ html {
 
 }
 
-  body {
-    padding-top: 115px;
-  }
 
-  body.Home, body.index, body.cc_page, body.gm_page{
-    background-image: url('images/background-neutral-filter.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-
-    .rm-c-Content {
-      position: relative;
-      z-index: 1;
-    }
-
-    a, a:visited, a:active {
-      color: currentColor;
-      text-decoration: none;
-    }
-  
-    img {
-      display: block;
-      max-width: 100%;
-      width: auto;
-      height: auto;
-    }
-
-    ul, ol {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-        
-    .rm-u-wrapper {
-      display: flex;
-      max-width: 900px;
-      margin: 0 auto;
-      flex-direction: column;
-    }
-
-  /**ANIMATION_PAGE*/
-
-  body.index {
-    justify-content: center;
-  }
-
-    .rm-c-Animation {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-      .rm-c-Rectangle {
-        background-color: white;
-        width: 300px;
-        height: 3px;
-      }
-
-      .rm-c-Animation-text {
-        color: white;
-        font-family: 'Ma Shan Zheng', cursive;
-        font-size: 3rem;
-      }
 
   /**HOME_PAGE*/
 
-    /**Barre de Navigation*/
 
-    .rm-c-Header {
-      z-index: 1;
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      width: 100%;
-      text-align: center;
-    }
-
-        .rm-c-Menu {
-          display: inline-block;
-        }
-
-          .rm-c-Menu-list {
-            display: flex;
-            /** flex-direction: row; **/
-            justify-content: center;
-            align-items: center;
-          }
-
-            .rm-c-Menu-list > * {
-              margin: 20px 4vw;
-              letter-spacing: 0.1em;
-            }
-
-            .rm-c-Menu-list .rm-c-Logo img {
-              display: block;
-              width: 38px;
-              height: auto;
-            }
-
-            .rm-u-a11yhidden {
-              position: absolute;
-              height: 1px; 
-              width: 1px;
-              overflow: hidden;
-              clip: rect(1px 1px 1px 1px);
-              clip: rect(1px, 1px, 1px, 1px);
-              white-space: nowrap;
-            }
-            
-            .rm-c-Menu-item a {
-              text-transform: uppercase;
-              color: black;
-              font-family: 'Montserrat', sans-serif;
-              font-size: 1.25rem;
-            }
-
-            .rm-c-Menu[data-theme="dark"] .rm-c-Menu-item a {
-              color: white;
-            }
-
-            .rm-c-Menu-item:hover {
-              box-shadow: 0px 2px white;
-            }
-
-    .rm-c-HomeText {
-      width: 100%;
-      height: auto;
-      max-width: 520px;
-      margin: 16vh auto 21vh auto;
-      background-repeat: no-repeat;
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-      .rm-c-HomeText > img {
-        display: block;
-        width: 100%;
-      }
-
-      .rm-c-Projects {
-        text-align: center;
-        width: 100%;
-        height: 100%;
-        position: relative;
-      }
       
-      .rm-c-Projets > * {
-        z-index: 1;
-        position: relative;
-      }
 
-      .rm-c-Projects::after {
-        content: "";
-        z-index: 0;
-        display: block;
-        background-color: #50838A;
-        filter: opacity(0.5);
-        backdrop-filter: blur(3px);
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
+          
 
-        h2.rm-c-Projects-title {
-          position: relative;
-          z-index: 2;
-          margin: 20px 0 30px 0;
-          color: white;
-          font-size: 1.55rem;
-          font-family: 'Montserrat', serif;
-        }
-
-        .rm-c-Projects-elements {
-          display: flex;
-          flex-direction: column;
-          max-width: 988px;
-          margin: 90px auto 0;
-          padding-bottom: 10vh;
-        }
-
-        .rm-c-background-color-right {
-          z-index: 1;
-          border: 3px solid white;
-          border-radius: 5px;
-          height: 170px;
-          flex: 1 1 auto;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          transform: translateX(-30px);
-          box-shadow: 8px 8px 2px 1px rgb(0, 0, 0, 0.10);
-        }
-
-        .rm-c-background-color-left {
-          z-index: 1;
-          border: 3px solid white;
-          border-radius: 5px;
-          height: 171px;
-          flex: 1 1 auto;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          transform: translateX(30px);
-          box-shadow: 8px 8px 2px 1px rgb(0, 0, 0, 0.10);
-        }
-
-        .rm-c-background-color-left > * {
-          color: white;
-        }
-
-        .rm-c-background-color-right > * {
-          color: white;
-        }
-
-          .rm-c-Project-GH {
-            display: flex;
-            align-items: center;
-          }
-
-          .rm-c-Project-CC {
-            display: flex;
-            align-items: center;
-            flex-direction: row-reverse;
-          }
-
-          .rm-c-Project-GM {
-            display: flex;
-            align-items: center;
-          }
-
-            .rm-c-Project-GH, .rm-c-Project-CC{
-              justify-content: start;
-            }
-
-          .rm-c-Project-GM {
-              justify-content: end;
-          }
-
-            .rm-c-Projects-item {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              z-index: 2;
-              width: 240px;
-              height: 240px;
-              flex: 0 0 auto;
-              border: 0.60rem solid #314561;
-              border-radius: 0 50px 0 50px;
-              background-color: white;
-              overflow: hidden;
-              box-shadow: 8px 8px 2px 1px rgb(0, 0, 0, 0.10);
-            }
-
-              .rm-c-Miniature-home {
-                max-height: 100%;
-                max-width: 100%;
-              }
-
-                .rm-c-Text-projects {
-                  font-size: 2rem;
-                  font-family: 'Montserrat', sans-serif;
-                  color: white;
-                  font-weight: lighter;
-                  position: relative;
-                  top: 17%;
-                }
-
-        /**CSS du Carrousel// Idée mise de coté pour le moment*/
+        /**CSS du Carrousel// IdÃ©e mise de cotÃ© pour le moment*/
 
         .rm-c-Projects-list {
           display: flex;
@@ -421,121 +177,18 @@ html {
 
   /**BIOGRAPHY_PAGE*/
 
-  body.Biography {
-    background-color: white;
-    min-height: 100vh;
-    margin: 0px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-  }
 
-    .rm-c-Biography {
-      display: inline-flex;
-    }
-
-    .rm-c-wrapper-Biography {
-      max-width: 1300px;
-    }
-
-      .rm-c-Biography-elements {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-          .rm-c-img-profil {
-            margin: -80px 100px 0 50px;
-            max-width: 340px;
-          }
-
-          .rm-c-Text-biography {
-            font-family: 'Bodoni MT Poster Compressed', serif;
-          }
-
-            .rm-c-Name-biography {
-              font-size: 3.75rem;
-              margin-top: -30px;
-              margin-bottom: 0px;
-            }
-
-            .rm-c-def-biography {
-              margin-top: 0px;
-              border-bottom: 1px solid;
-              font-size: 1.87rem;
-            }
-
-            .rm-c-Paragraph-biography {
-              margin: 5px 15px 15px 15px;
-              max-width: 426px;
-              font-family: 'Montserrat', sans-serif;
-              font-size: 0.94rem;
-            }
-
-            .rm-c-Paragraph-biography-note {
-              margin: 35px 15px 0px 15px;
-              max-width: 426px;
-              font-family: 'Nothing You Could Do', cursive;
-              font-size: 0.94rem;
-            }
 
 
   /**CONTACT_PAGE*/
 
-    .rm-c-Contact-Text {
-      font-family: 'Quattrocento Sans', sans-serif;
-      font-size: 5rem;
-      font-weight: lighter;
-      color: white;
-      text-align: center;
-    }
-
-    .rm-c-Cut-stick {
-      width: 320px;
-      height: 2px;
-      margin: 0 auto;
-      background-color: white;
-    }
-
-    .rm-c-Contacts {
-      text-align: center;
-      width: 100%;
-      height: 100%;
-      margin: 40px 0;
-      position: relative;
-    }
-
-    .rm-c-Contacts > * {
-      z-index: 2;
-      position: relative;
-    }
     
-    .rm-c-Contacts::after {
-      content: "";
-      z-index: 1;
-      display: block;
-      background-color: #50838A;
-      filter: opacity(0.5);
-      backdrop-filter: blur(3px);
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-    }
 
-      .rm-c-Info-text {
-        margin: 50px auto;
-        font-family: 'Montserrat', serif;
-        font-size: 1.56rem;
-        color: white;
-      }
+    
 
-      .rm-c-Info-text > * {
-        margin: 18px 10px;
-      }
 
+
+     
   /**GH_PAGE//CC_PAGE*/
 
     body.Gh_page {
@@ -565,7 +218,7 @@ html {
         background-color: white;
       }
 
-        .rm-c-Intro-GH .rm-c-Intro-CC{
+        .rm-c-GH-intro .rm-c-CC-intro{
           display: flex;
           align-items: flex-start;
           flex-direction: column;
@@ -646,11 +299,17 @@ html {
             width: 340px;
           }
 
+          .rm-c-barre-GH-text-2 {
+            width: 2px;
+            height: 191px;
+            background-color: white;
+            margin: 0 45px 0 45px;
+          }
+
               .rm-c-img-GH-2 {
                 width: 100%;
                 max-width: 500px;
                 border-radius: 15px;
-                margin-left: 30px;
               }
   
   body.cc_page::after, body.gm_page::after {
