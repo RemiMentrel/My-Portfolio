@@ -1,0 +1,41 @@
+
+.rm-c-Menu {
+    display: inline-block;    
+
+    &[data-theme="dark"] a {
+        color: white;
+    }
+
+
+    &-list {
+        display: flex;
+        /** flex-direction: row; **/
+        justify-content: center;
+        align-items: center;
+
+        & > * {
+            margin: 20px 4vw;
+            letter-spacing: 0.1em;
+        }
+
+        .rm-c-Logo img {
+            display: block;
+            width: 38px;
+            height: auto;
+        }
+    }
+
+        
+    &-item {
+        &:hover {
+            box-shadow: 0px 2px white;
+        }
+
+        a {
+            text-transform: uppercase;
+            color: black;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem;
+        }
+    }
+}

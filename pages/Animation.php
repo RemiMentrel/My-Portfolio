@@ -10,7 +10,7 @@
     <body class="index">
         <div class="rm-c-Animation">
             <div class="rm-c-Logo">
-                <img src="icons/logo.svg" alt="logo">
+                <img src="assets/icons/logo.svg" alt="logo">
             </div>
             <div class="rm-c-Rectangle">
             </div>
