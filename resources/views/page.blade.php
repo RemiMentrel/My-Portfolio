@@ -2,7 +2,10 @@
 
 @section('content')
   @while(have_posts()) @php the_post() @endphp
-    @include('partials.page-header')
-    @include('partials.content-page')
+    <h1>{!! App::title() !!}</h1>
+    
+    <div class="rm-u-wysiwyg">
+      @php the_content() @endphp
+    </div>
   @endwhile
 @endsection
