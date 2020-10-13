@@ -1,1 +1,10 @@
-.rm-u-wrapper {}
+.rm-u-wrapper {
+    width: 100%;
+    max-width: 1080px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+
+    &[data-size='large'] {
+        max-width: 1192px;
+    }
+}
