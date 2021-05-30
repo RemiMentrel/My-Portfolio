@@ -3,6 +3,8 @@
 
 // Abstract
 @import 'abstract/_variables';
+@import 'abstract/function/_colors';
+@import 'abstract/mixin/_media';
 
 // Base
 @import 'base/_fonts'; 
@@ -10,8 +12,10 @@
 @import 'base/_normalize';
 
 // Components
-@import 'components/projet/_ProjetTop';
-@import 'components/common/PageHeading';
+@import 'components/common/_Page';
+@import 'components/common/_Header';
+@import 'components/common/_Footer';
 
 // Utils
 @import 'utils/_wrapper';
+@import 'utils/_hspace';

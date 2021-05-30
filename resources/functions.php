@@ -90,3 +90,15 @@ Container::getInstance()
             'view' => require dirname(__DIR__).'/config/view.php',
         ]);
     }, true);
+
+
+require('scripts/cpt.php');
+
+/**
+ * Removes posts type Post from wp admin menu
+ */
+function wpdocs_remove_menus() 
+{   
+    remove_menu_page( 'edit.php' );
+}
+add_action( 'admin_menu', 'wpdocs_remove_menus' );

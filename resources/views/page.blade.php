@@ -2,10 +2,17 @@
 
 @section('content')
   @while(have_posts()) @php the_post() @endphp
-    <h1>{!! App::title() !!}</h1>
-    
-    <div class="rm-u-wysiwyg">
-      @php the_content() @endphp
+
+    <div @php post_class('rm-c-Page') @endphp>
+      <header class="rm-c-Page-header rm-u-hspace">
+        <h1>{!! App::title() !!}</h1>
+        <img src="" alt="{!! App::title() !!}" />
+      </header>
+      
+      <div class="rm-c-Page-content rm-u-hspace">
+        @php the_content() @endphp
+      </div>
     </div>
+
   @endwhile
 @endsection

@@ -1,0 +1,11 @@
+.rm-c-Header {
+    &-wrapper {
+        padding: 40px 0;
+    }
+
+    &-navigation {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

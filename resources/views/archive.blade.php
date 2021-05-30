@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="rm-c-Home">
+    <div class="rm-c-Archive">
         TODO
     </div>
 @endsection

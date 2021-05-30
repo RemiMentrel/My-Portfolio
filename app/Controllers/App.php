@@ -6,8 +6,6 @@ use Sober\Controller\Controller;
 
 class App extends Controller
 {
-    protected $acf = true; // enable ACF
-
     public function siteName()
     {
         return get_bloginfo('name');
@@ -31,15 +29,5 @@ class App extends Controller
             return __('Not Found', 'sage');
         }
         return get_the_title();
-    }
-
-    public function pageHeader()
-    {
-        $data = get_field('title', get_option('page_on_front'));
-        if (!empty($data)) {
-            return $data;
-        } else {
-            return [];
-        }
     }
 }

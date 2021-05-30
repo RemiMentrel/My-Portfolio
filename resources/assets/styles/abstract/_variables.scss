@@ -1,10 +1,15 @@
-/** Import Bootstrap functions */
-@import "~bootstrap/scss/functions";
-
-$theme-colors: (
-  primary: #525ddc
+// Colors
+$colors: (
+  light: #ffffff,
+  dark: #000000,
+  accent: #F39200,
+  attenuated: #959595,
+  background: #2B2E34,
 );
 
-/** Bootstrap navbar fix (https://git.io/fADqW) */
-$navbar-dark-toggler-icon-bg: none;
-$navbar-light-toggler-icon-bg: none;
+// Breakpoints
+$breakpoints: (
+  small: 480px,
+  medium: 768px,
+  large: 992px,
+);

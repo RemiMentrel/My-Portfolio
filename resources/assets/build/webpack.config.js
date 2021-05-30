@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-//const StyleLintPlugin = require('stylelint-webpack-plugin');
+// const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
@@ -83,12 +83,12 @@ let webpackConfig = {
           use: [
             { loader: 'cache' },
             { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
-            {
-              loader: 'postcss', options: {
-                config: { path: __dirname, ctx: config },
-                sourceMap: config.enabled.sourceMaps,
-              },
-            },
+            // {
+            //   loader: 'postcss', options: {
+            //     config: { path: __dirname, ctx: config },
+            //     sourceMap: config.enabled.sourceMaps,
+            //   },
+            // },
             { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
             {
               loader: 'sass', options: {
