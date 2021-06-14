@@ -1,4 +1,9 @@
 .rm-c-Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
     &-wrapper {
         padding: 40px 0;
     }

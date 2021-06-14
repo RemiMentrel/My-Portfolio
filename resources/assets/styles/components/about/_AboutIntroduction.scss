@@ -1,0 +1,74 @@
+.rm-c-AboutIntroduction {
+    &-wrapper.rm-u-wrapper {
+        max-width: 730px;
+    }
+
+    &-logo {
+        display: block;
+        max-height: 412px;
+    }
+
+    &-text {        
+        margin: 15px 0 0;
+        font-size: 0.92rem;
+    }
+
+    &-portrait {
+        max-height: 412px;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    
+    @include mq-from(medium) {
+        &-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: 
+                'logo portrait'
+                'text portrait';
+            grid-column-gap: 40px;
+        }
+
+        &-logo {
+            grid-area: logo;
+            align-self: end;
+        }
+    
+        &-text {
+            grid-area: text;
+            align-self: start;
+        }
+    
+        &-portrait {
+            grid-area: portrait;
+            align-self: center;
+        }
+    }
+
+    
+    @include mq-to(medium) {
+        &-wrapper.rm-u-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 330px;
+        }
+    
+        &-portrait {
+            order: 1;
+            margin-bottom: 30px;
+        }
+
+        &-logo {
+            order: 2;
+        }
+    
+        &-text {
+            order: 3;
+        }
+    }
+}

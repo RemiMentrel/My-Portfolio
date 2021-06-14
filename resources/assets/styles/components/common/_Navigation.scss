@@ -1,0 +1,12 @@
+.rm-c-Navigation {
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    a {
+        color: currentColor;
+        text-decoration: none;
+    }
+}

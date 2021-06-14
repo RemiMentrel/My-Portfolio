@@ -14,7 +14,10 @@
 // Components
 @import 'components/common/_Page';
 @import 'components/common/_Header';
+@import 'components/common/_Navigation';
 @import 'components/common/_Footer';
+
+@import 'components/about/_AboutIntroduction';
 
 // Utils
 @import 'utils/_wrapper';

@@ -13,7 +13,9 @@
     
     @php do_action('get_footer') @endphp
 
-    @include('partials.footer')
+    @if(!is_front_page())
+      @include('partials.footer')
+    @endif
 
     @php wp_footer() @endphp
   </body>
