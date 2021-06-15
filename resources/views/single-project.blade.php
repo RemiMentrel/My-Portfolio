@@ -22,9 +22,11 @@
               {!! $project['introduction']['content']['text'] !!}
             </div>
 
-            @if(!empty($project['introduction']['image']))
-              <img class="rm-c-ProjectIntroduction-image" src="{{ $project['introduction']['image']['url'] }}" alt="{{ $project['introduction']['image']['alt'] }}" />
-            @endif
+            <div class="rm-c-ProjectIntroduction-image">
+              @if(!empty($project['introduction']['image']))
+                <img src="{{ $project['introduction']['image']['url'] }}" alt="{{ $project['introduction']['image']['alt'] }}" />
+              @endif
+            </div>
           </section>
 
           @if(!empty($project['detail']))
