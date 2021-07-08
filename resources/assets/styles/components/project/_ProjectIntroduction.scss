@@ -1,10 +1,17 @@
 .rm-c-ProjectIntroduction {
-    display: flex;
-    align-items: center;
-    gap: 40px;
+    &-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
 
     &-content {
         flex: 1 1 auto;
+
+        // heading
+        > *:first-child {
+            margin-bottom: 35px;
+        }
     }
 
     &-image {

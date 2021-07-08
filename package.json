@@ -76,6 +76,7 @@
     "yargs": "^16.1.0"
   },
   "dependencies": {
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "swiper": "^6.7.1"
   }
 }

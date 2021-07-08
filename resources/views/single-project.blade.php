@@ -13,12 +13,11 @@
           <img src="{{ $project['logo']['url'] }}" alt="{{ $project['logo']['alt'] }}" />
       </header>
 
-      <div class="rm-c-Project-content rm-u-hspace">
-        <div class="rm-c-Project-wrapper rm-u-wrapper">
-
-          <section class="rm-c-ProjectIntroduction">
+      <div class="rm-c-Project-content">
+        <section class="rm-c-ProjectIntroduction rm-u-hspace">
+          <div class="rm-c-ProjectIntroduction-wrapper rm-u-wrapper">
             <div class="rm-c-ProjectIntroduction-content">
-              <h2>{{ $project['introduction']['content']['title'] }}</h2>
+              <h2 class="rm-c-Heading" data-lvl="2">{{ $project['introduction']['content']['title'] }}</h2>
               {!! $project['introduction']['content']['text'] !!}
             </div>
 
@@ -27,26 +26,40 @@
                 <img src="{{ $project['introduction']['image']['url'] }}" alt="{{ $project['introduction']['image']['alt'] }}" />
               @endif
             </div>
-          </section>
+          </div>
+        </section>
 
-          @if(!empty($project['detail']))
-            <div class="rm-c-ProjectDetail">
-              <div class="rm-c-ProjectDetail-list">
-                @foreach ($project['detail'] as $section)
-                  @if(!empty($section['image']))
-                    <img class="rm-c-ProjectIntroduction-image" src="{{ $section['image']['url'] }}" alt="{{ $section['image']['alt'] }}" />
-                  @endif
+        @if(!empty($project['detail']))
+          <div class="rm-c-ProjectDetail rm-u-hspace">
+            <div class="rm-c-ProjectDetail-wrapper rm-u-wrapper">
+              <h2 class="rm-c-ProjectDetail-heading rm-c-Heading" data-lvl="2">{{ $project['detail_title'] }}</h2>
 
-                  <div class="rm-c-ProjectIntroduction-content">
-                    <h2>{{ $section['content']['title'] }}</h2>
-                    {!! $section['content']['text'] !!}
-                  </div>
-                @endforeach
+              <div class="rm-c-ProjectDetail-list" data-slider="container">
+                <div class="rm-c-ProjectDetail-list-wrapper" data-slider="wrapper">
+                  @foreach ($project['detail'] as $section)
+                    <section class="rm-c-ProjectDetail-section" data-slider="slide">
+                      <div class="rm-c-ProjectDetail-section-image">
+                        @if(!empty($section['image']))
+                          <img src="{{ $section['image']['url'] }}" alt="{{ $section['image']['alt'] }}" />
+                        @endif
+                      </div>
+
+                      <div class="rm-c-ProjectDetail-section-content">
+                        <h3 class="rm-c-Heading" data-lvl="3">{{ $section['content']['title'] }}</h3>
+                        {!! $section['content']['text'] !!}
+                      </div>
+                    </section>
+                  @endforeach
+                </div>
+
+                <div class="rm-c-ProjectDetail-list-prev" data-slider="prev"></div>
+                <div class="rm-c-ProjectDetail-list-next" data-slider="next"></div>
               </div>
+
+              <div class="rm-c-ProjectDetail-pagination" data-slider="pagination"></div>
             </div>
-          @endempty
-        
-        </div>
+          </div>
+        @endempty
       </div>
 
       <footer class="rm-c-Project-footer">

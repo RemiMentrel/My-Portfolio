@@ -1,6 +1,7 @@
 @charset 'utf-8';
 
 
+
 // Abstract
 @import 'abstract/_variables';
 @import 'abstract/function/_colors';
@@ -11,16 +12,22 @@
 @import 'base/_generic';
 @import 'base/_normalize';
 
+// Vendors
+@import '~swiper/swiper-bundle.css';
+
+
 // Components
 @import 'components/common/_Page';
 @import 'components/common/_Header';
 @import 'components/common/_Navigation';
 @import 'components/common/_Footer';
+@import 'components/common/_Heading';
 
 @import 'components/about/_AboutIntroduction';
 
 @import 'components/project/_Project';
 @import 'components/project/_ProjectIntroduction';
+@import 'components/project/_ProjectDetail';
 
 // Utils
 @import 'utils/_wrapper';
