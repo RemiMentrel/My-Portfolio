@@ -1,0 +1,15 @@
+.rm-c-Btn {
+    display: inline-block;
+    min-width: 175px;
+    padding: 8.5px 26px;
+    border-radius: 21px;
+    font-size: 16px;
+    text-decoration: none;
+    color: color(light);
+    background-color: color(accent);
+    transition: all .3s ease;
+
+    &:hover, &:focus, a:hover &, a:focus &, button:hover &, a:hover & {
+        background-color: darken(color(accent), 5);
+    }
+}

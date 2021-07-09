@@ -26,13 +26,19 @@ export default {
     this.slider = new Swiper( this.DOM.sliderContainer, {
       slidesPerView: 1,    
       speed: 700,
-      spaceBetween: 100,
+      spaceBetween: 20,
       pagination: {
         el: '[data-slider="pagination"]',
       },
       navigation: {
         prevEl: '[data-slider="prev"]',
         nextEl: '[data-slider="next"]',
+      },
+      breakpoints: {
+        // when window width is >= 320px
+        769: {
+          spaceBetween: 100,
+        },
       },
     });
   },

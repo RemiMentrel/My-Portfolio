@@ -17,6 +17,7 @@
     &-image {
         flex: 1 1 632px;
         position: relative;
+        width: 100%;
         max-width: 632px;
         margin-right: -232px;
         background-color: white;
@@ -36,6 +37,30 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+        }
+    }
+
+    
+    @include mq-to(medium) {
+        &-wrapper {
+            display: block;
+        }
+
+        &-content {
+            margin-bottom: 30px;
+
+            .rm-c-Heading {
+                text-align: center;
+            }
+        }
+    }
+
+
+    @include mq-to(small) {
+        &-image {
+            width: calc(100% + 40px);
+            max-width: none;
+            margin: 0 -20px;
         }
     }
 }

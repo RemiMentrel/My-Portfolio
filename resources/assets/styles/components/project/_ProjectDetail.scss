@@ -1,5 +1,5 @@
 .rm-c-ProjectDetail {
-    margin: 200px 0;
+    margin: 200px 0 0;
     color: black;
     background-color: white;
     overflow: hidden;
@@ -89,17 +89,17 @@
             > *:first-child {
                 margin-bottom: 35px;
             }
-
-            #{$p}:not(.swiper-slide-active) & {
-                opacity: 0;
+            
+            &-content {
+                #{$p}:not(.swiper-slide-active) & {
+                    opacity: 0;
+                }
             }
         }
     
         &-image {
             flex: 1 1 632px;
             position: relative;
-            max-width: 632px;
-            margin-left: -232px;
             background-color: white;
             transition: all .6s ease;
 
@@ -123,6 +123,35 @@
                 height: 100%;
                 object-fit: cover;
                 object-position: center;
+            }
+        }
+    }
+    
+    @include mq-from(medium) {
+        &-section {
+            &-image {
+                max-width: 632px;
+                margin-left: -232px;
+            }
+        }
+    }
+
+    
+    @include mq-to(medium) {
+        &-section {
+            display: block;
+
+            $p: &;
+            
+            &-content {
+                #{$p}:not(.swiper-slide-active) & {
+                    opacity: .4;
+                }
+            }
+
+            &-image {
+                margin-bottom: 30px;
+                transform: translate(-40px);
             }
         }
     }

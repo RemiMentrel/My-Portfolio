@@ -93,6 +93,7 @@ Container::getInstance()
 
 
 require('scripts/cpt.php');
+require('scripts/main.php');
 
 /**
  * Removes posts type Post from wp admin menu

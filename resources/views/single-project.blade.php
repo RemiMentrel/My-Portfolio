@@ -62,8 +62,26 @@
         @endempty
       </div>
 
-      <footer class="rm-c-Project-footer">
-        TODO: Sharing section
+      <footer class="rm-c-Project-footer rm-u-hspace">
+        <div class="rm-c-Project-footer-wrapper rm-u-wrapper">
+          <h2 class="rm-c-Project-footer-heading rm-c-Heading" data-lvl="2">Cet article vous a plu ?</h2>
+
+          <div class="rm-c-Project-footer-ctas">
+            <a href="#footer" class="rm-c-Btn">Me contacter</a>
+            
+            <span>ou</span>
+
+            <div class="rm-c-Project-footer-ctas-network">
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{ get_permalink() }}"
+                onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ get_permalink() }}','popup','width=600,height=600'); return false;"
+                target="_blank" rel="noreferrer">Facebook</a>
+
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ get_permalink() }}&source={{ site_url() }}"
+                onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url={{ get_permalink() }}&source={{ site_url() }}','popup','width=600,height=600'); return false;"
+                target="_blank" rel="noreferrer">Linkedin</a>
+            </div>
+          </div>
+        </div>
       </footer>
     </article>
 
