@@ -31,17 +31,9 @@
                 }
             }
 
-            [title='linkedin']::before {
-                content: 'In';
-            }
-
-            [title='facebook']::before {
-                content: 'Fb';
-            }
-
-            [title='instagram']::before {
-                content: 'IG';
-            }
+            [title='Linkedin']::before { content: 'In'; }
+            [title='Facebook']::before { content: 'Fb'; }
+            [title='Instagram']::before { content: 'IG'; } 
         }
     }
 

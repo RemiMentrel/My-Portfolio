@@ -23,7 +23,7 @@
             <a href="mailto:{{ $info }}">{{ $info }}</a>
           @elseif ($name == 'network')
             @foreach ($info as $network=>$url)
-              <a href="{{ $url }}" title="{{ $network }}">{{ $network }}</a>
+              <a href="{{ $url }}" title="{{ ucfirst($network) }}">{{ $network }}</a>
             @endforeach
           @endif
         </div>

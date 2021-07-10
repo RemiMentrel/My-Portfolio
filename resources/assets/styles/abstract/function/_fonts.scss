@@ -1,0 +1,3 @@
+@function font($scheme) {
+    @return unquote(map-get($fonts, $scheme));
+}
