@@ -15,11 +15,15 @@ body {
     color: color(light);
     background: {
         color: color(background);
-        image: url('/wp-content/themes/portfolio/dist/images/pattern.svg');
-        position: top center;
+        image: url('/wp-content/themes/portfolio/dist/images/patterns/generic.svg');
+        position: center 96px;
         size: 1595px;
-        repeat: repeat-y;
+        repeat: no-repeat;
     };
+
+    &.archive {
+        background-image: url('/wp-content/themes/portfolio/dist/images/patterns/listing.svg');
+    }
 
     > main {
         flex: 1 1 auto;

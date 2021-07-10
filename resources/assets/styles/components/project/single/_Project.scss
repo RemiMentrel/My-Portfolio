@@ -48,11 +48,13 @@
                     width: 29px;
                     height: 29px;
                     font-size: 0;
-                    border: 2px solid color(light);
-                    border-radius: 10px;
 
                     &:not(:last-child) {
                         margin-right: 34px;
+                    }
+
+                    img {
+                        display: block;
                     }
                 }
             }

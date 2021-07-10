@@ -74,11 +74,11 @@
             <div class="rm-c-Project-footer-ctas-network">
               <a href="https://www.facebook.com/sharer/sharer.php?u={{ get_permalink() }}"
                 onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ get_permalink() }}','popup','width=600,height=600'); return false;"
-                target="_blank" rel="noreferrer">Facebook</a>
+                target="_blank" rel="noreferrer">Facebook<img src="@asset('images/icons/network/facebook.svg')" alt="" /></a>
 
               <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ get_permalink() }}&source={{ site_url() }}"
                 onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url={{ get_permalink() }}&source={{ site_url() }}','popup','width=600,height=600'); return false;"
-                target="_blank" rel="noreferrer">Linkedin</a>
+                target="_blank" rel="noreferrer">Linkedin<img src="@asset('images/icons/network/linkedin.svg')" alt="" /></a>
             </div>
           </div>
         </div>

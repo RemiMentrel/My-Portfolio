@@ -27,13 +27,22 @@
             transition: all .8s ease;
             cursor: pointer;
 
+            &:hover, &:focus {
+                background-color: rgba(color(light), .2);
+            }
+
             &::before {
                 content: '';
                 display: block;
-                width: 9px;
+                width: 10px;
                 height: 18px;
                 margin: auto;
-                background-color: red; // Todo: replace by arrow icon
+                background: {
+                    image: url('/wp-content/themes/portfolio/dist/images/symbols/arrow.svg');
+                    position: center;
+                    size: contain;
+                    repeat: no-repeat;
+                }
             }
 
             &.swiper-button-disabled {
@@ -44,7 +53,7 @@
 
         &-prev {
             left: 50%;
-            transform: translateX(-50vw);
+            transform: translateX(-50vw) rotate(180deg);
         }
 
         &-next {
@@ -82,7 +91,7 @@
         $p: &;
 
         &-content {
-            flex: 1 1 auto;
+            flex: 1 1 375px;
             transition: all .6s ease;
 
             // heading
@@ -104,8 +113,8 @@
             transition: all .6s ease;
 
             #{$p}:not(.swiper-slide-active) & {
-                margin-left: 0;
                 opacity: 0.4;
+                transform: translateX(232px);
             }
     
             &::before {
@@ -152,6 +161,10 @@
             &-image {
                 margin-bottom: 30px;
                 transform: translate(-40px);
+
+                #{$p}:not(.swiper-slide-active) & {
+                    transform: translateX(-20px);
+                }
             }
         }
     }
