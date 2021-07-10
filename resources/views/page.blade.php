@@ -10,7 +10,7 @@
       </header>
       
       <div class="rm-c-Page-content rm-u-hspace">
-        @php the_content() @endphp
+        @content
       </div>
     </div>
 

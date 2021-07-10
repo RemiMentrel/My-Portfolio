@@ -6,7 +6,7 @@
     }
 
     &-content {
-        flex: 1 1 auto;
+        flex: 1 1 375px;
 
         // heading
         > *:first-child {
@@ -20,7 +20,7 @@
         width: 100%;
         max-width: 632px;
         margin-right: -232px;
-        background-color: white;
+        background-color: white; 
 
         &::before {
             content: '';

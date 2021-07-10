@@ -16,6 +16,10 @@
     @if(!is_front_page())
       @include('partials.footer')
     @endif
+    
+    @if(is_archive())
+      <div class="rm-c-Lines rm-u-hspace"><div class="rm-c-Lines-wrapper rm-u-wrapper"></div></div>
+    @endif
 
     @php wp_footer() @endphp
   </body>

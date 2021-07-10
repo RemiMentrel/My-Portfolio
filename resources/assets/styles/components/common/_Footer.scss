@@ -5,4 +5,78 @@
     &-wrapper {
         padding: 56px 0 100px;
     }
+
+    &-logo {
+        img {
+            display: block;
+            width: 60px;
+            height: auto;
+        }
+    }
+
+    &-section {
+        &[data-type='network'] &-content {
+            font-size: 0;
+
+            > a {
+                text-decoration: none;
+
+                &:not(:last-child) {
+                    margin-right: 8px;
+                }
+
+                &::before {
+                    font-size: 1rem;
+                    text-decoration: underline;
+                }
+            }
+
+            [title='linkedin']::before {
+                content: 'In';
+            }
+
+            [title='facebook']::before {
+                content: 'Fb';
+            }
+
+            [title='instagram']::before {
+                content: 'IG';
+            }
+        }
+    }
+
+
+    @include mq-from(xsmall) {
+        &-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(auto, 160px));
+            margin-right: auto; 
+            grid-gap: 55px 13%;
+        }
+    }
+
+    @include mq-to(small) {
+        &-wrapper {
+            grid-template-columns: auto auto;
+            grid-row-gap: 40px;
+        }
+
+        &-logo {
+            grid-column: 1 / span 2;
+        }
+
+        &-section {
+            &[data-type='mail'] { order: 1; }
+            &[data-type='telephone'] { order: 3; }
+            &[data-type='network'] { order: 2; }
+        }
+    }
+
+    @include mq-to(xsmall) {
+        &-wrapper {
+            > *:not(:last-child) {
+                margin-bottom: 15px;
+            }
+        }
+    }
 }

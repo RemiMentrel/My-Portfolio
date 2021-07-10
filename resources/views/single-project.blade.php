@@ -9,7 +9,7 @@
 
     <article @php post_class('rm-c-Project') @endphp>
       <header class="rm-c-Project-header rm-u-hspace">
-          <h1>{!! get_the_title() !!}</h1>
+          <h1> @title</h1>
           <img src="{{ $project['logo']['url'] }}" alt="{{ $project['logo']['alt'] }}" />
       </header>
 
@@ -68,7 +68,7 @@
 
           <div class="rm-c-Project-footer-ctas">
             <a href="#footer" class="rm-c-Btn">Me contacter</a>
-            
+
             <span>ou</span>
 
             <div class="rm-c-Project-footer-ctas-network">

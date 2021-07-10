@@ -13,7 +13,13 @@ body {
     flex-direction: column;
     min-height: 100vh;
     color: color(light);
-    background-color: color(background);
+    background: {
+        color: color(background);
+        image: url('/wp-content/themes/portfolio/dist/images/pattern.svg');
+        position: top center;
+        size: 1595px;
+        repeat: repeat-y;
+    };
 
     > main {
         flex: 1 1 auto;
@@ -36,4 +42,9 @@ p {
         font-weight: 700;
         color: color(accent);
     }
+}
+
+a {
+    text-decoration: underline;
+    color: inherit;
 }

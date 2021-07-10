@@ -6,6 +6,8 @@ use Sober\Controller\Controller;
 
 class App extends Controller
 {
+    protected $acf = true; // enable ACF
+
     public function siteName()
     {
         return get_bloginfo('name');
@@ -29,5 +31,10 @@ class App extends Controller
             return __('Not Found', 'sage');
         }
         return get_the_title();
+    }
+
+    public static function contactInfos()
+    {
+        return get_field('contact', 'option');
     }
 }

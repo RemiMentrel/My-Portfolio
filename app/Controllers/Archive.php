@@ -5,11 +5,7 @@ namespace App\Controllers;
 use Sober\Controller\Controller;
 
 class Archive extends Controller
-{
-    protected $acf = true; // enable ACF
-
-
-    
+{    
     public function projects() {
         $arg = [
             'posts_per_page' => -1,

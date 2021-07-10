@@ -1,3 +1,10 @@
+// Fonts
+$font: (
+  title: 'Arial, Helvetica, sans-serif',
+  text: 'Arial, Helvetica, sans-serif',
+);
+
+
 // Colors
 $colors: (
   light: #ffffff,
@@ -5,10 +12,12 @@ $colors: (
   accent: #F39200,
   attenuated: #959595,
   background: #2B2E34,
+  border: #D9D9D9,
 );
 
 // Breakpoints
 $breakpoints: (
+  xsmall: 360px,
   small: 480px,
   medium: 768px,
   large: 992px,
