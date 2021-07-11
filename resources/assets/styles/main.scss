@@ -14,6 +14,7 @@
 
 // Vendors
 @import '~swiper/swiper-bundle.css';
+@import 'vendors/_swiper';
 
 // Components
 @import 'components/common/_Page';
@@ -23,6 +24,8 @@
 @import 'components/common/_Heading';
 @import 'components/common/_Btn';
 @import 'components/common/_Lines';
+@import 'components/common/_Popin';
+@import 'components/common/_Gallery';
 
 @import 'components/about/_AboutIntroduction';
 

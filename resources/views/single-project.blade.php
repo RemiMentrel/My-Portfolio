@@ -36,11 +36,11 @@
 
               <div class="rm-c-ProjectDetail-list" data-slider="container">
                 <div class="rm-c-ProjectDetail-list-wrapper" data-slider="wrapper">
-                  @foreach ($project['detail'] as $section)
+                  @foreach ($project['detail'] as $key=>$section)
                     <section class="rm-c-ProjectDetail-section" data-slider="slide">
-                      <div class="rm-c-ProjectDetail-section-image">
-                        @if(!empty($section['image']))
-                          <img src="{{ $section['image']['url'] }}" alt="{{ $section['image']['alt'] }}" />
+                      <div class="rm-c-ProjectDetail-section-image" @if(!empty($section['image']['more_images'])) role="button" data-popin-trigger="gallery_{{ $key }} @endif">
+                        @if(!empty($section['image']['image']))
+                          <img src="{{ $section['image']['image']['url'] }}" alt="{{ $section['image']['image']['alt'] }}" />
                         @endif
                       </div>
 
@@ -52,14 +52,40 @@
                   @endforeach
                 </div>
 
-                <div class="rm-c-ProjectDetail-list-prev" data-slider="prev"></div>
-                <div class="rm-c-ProjectDetail-list-next" data-slider="next"></div>
+                <div class="swiper-arrow-left" data-slider="prev"></div>
+                <div class="swiper-arrow-right" data-slider="next"></div>
               </div>
 
               <div class="rm-c-ProjectDetail-pagination" data-slider="pagination"></div>
             </div>
           </div>
         @endempty
+      </div>
+
+      <div class="rm-c-Popin rm-u-hspace" data-display="false">
+        <b class="rm-c-Popin-mask"></b>
+        <div class="rm-c-Popin-wrapper rm-u-wrapper">
+          @foreach ($project['detail'] as $key=>$section)
+            @if(!empty($section['image']['more_images']))
+              <div id="gallery_{{ $key }}" class="rm-c-Gallery" data-shown="false">
+                <div class="rm-c-Gallery-list" data-slider="container">
+                  <div class="rm-c-Gallery-list-wrapper" data-slider="wrapper">
+                    @foreach ($section['image']['gallery'] as $item)
+                      <div class="rm-c-Gallery-image" data-slider="slide">
+                          <img src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] }}" />
+                      </div>
+                    @endforeach
+                  </div>
+                    
+                  <div class="swiper-arrow-left" data-slider="prev"></div>
+                  <div class="swiper-arrow-right" data-slider="next"></div>
+
+                  <div class="rm-c-Gallery-pagination" data-slider="pagination_gallery_{{ $key }}"></div>
+                </div>
+              </div>
+            @endif
+          @endforeach
+        </div>
       </div>
 
       <footer class="rm-c-Project-footer rm-u-hspace">
