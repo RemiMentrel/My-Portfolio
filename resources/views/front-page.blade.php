@@ -1,59 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="rm-u-wrapper" data-size="large">
-    <div class="rm-c-PageHeading">
-      <h1 class="rm-c-PageHeading-title">
-        @for ($i = 1; $i <= 5; $i++)
-          @php
-          $line = 'line_'.$i;
-          @endphp
+    @php
+        $about = get_fields();
+    @endphp
 
-          @if (!empty($page_header[$line]))
-            <span class="rm-c-PageHeading-title-line" data-line="{{$i}}">
-                @if ((int)$page_header['strong']['line'] === $i )
-                    {{ $page_header['strong']['text'] }}
-                @endif
-                {{ $page_header[$line] }}
-            </span>
-          @endif
-            
-        @endfor
-      </h1>
-    </div>
+    <div class="rm-c-About">
 
-    <div class="rm-c-Breadcrumb">
-      <div class="rm-c-Breadcrump-trigger">
-        <div class="rm-c-ScrollBar-animation"></div>
+        <div class="rm-c-AboutIntroduction rm-u-hspace">
+            <div class="rm-c-AboutIntroduction-wrapper rm-u-wrapper">
+                <div class="rm-c-AboutIntroduction-logo">
+                    <img src="{{ $about['introduction']['content']['logo']['url'] }}" alt="{{ $about['introduction']['content']['logo']['alt'] }}" />
+                </div>
 
-        <span class="rm-c-ScrollBar-name"></span>
+                <p class="rm-c-AboutIntroduction-text">
+                    {{ $about['introduction']['content']['text'] }}
+                </p>
 
-      </div>
-
-      <div class="rm-c-Breadcrump-numbers"></div>
-    </div>
-  </div>
-
-    <div class="rm-c-ProjetList">
-      <div class="rm-c-ProjetList-nav">
-        <div class="rm-c-ProjetList-nav-prev"></div>
-
-        <div class="rm-c-ProjetList-nav-next"></div>
-
-        <div class="rm-c-ProjetList-nav-dots"></div>
-      </div>
-      <ul class="rm-c-ProjetList-list">
-        @for ($i = 0; $i < 3; $i++)
-          <li>
-            <div class="rm-c-ProjetMiniature">
-              <img src="" alt="">
-
-              <div class="rm-c-ProjetMiniature-title">miniature {{ $i }}</div>
+                <img class="rm-c-AboutIntroduction-portrait" src="{{ $about['introduction']['image']['url'] }}" alt="{{ $about['introduction']['image']['alt'] }}" />
             </div>
-          </li>
-        @endfor
-      </ul>
-    </div>
+        </div>
 
-    <b class="rm-c-Breadcrumb-line"></b>
+    </div>
 @endsection

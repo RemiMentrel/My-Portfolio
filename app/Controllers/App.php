@@ -33,13 +33,8 @@ class App extends Controller
         return get_the_title();
     }
 
-    public function pageHeader()
+    public static function contactInfos()
     {
-        $data = get_field('title', get_option('page_on_front'));
-        if (!empty($data)) {
-            return $data;
-        } else {
-            return [];
-        }
+        return get_field('contact', 'option');
     }
 }

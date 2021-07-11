@@ -1,0 +1,103 @@
+.rm-c-Project {
+    &-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 73vh;
+        min-height: 600px;
+        max-height: 800px;
+        font-size: 0;
+        overflow: hidden;
+
+        img {
+            display: block;
+            transition: all .3s ease-in-out;
+        }
+    }
+
+    &-content {
+        overflow: hidden;
+    }
+
+    &-footer {
+        &-wrapper {
+            padding: 200px 0;
+            text-align: center;
+        }
+
+        &-heading {
+            margin-bottom: 50px;
+        }
+
+        &-ctas {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 38px;
+
+            span {
+                font-size: 16px;
+                opacity: .7;
+            }
+
+            &-network {
+                flex: 0 0 auto;
+                display: flex;
+
+                a {
+                    flex: 0 0 auto;
+                    width: 29px;
+                    height: 29px;
+                    font-size: 0;
+
+                    &:not(:last-child) {
+                        margin-right: 34px;
+                    }
+
+                    img {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    
+
+    @include mq-from(xxxlarge) {
+        &-header {
+            img {
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    @include mq-to(large) {
+        &-header {
+            img[data-logo-large='true'] {
+                transform: scale(0.8);
+            }
+        }
+    }
+
+    @include mq-to(small) {
+        &-header {
+            min-height: 480px;
+            max-height: 600px;
+
+            img {
+                transform: scale(0.75);
+
+                &[data-logo-large='true'] {
+                    transform: scale(0.5);
+                }
+            }
+        }
+
+        &-footer {
+            &-ctas {
+                flex-direction: column;
+            }
+        }
+    }
+}
