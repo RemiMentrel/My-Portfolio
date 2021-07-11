@@ -20,7 +20,7 @@ class Archive extends Controller
                 $projects_clean[] = [
                     'title'   => $project->post_title,
                     'slug'    => $project->post_name,
-                    'image'   => get_the_post_thumbnail_url($project->ID),
+                    'image'   => get_the_post_thumbnail_url($project->ID, 'project-miniature'),
                     'link'    => get_permalink($project->ID),
                     'tags'    => get_the_tags($project->ID)
                 ];

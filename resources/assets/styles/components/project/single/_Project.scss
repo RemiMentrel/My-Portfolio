@@ -11,6 +11,7 @@
 
         img {
             display: block;
+            transition: all .3s ease-in-out;
         }
     }
 
@@ -63,7 +64,7 @@
 
     
 
-    @include mq-from(xxlarge) {
+    @include mq-from(xxxlarge) {
         &-header {
             img {
                 transform: scale(1.2);
@@ -71,6 +72,13 @@
         }
     }
 
+    @include mq-to(large) {
+        &-header {
+            img[data-logo-large='true'] {
+                transform: scale(0.8);
+            }
+        }
+    }
 
     @include mq-to(small) {
         &-header {
@@ -79,6 +87,10 @@
 
             img {
                 transform: scale(0.75);
+
+                &[data-logo-large='true'] {
+                    transform: scale(0.5);
+                }
             }
         }
 

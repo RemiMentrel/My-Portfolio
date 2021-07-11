@@ -26,7 +26,7 @@
                             </div>
 
                             <div class="rm-c-ProjectMiniature-image">
-                                <img src="{{ $project['image'] }}" alt="miniature projet" />
+                                <img src="{{ $project['image'] }}" alt="miniature projet" loading="lazy" />
                             </div>
                         </a>
                     </article>

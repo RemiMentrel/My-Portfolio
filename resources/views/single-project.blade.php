@@ -10,7 +10,7 @@
     <article @php post_class('rm-c-Project') @endphp>
       <header class="rm-c-Project-header rm-u-hspace">
           <h1>{{ get_the_title() }}</h1>
-          <img src="{{ $project['logo']['url'] }}" alt="{{ $project['logo']['alt'] }}" />
+          <img src="{{ $project['logo']['url'] }}" alt="{{ $project['logo']['alt'] }}" @if(!empty($project['is_logo_large'])) data-logo-large="true" @endif />
       </header>
 
       <div class="rm-c-Project-content">
@@ -23,7 +23,7 @@
 
             <div class="rm-c-ProjectIntroduction-image">
               @if(!empty($project['introduction']['image']))
-                <img src="{{ $project['introduction']['image']['url'] }}" alt="{{ $project['introduction']['image']['alt'] }}" />
+                <img src="{{ $project['introduction']['image']['sizes']['project-image'] }}" alt="{{ $project['introduction']['image']['alt'] }}" loading="lazy" />
               @endif
             </div>
           </div>
@@ -38,9 +38,9 @@
                 <div class="rm-c-ProjectDetail-list-wrapper" data-slider="wrapper">
                   @foreach ($project['detail'] as $key=>$section)
                     <section class="rm-c-ProjectDetail-section" data-slider="slide">
-                      <div class="rm-c-ProjectDetail-section-image" @if(!empty($section['image']['more_images'])) role="button" data-popin-trigger="gallery_{{ $key }} @endif">
+                      <div class="rm-c-ProjectDetail-section-image" @if(!empty($section['image']['more_images'])) role="button" data-popin-trigger="gallery_{{ $key }}" aria-title="Voir plus" @endif>
                         @if(!empty($section['image']['image']))
-                          <img src="{{ $section['image']['image']['url'] }}" alt="{{ $section['image']['image']['alt'] }}" />
+                          <img src="{{ $section['image']['image']['sizes']['project-image'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
                         @endif
                       </div>
 
@@ -70,9 +70,15 @@
               <div id="gallery_{{ $key }}" class="rm-c-Gallery" data-shown="false">
                 <div class="rm-c-Gallery-list" data-slider="container">
                   <div class="rm-c-Gallery-list-wrapper" data-slider="wrapper">
+                    @if(!empty($section['image']['image']))
+                      <div class="rm-c-Gallery-image" data-slider="slide">
+                        <img src="{{ $section['image']['image']['url'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
+                      </div>
+                    @endif
+
                     @foreach ($section['image']['gallery'] as $item)
                       <div class="rm-c-Gallery-image" data-slider="slide">
-                          <img src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] }}" />
+                          <img src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] }}" loading="lazy" />
                       </div>
                     @endforeach
                   </div>
