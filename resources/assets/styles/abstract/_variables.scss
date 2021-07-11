@@ -1,0 +1,27 @@
+// Fonts
+$fonts: (
+  title: '"D DIN", Arial, Helvetica, sans-serif',
+  text: '"Poppins", Arial, Helvetica, sans-serif',
+);
+
+
+// Colors
+$colors: (
+  light: #ffffff,
+  dark: #000000,
+  accent: #F39200,
+  attenuated: #959595,
+  background: #2B2E34,
+  border: #D9D9D9,
+);
+
+// Breakpoints
+$breakpoints: (
+  xsmall: 360px,
+  small: 480px,
+  medium: 768px,
+  large: 992px,
+  xlarge: 1160px,
+  xxlarge: 1280px,
+  xxxlarge: 1440px,
+);

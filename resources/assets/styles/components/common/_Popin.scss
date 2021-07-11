@@ -1,0 +1,33 @@
+.rm-c-Popin {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: all .3s ease-in-out;
+
+    &[data-display='false'] {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &-mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(color(dark), 0.4); 
+    }
+
+    &-wrapper {
+        position: relative;
+        margin: auto;
+
+        &.rm-u-wrapper {
+            max-width: 1080px;
+        }
+    }
+}
