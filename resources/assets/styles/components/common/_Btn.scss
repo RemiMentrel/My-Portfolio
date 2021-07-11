@@ -1,15 +1,38 @@
 .rm-c-Btn {
+    position: relative;
     display: inline-block;
     min-width: 175px;
     padding: 8.5px 26px;
     border-radius: 21px;
     font-size: 16px;
+    font-family: font(title);
     text-decoration: none;
     color: color(light);
     background-color: color(accent);
-    transition: all .3s ease;
+    overflow: hidden;
+
+    span {
+        z-index: 1;
+        position: relative;
+    }
+
+    &::before {
+        content: '';
+        z-index: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: black;
+        transform: translateY(100%);
+        transition: all .3s ease;
+    }
 
     &:hover, &:focus, a:hover &, a:focus &, button:hover &, a:hover & {
-        background-color: darken(color(accent), 5);
+        &::before {
+            transform: translateY(0);
+        }
     }
 }

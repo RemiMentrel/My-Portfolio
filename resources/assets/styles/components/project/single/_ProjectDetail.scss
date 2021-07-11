@@ -98,11 +98,9 @@
             > *:first-child {
                 margin-bottom: 35px;
             }
-            
-            &-content {
-                #{$p}:not(.swiper-slide-active) & {
-                    opacity: 0;
-                }
+        
+            #{$p}:not(.swiper-slide-active) & {
+                opacity: 0;
             }
         }
     

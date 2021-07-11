@@ -15,6 +15,14 @@
     }
 
     &-section {
+        &-title {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 12px;
+            font-weight: 400;
+            color: color(attenuated);
+        }
+
         &[data-type='network'] &-content {
             font-size: 0;
 

@@ -7,10 +7,10 @@
         min-height: 600px;
         max-height: 800px;
         font-size: 0;
+        overflow: hidden;
 
         img {
-            width: 80%;
-            max-width: 514px;
+            display: block;
         }
     }
 
@@ -61,8 +61,27 @@
         }
     }
 
+    
+
+    @include mq-from(xxlarge) {
+        &-header {
+            img {
+                transform: scale(1.2);
+            }
+        }
+    }
+
 
     @include mq-to(small) {
+        &-header {
+            min-height: 480px;
+            max-height: 600px;
+
+            img {
+                transform: scale(0.75);
+            }
+        }
+
         &-footer {
             &-ctas {
                 flex-direction: column;
