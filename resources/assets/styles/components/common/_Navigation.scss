@@ -19,7 +19,7 @@
             transition: all .4s .1s ease-in-out;
         }
 
-        &:hover, &:focus-within {
+        &:hover, &:focus-within, &.current-menu-item {
             &::after {
                 width: 100%;
             }

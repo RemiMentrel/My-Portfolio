@@ -27,9 +27,18 @@ body {
 
     > main {
         flex: 1 1 auto;
+    }
+
+    &.home > main {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        padding: 0;
+    }
+
+    &:not(.single-projet):not(.home) > main {    
+        padding-top: 260px;
+        padding-top: clamp(150px, 33vh, 260px);
     }
 }
 

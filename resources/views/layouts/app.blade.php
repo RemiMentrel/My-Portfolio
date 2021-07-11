@@ -13,7 +13,7 @@
     
     @php do_action('get_footer') @endphp
 
-    @if(!is_front_page())
+    @if(!is_front_page() && get_the_title() !== 'Contact')
       @include('partials.footer')
     @endif
     
