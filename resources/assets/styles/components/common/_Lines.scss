@@ -30,4 +30,9 @@
             background: currentColor;
         }
     }
+
+    
+    @include mq-to(medium) {
+        display: none;
+    }
 }

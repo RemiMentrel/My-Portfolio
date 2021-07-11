@@ -21,7 +21,8 @@ class Archive extends Controller
                     'title'   => $project->post_title,
                     'slug'    => $project->post_name,
                     'image'   => get_the_post_thumbnail_url($project->ID),
-                    'link'    => get_permalink($projet->ID)
+                    'link'    => get_permalink($project->ID),
+                    'tags'    => get_the_tags($project->ID)
                 ];
             }
         }

@@ -4,6 +4,10 @@
   
   <body @php body_class() @endphp>
     @php do_action('get_header') @endphp
+    
+    @if(is_archive())
+      <div class="rm-c-Lines rm-u-hspace"><div class="rm-c-Lines-wrapper rm-u-wrapper"></div></div>
+    @endif
 
     @include('partials.header')
 
@@ -15,10 +19,6 @@
 
     @if(!is_front_page() && get_the_title() !== 'Contact')
       @include('partials.footer')
-    @endif
-    
-    @if(is_archive())
-      <div class="rm-c-Lines rm-u-hspace"><div class="rm-c-Lines-wrapper rm-u-wrapper"></div></div>
     @endif
 
     @php wp_footer() @endphp

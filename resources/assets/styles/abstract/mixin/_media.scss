@@ -2,7 +2,7 @@
     @if map-has-key($breakpoints, $breakpoint) {
         $value: map-get($breakpoints, $breakpoint);
          
-        @media screen and (max-width: $value) {
+        @media screen and (max-width: $value - 1) {
             @content;
         }
     }
@@ -12,7 +12,7 @@
     @if map-has-key($breakpoints, $breakpoint) {
         $value: map-get($breakpoints, $breakpoint);
          
-        @media screen and (min-width: $value + 1) {
+        @media screen and (min-width: $value) {
             @content;
         }
     }
