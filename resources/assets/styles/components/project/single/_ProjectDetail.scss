@@ -68,13 +68,13 @@
                 background-color: color(dark);
             }
 
-            &::after {
-                content: attr(aria-title);
+            &-fader {
                 z-index: 1;
                 position: absolute;
                 top: 0;
                 left: 0;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 width: 100%;
@@ -83,19 +83,31 @@
                 color: color(light);
                 opacity: 0;
                 transition: all .3s ease-in-out;
+
+                &::after {
+                    content: '+';
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 26px;
+                    height: 26px;
+                    margin-top: 5px;
+                    border: 1.5px solid color(light);
+                    border-radius: 50%;
+                }
             }
 
             &:hover, &:focus {
-                &::after {
+                #{$p}-image-fader {
                     opacity: 1;
                 }
 
-                img {
+                &[data-popin-trigger] img {
                     opacity: .9;
                 }
             }
     
-            img {
+            > img {
                 position: absolute;
                 top: 0;
                 left: 0;

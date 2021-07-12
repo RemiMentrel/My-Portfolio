@@ -8,6 +8,22 @@
     height: 100%;
     color: color(border);
     pointer-events: none;
+    animation: {
+        name: linesAppears;
+        duration: 1.5s;
+        delay: 0.2s;
+        fill-mode: backwards;
+    }
+        
+    @keyframes linesAppears {
+        from {
+            opacity: 0;
+        }
+
+        top {
+            opacity: 1;
+        }
+    }
 
     &-wrapper {
         display: flex;

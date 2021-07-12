@@ -4,20 +4,37 @@
     &-wrapper {
         display: block;
         text-decoration: none;
+        animation: {
+            name: miniatureAppears;
+            duration: 1.5s;
+            fill-mode: backwards;
+        }
+        
+        @keyframes miniatureAppears {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            top {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     }
 
     &-content {
         position: relative;
         display: inline-block;
         margin-bottom: 20px;
-        padding-left: 30px;
+        margin-left: 30px;
         text-align: left;
 
         &::before {
             content: attr(data-counter) '.';
             position: absolute;
             top: -7px;
-            left: 0;
+            right: calc(100% + 5px);
             font-size: 25px;
             font-family: font(title);
         }

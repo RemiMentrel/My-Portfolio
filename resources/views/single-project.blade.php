@@ -21,11 +21,16 @@
               {!! $project['introduction']['content']['text'] !!}
             </div>
 
-            <div class="rm-c-ProjectIntroduction-image">
+            <figure class="rm-c-ProjectIntroduction-image">
               @if(!empty($project['introduction']['image']))
                 <img src="{{ $project['introduction']['image']['sizes']['project-image'] }}" alt="{{ $project['introduction']['image']['alt'] }}" loading="lazy" />
+                @if ( !empty($project['introduction']['image']['caption']) )
+                  <figcaption>
+                    {{ $project['introduction']['image']['caption'] }}
+                  </figcaption>
+                @endif
               @endif
-            </div>
+            </figure>
           </div>
         </section>
 
@@ -38,11 +43,27 @@
                 <div class="rm-c-ProjectDetail-list-wrapper" data-slider="wrapper">
                   @foreach ($project['detail'] as $key=>$section)
                     <section class="rm-c-ProjectDetail-section" data-slider="slide">
-                      <div class="rm-c-ProjectDetail-section-image" @if(!empty($section['image']['more_images'])) role="button" data-popin-trigger="gallery_{{ $key }}" aria-title="Voir plus" @endif>
-                        @if(!empty($section['image']['image']))
-                          <img src="{{ $section['image']['image']['sizes']['project-image'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
-                        @endif
-                      </div>
+                      @if(!empty($section['image']['more_images']))
+                        <div class="rm-c-ProjectDetail-section-image" role="button" data-popin-trigger="gallery_{{ $key }}" aria-title="Voir plus">
+                          @if(!empty($section['image']['image']))
+                            <img src="{{ $section['image']['image']['sizes']['project-image'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
+                          @endif
+
+                          <span class="rm-c-ProjectDetail-section-image-fader">Voir plus</span>
+                        </div>
+                      @else
+                        <figure class="rm-c-ProjectDetail-section-image">
+                          @if(!empty($section['image']['image']))
+                            <img src="{{ $section['image']['image']['sizes']['project-image'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
+                          @endif
+                          @if ( !empty($section['image']['image']['caption']) )
+                            <figcaption>
+                              {{ $section['image']['image']['caption'] }}
+                            </figcaption>
+                          @endif
+                        </figure>
+                      @endif
+                      
 
                       <div class="rm-c-ProjectDetail-section-content">
                         <h3 class="rm-c-Heading" data-lvl="3">{{ $section['content']['title'] }}</h3>
@@ -71,15 +92,25 @@
                 <div class="rm-c-Gallery-list" data-slider="container">
                   <div class="rm-c-Gallery-list-wrapper" data-slider="wrapper">
                     @if(!empty($section['image']['image']))
-                      <div class="rm-c-Gallery-image" data-slider="slide">
+                      <figure class="rm-c-Gallery-image" data-slider="slide">
                         <img src="{{ $section['image']['image']['url'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
-                      </div>
+                        @if ( !empty($section['image']['image']['caption']) )
+                          <figcaption>
+                            {{ $section['image']['image']['caption'] }}
+                          </figcaption>
+                        @endif
+                      </figure>
                     @endif
 
                     @foreach ($section['image']['gallery'] as $item)
-                      <div class="rm-c-Gallery-image" data-slider="slide">
-                          <img src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] }}" loading="lazy" />
-                      </div>
+                      <figure class="rm-c-Gallery-image" data-slider="slide">
+                        <img src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] }}" loading="lazy" />
+                        @if ( !empty($item['image']['caption']) )
+                          <figcaption>
+                            {{ $item['image']['caption'] }}
+                          </figcaption>
+                        @endif
+                      </figure>
                     @endforeach
                   </div>
                     
