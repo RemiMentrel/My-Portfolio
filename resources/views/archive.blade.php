@@ -10,7 +10,7 @@
             <div class="rm-c-Archive-list">
                 @foreach ($projects as $key=>$project)
                     <article class="rm-c-ProjectMiniature">
-                        <a class="rm-c-ProjectMiniature-wrapper" href="{{ $project['link'] }}">
+                        <a class="rm-c-ProjectMiniature-wrapper" href="{{ $project['link'] }}" style="animation-delay: {{ ($loop->iteration * 0.4) + 0.4 }}s">
                             <div class="rm-c-ProjectMiniature-content" data-counter="{{ sprintf('%02d', $key+1) }}">
                                 <h2 class="rm-c-ProjectMiniature-name">
                                     {{ $project['title'] }}
