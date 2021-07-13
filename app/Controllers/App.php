@@ -37,4 +37,9 @@ class App extends Controller
     {
         return get_field('contact', 'option');
     }
+
+    public static function cv()
+    {
+        return get_field('cv', 'option');
+    }
 }
