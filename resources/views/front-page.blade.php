@@ -15,6 +15,8 @@
 
                 <p class="rm-c-AboutIntroduction-text">
                     {{ $about['introduction']['content']['text'] }}
+
+                    <a href="/contact">Voir mon CV</a>
                 </p>
 
                 <img class="rm-c-AboutIntroduction-portrait" src="{{ $about['introduction']['image']['url'] }}" alt="{{ $about['introduction']['image']['alt'] }}" />

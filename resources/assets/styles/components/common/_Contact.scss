@@ -1,0 +1,28 @@
+.rm-c-Contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+
+    &-infos {
+        display: flex;
+        flex-flow: wrap;
+        gap: 35px;
+        font-size: 15px;
+
+        .rm-c-Footer-section {
+            &-title {
+                font-size: 14px;
+            }
+
+            &[data-type="network"] .rm-c-Footer-section-content > a::before {
+                font-size: 15px;
+            }
+        }
+    }
+
+    &-cta {
+        margin-top: 40px;
+    }
+}
