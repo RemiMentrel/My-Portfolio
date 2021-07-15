@@ -1,0 +1,6 @@
+.rm-c-CreationList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 20px;
+    margin-top: clamp(70px, 12vh, 120px);
+}

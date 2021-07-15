@@ -41,14 +41,14 @@ function cpt_project() {
 	$args = array(
 		'label'                 => __( 'Projet', 'portfolio' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+		'supports'              => array( 'title', 'thumbnail', 'custom-fields' ),
 		'taxonomies'            => array( 'post_tag' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
 		'menu_position'         => 5,
-		'menu_icon'             => 'dashicons-art',
+		'menu_icon'             => 'dashicons-star-filled',
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
@@ -63,5 +63,71 @@ function cpt_project() {
 
 }
 add_action( 'init', 'cpt_project', 0 );
+
+
+
+// Register Custom Post Type "Creation"
+function cpt_creation() {
+
+	$labels = array(
+		'name'                  => _x( 'Créations', 'Post Type General Name', 'portfolio' ),
+		'singular_name'         => _x( 'Création', 'Post Type Singular Name', 'portfolio' ),
+		'menu_name'             => __( 'Créations', 'portfolio' ),
+		'name_admin_bar'        => __( 'Création', 'portfolio' ),
+		'archives'              => __( 'Archives', 'portfolio' ),
+		'attributes'            => __( 'Attributs', 'portfolio' ),
+		'parent_item_colon'     => __( 'Création parente :', 'portfolio' ),
+		'all_items'             => __( 'Toutes les créations', 'portfolio' ),
+		'add_new_item'          => __( 'Ajouter une nouvelle création', 'portfolio' ),
+		'add_new'               => __( 'Ajouter', 'portfolio' ),
+		'new_item'              => __( 'Nouvelle création', 'portfolio' ),
+		'edit_item'             => __( 'Modifier', 'portfolio' ),
+		'update_item'           => __( 'Mettre à jour', 'portfolio' ),
+		'view_item'             => __( 'Voir la création', 'portfolio' ),
+		'view_items'            => __( 'Voir les créations', 'portfolio' ),
+		'search_items'          => __( 'Chercher une création', 'portfolio' ),
+		'not_found'             => __( 'Non trouvé', 'portfolio' ),
+		'not_found_in_trash'    => __( 'Non trouvé dans la corbeille', 'portfolio' ),
+		'featured_image'        => __( 'Image en avant', 'portfolio' ),
+		'set_featured_image'    => __( 'Définir une image en avant', 'portfolio' ),
+		'remove_featured_image' => __( 'Supprimer l\'image en avant', 'portfolio' ),
+		'use_featured_image'    => __( 'Utiliser comme image en avant', 'portfolio' ),
+		'insert_into_item'      => __( 'Insérer dans la création', 'portfolio' ),
+		'uploaded_to_this_item' => __( 'Importé dans cette création', 'portfolio' ),
+		'items_list'            => __( 'Liste des créations', 'portfolio' ),
+		'items_list_navigation' => __( 'Navigation dans les créations', 'portfolio' ),
+		'filter_items_list'     => __( 'Filtrer la liste de créations', 'portfolio' ),
+	);
+	$rewrite = array(
+		'slug'                  => 'creation',
+		'with_front'            => true,
+		'pages'                 => true,
+		'feeds'                 => true,
+	);
+	$args = array(
+		'label'                 => __( 'Création', 'portfolio' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'thumbnail', 'custom-fields' ),
+		'taxonomies'            => array( 'post_tag' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-art',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => false,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'rewrite'               => $rewrite,
+		'capability_type'       => 'page',
+		'show_in_rest'          => true,
+	);
+	register_post_type( 'creation', $args );
+
+}
+add_action( 'init', 'cpt_creation', 0 );
 
 ?>

@@ -30,11 +30,16 @@
 
 @import 'components/about/_AboutIntroduction';
 
+@import 'components/archive/_Archive';
+
 @import 'components/project/single/_Project';
 @import 'components/project/single/_ProjectIntroduction';
 @import 'components/project/single/_ProjectDetail';
 @import 'components/project/archive/_ProjectList';
 @import 'components/project/archive/_ProjectMiniature';
+
+@import 'components/creation/_CreationList';
+@import 'components/creation/_CreationMiniature';
 
 // Utils
 @import 'utils/_wrapper';
