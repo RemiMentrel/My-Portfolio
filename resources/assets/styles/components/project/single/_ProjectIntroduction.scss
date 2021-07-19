@@ -2,7 +2,6 @@
     &-wrapper {
         display: flex;
         align-items: center;
-        gap: 40px;
     }
 
     &-content {
@@ -37,6 +36,13 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+        }
+    }
+
+
+    @include mq-from(medium) {
+        &-content {
+            margin-right: 40px;
         }
     }
 

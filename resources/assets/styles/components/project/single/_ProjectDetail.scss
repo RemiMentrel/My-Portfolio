@@ -31,7 +31,6 @@
     &-section {
         display: flex;
         align-items: center;
-        gap: 40px;
 
         $p: &;
 
@@ -122,6 +121,10 @@
     
     @include mq-from(medium) {
         &-section {
+            &-content {
+                margin-left: 40px;
+            }
+
             &-image {
                 max-width: 632px;
                 margin-left: -232px;
