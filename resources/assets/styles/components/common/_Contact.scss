@@ -8,10 +8,12 @@
     &-infos {
         display: flex;
         flex-flow: wrap;
-        gap: 35px;
+        margin: -12.5px;
         font-size: 15px;
 
         .rm-c-Footer-section {
+            margin: 12.5px;
+
             &-title {
                 font-size: 14px;
             }

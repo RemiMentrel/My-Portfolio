@@ -47,7 +47,6 @@
 .swiper-pagination-bullets {
     display: flex;
     justify-content: center;
-    gap: 15px;
     margin-top: 73px;
     
     .swiper-pagination-bullet {
@@ -55,6 +54,10 @@
         height: 5px;
         border-radius: 5px;
         transition: all .4s ease;
+
+        &:not(:last-child) {
+            margin-right: 15px;
+        }
 
         &-active {
             width: 24px;

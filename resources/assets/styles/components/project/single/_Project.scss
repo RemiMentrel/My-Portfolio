@@ -30,10 +30,14 @@
         }
 
         &-ctas {
-            display: flex;
+            display: inline-flex;
             justify-content: center;
             align-items: center;
-            gap: 38px;
+            margin: -19px;
+
+            > * {
+                margin: 19px;
+            }
 
             span {
                 font-size: 16px;
