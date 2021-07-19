@@ -34,7 +34,7 @@
           </div>
         </section>
 
-        @if(!empty($project['detail']))
+        @if(!empty($project['has_detail']))
           <div class="rm-c-ProjectDetail rm-u-hspace">
             <div class="rm-c-ProjectDetail-wrapper rm-u-wrapper">
               <h2 class="rm-c-ProjectDetail-heading rm-c-Heading" data-lvl="2">{{ $project['detail_title'] }}</h2>
@@ -83,35 +83,42 @@
         @endempty
       </div>
 
-      <div class="rm-c-Popin rm-u-hspace" data-display="false">
-        <b class="rm-c-Popin-mask"></b>
-        <div class="rm-c-Popin-wrapper rm-u-wrapper">
-          @foreach ($project['detail'] as $key=>$section)
-            @if(!empty($section['image']['more_images']))
-              <div id="gallery_{{ $key }}" class="rm-c-Gallery" data-shown="false">
-                <div class="rm-c-Gallery-list" data-slider="container">
-                  <div class="rm-c-Gallery-list-wrapper" data-slider="wrapper">
-                    @if(!empty($section['image']['image']))
-                      <figure class="rm-c-Gallery-image" data-slider="slide">
-                        <img src="{{ $section['image']['image']['url'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
-                        @if ( !empty($section['image']['image']['caption']) )
-                          <figcaption>
-                            {{ $section['image']['image']['caption'] }}
-                          </figcaption>
-                        @endif
-                      </figure>
-                    @endif
+      @if(!empty($project['has_detail']))
+        <div class="rm-c-Popin rm-u-hspace" data-display="false">
+          <b class="rm-c-Popin-mask"></b>
+          <div class="rm-c-Popin-wrapper rm-u-wrapper">
+            @foreach ($project['detail'] as $key=>$section)
+              @if(!empty($section['image']['more_images']))
+                <div id="gallery_{{ $key }}" class="rm-c-Gallery" data-shown="false">
+                  <div class="rm-c-Gallery-list" data-slider="container">
+                    <div class="rm-c-Gallery-list-wrapper" data-slider="wrapper">
+                      @if(!empty($section['image']['image']))
+                        <figure class="rm-c-Gallery-image" data-slider="slide">
+                          <img src="{{ $section['image']['image']['url'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
+                          @if ( !empty($section['image']['image']['caption']) )
+                            <figcaption>
+                              {{ $section['image']['image']['caption'] }}
+                            </figcaption>
+                          @endif
+                        </figure>
+                      @endif
 
-                    @foreach ($section['image']['gallery'] as $item)
-                      <figure class="rm-c-Gallery-image" data-slider="slide">
-                        <img src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] }}" loading="lazy" />
-                        @if ( !empty($item['image']['caption']) )
-                          <figcaption>
-                            {{ $item['image']['caption'] }}
-                          </figcaption>
-                        @endif
-                      </figure>
-                    @endforeach
+                      @foreach ($section['image']['gallery'] as $item)
+                        <figure class="rm-c-Gallery-image" data-slider="slide">
+                          <img src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] }}" loading="lazy" />
+                          @if ( !empty($item['image']['caption']) )
+                            <figcaption>
+                              {{ $item['image']['caption'] }}
+                            </figcaption>
+                          @endif
+                        </figure>
+                      @endforeach
+                    </div>
+                      
+                    <div class="swiper-arrow-left" data-slider="prev"></div>
+                    <div class="swiper-arrow-right" data-slider="next"></div>
+
+                    <div class="rm-c-Gallery-pagination" data-slider="pagination_gallery_{{ $key }}"></div>
                   </div>
                     
                   <div class="swiper-arrow-left" data-slider="prev"></div>
@@ -120,10 +127,11 @@
                   <div class="rm-c-Gallery-pagination" data-slider="pagination_gallery_{{ $key }}"></div>
                 </div>
               </div>
-            @endif
-          @endforeach
+              @endif
+            @endforeach
+          </div>
         </div>
-      </div>
+      @endif
 
       <footer class="rm-c-Project-footer rm-u-hspace">
         <div class="rm-c-Project-footer-wrapper rm-u-wrapper">
