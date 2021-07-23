@@ -120,13 +120,7 @@
 
                     <div class="rm-c-Gallery-pagination" data-slider="pagination_gallery_{{ $key }}"></div>
                   </div>
-                    
-                  <div class="swiper-arrow-left" data-slider="prev"></div>
-                  <div class="swiper-arrow-right" data-slider="next"></div>
-
-                  <div class="rm-c-Gallery-pagination" data-slider="pagination_gallery_{{ $key }}"></div>
                 </div>
-              </div>
               @endif
             @endforeach
           </div>
