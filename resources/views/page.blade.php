@@ -39,7 +39,7 @@
                     @elseif ($name == 'network')
                       @foreach ($info as $network=>$url)
                         @if(!empty($url))
-                          <a href="{{ $url }}" title="{{ ucfirst($network) }}">{{ $network }}</a>
+                          <a href="{{ $url }}" title="{{ ucfirst($network) }}" target="_blank" rel="noreferrer noopener">{{ $network }}</a>
                         @endif
                       @endforeach
                     @endif
@@ -49,7 +49,7 @@
             </div>
 
             <div class="rm-c-Contact-cta">
-              <a href="{{ App::cv() }}" class="rm-c-Btn" target="_blank"><span>Voir mon CV</span></a>
+              <a href="{{ App::cv() }}" class="rm-c-Btn" target="_blank" rel="noreferrer noopener"><span>Voir mon CV</span></a>
             </div>
           </div>
         @endif
