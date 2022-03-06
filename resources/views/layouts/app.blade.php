@@ -2,24 +2,23 @@
 <html {!! get_language_attributes() !!}>
   @include('partials.head')
   
-  <body @php body_class() @endphp>
+  <body @php body_class('rm-c-App') @endphp>
     @php do_action('get_header') @endphp
-    
-    @if(is_archive())
-      <div class="rm-c-Lines rm-u-hspace"><div class="rm-c-Lines-wrapper rm-u-wrapper"></div></div>
-    @endif
 
-    @include('partials.header')
+    <div class="rm-c-App-header">
+      @include('partials.header')
+    </div>
 
-    <main class="main">
+    <main class="rm-c-App-main">
       @yield('content')
     </main>
     
     @php do_action('get_footer') @endphp
 
-    @if(!is_front_page() && get_the_title() !== 'Contact')
+    
+    <div class="rm-c-App-footer">
       @include('partials.footer')
-    @endif
+    </div>
 
     @php wp_footer() @endphp
   </body>
