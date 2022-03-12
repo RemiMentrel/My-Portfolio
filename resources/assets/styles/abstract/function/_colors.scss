@@ -1,3 +1,8 @@
-@function color($scheme) {
-    @return map-get($colors, $scheme);
+@function color($scheme, $opacity: 1) {
+    @if ($opacity == 1) {
+        @return map-get($colors, $scheme);
+    } @else {
+        $color: map-get($colors, $scheme);
+        @return rgba($color, $opacity);
+    }
 }

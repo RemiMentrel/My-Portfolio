@@ -13,8 +13,8 @@ Template Post Type: page
             <h1>{!! App::title() !!}</h1>
 
             <h2>Boutons</h2>
-            - bouton (avec texte)
-            - bouton minimal (icone seule) : flèche droite/bas/gauche
+            @include('components.btn', ['type' => 'button', 'mode' => 'classic', 'text' => 'En savoir plus', 'arrow' => 'next'])
+            @include('components.btn', ['type' => 'button', 'mode' => 'minimal', 'text' => 'En savoir plus', 'arrow' => 'down'])
 
             <h2>Formulaires</h2>
 

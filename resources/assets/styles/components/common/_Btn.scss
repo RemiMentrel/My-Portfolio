@@ -1,39 +1,155 @@
 .rm-c-Btn {
     position: relative;
-    display: inline-block;
-    min-width: 175px;
-    padding: 8.5px 26px;
-    border-radius: 21px;
+    display: inline-flex;
+    vertical-align: top;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 20px;
     font-size: 16px;
-    font-family: font(title);
     text-align: center;
     text-decoration: none;
     color: color(light);
-    background-color: color(accent);
+    background: color(accent);
+    background: linear-gradient(135deg, color(accent) 50%, color(accent, 0.4) 100%);
+    background-size: 200%;
+    background-position: 100% 50%;
+    border: none;
+    border-radius: 10px;
+    appearance: none;
+    -webkit-appearance: none;
     overflow: hidden;
+    transition: background .65s ease-out;
 
     span {
         z-index: 1;
         position: relative;
+        margin: 12px 0;
+        font-size: 12px;
+        line-height: 16px;
+        font-family: font(text);
     }
 
-    &::before {
-        content: '';
-        z-index: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 100%;
-        height: 100%;
-        background: black;
-        transform: translateY(100%);
-        transition: all .3s ease;
+    &[data-mode='minimal'] {
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 50%;
+        background: color(light, 0.1);
+    }
+
+    
+    $neutralTransform: rotate(0deg) translate(-50%, -50%);
+    $opened1Transformed: rotate(-45deg) translate(-25%, -15%);
+    $opened2Transformed: rotate(45deg) translate(-50%, -50%);
+
+    i {
+        flex: 0 0 13px;
+        position: relative;
+        width: 13px;
+        display: flex;
+        height: 13px;
+        margin: 13.5px 0;
+
+        &[data-dir='up'] {
+            transform: rotate(-90deg);
+        }
+
+        &[data-dir='down'] {
+            transform: rotate(90deg);
+        }
+
+        &[data-dir='prev'] {
+            transform: rotate(180deg);
+        }
+
+        &::before {
+            content: '';
+            flex: 0 0 100%;
+            display: block;
+            margin: auto 0;
+            height: 2px;
+            border-radius: 1px;
+            background-color: color(light);
+        }
+
+        b {
+            position: absolute;
+            top: calc(50% - 3px);
+            right: -12%;
+            width: 6px;
+            height: 6px;
+            
+            &::before, &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 100%;    
+                height: 2px;
+                border-radius: 1px;
+                background-color: color(light);
+                transition: all .2s ease;
+                animation: {
+                    duration: .4s;
+                    fill-mode: backwards;
+                    delay: 1s;
+                };
+            }
+            
+            &::before, &::after {
+                transform: $neutralTransform;
+            }
+
+            &::before {
+                animation-name: openingCollapse1;
+            }
+
+            &::after {
+                animation-name: openingCollapse2;
+            }
+
+            @keyframes openingCollapse1 {
+                from {
+                    transform: $opened1Transformed;
+                }
+
+                to {
+                    transform: $neutralTransform;
+                }
+            }
+
+            @keyframes openingCollapse2 {
+                from {
+                    transform: $opened2Transformed;
+                }
+
+                to {
+                    transform: $neutralTransform;
+                }
+            }
+        }
     }
 
     &:hover, &:focus, a:hover &, a:focus &, button:hover &, a:hover & {
-        &::before {
-            transform: translateY(0);
+        background-position: 0% 100%;
+        transition-duration: .5s;
+        transition-timing-function: normal;
+
+            
+        &[data-mode='minimal'] {
+            background: color(light, 0.2);
+        }
+
+        i b {
+            &::before {
+                transform: $opened1Transformed;
+            }
+            
+            &::after {
+                transform: $opened2Transformed;
+            }
         }
     }
 }
