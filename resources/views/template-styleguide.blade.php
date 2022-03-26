@@ -26,10 +26,20 @@ Template Post Type: page
             @include('components.tabs', ['mode' => 'simple', 'tabs' => [ ['name' => 'Introduction', 'url' => '#'], ['name' => 'Description', 'url' => '#'] ]])
             @include('components.tabs', ['mode' => 'switch', 'tabs' => [ ['name' => 'Projets', 'url' => '#', 'icon' => 'cup'], ['name' => 'Le labo', 'url' => '#', 'icon' => 'erlenmeyer'] ]])
 
-            <h2>Pagination</h2>
-            - pagination slider
-
             <h2>Fil d'arianne</h2>
+            <nav class="rm-c-Breadcrumb" aria-labelledby="Fil d'arianne">
+                <ul>
+                    <li><a href="#">The Colorful Festival</a></li>
+                    <li><a href="#">Ambassade Franco-Australienne</a></li>
+                    <li data-selected="true">
+                        <a href="#">Signature Gastronomique</a>
+                    </li>
+                    <li><a href="#">Astra Agency</a></li>
+                    <li><a href="#">Cybertruck Animation</a></li>
+                    <li><a href="#">Museum of Bread</a></li>
+                    <li><a href="#">Gaea</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
 @endsection
