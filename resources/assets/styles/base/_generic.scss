@@ -51,8 +51,46 @@ figcaption {
     }
 }   
 
+// "classic" prompt inputs (excluding buttons, radio, checkboxes...)
+input:not([type='button']):not([type='submit']):not([type='reset']):not([type='range']):not([type='radio']):not([type='checkbox']):not([type='color']), textarea {
+    display: block;
+    width: 100%;
+    min-width: none;
+    height: 40px;
+    padding: {
+        left: 20px;
+        right: 20px;
+    }; 
+    border: none;
+    background-image: linear-gradient(135deg, color(light, .12) 50%, color(light, .05) 100%);
+    background-color: color(light, 0);
+    border-radius: 10px;
+    color: color(light);
+    font-size: 12px;
+    line-height: 16/12;
+    font-weight: 500;
+    transition: all .75s ease;
 
+    &::placeholder {
+        color: currentColor;
+        opacity: 1;
+    }
 
-@include mq-to(medium) {
-    
+    &:focus {        
+        background-color: color(light, .4 );
+        outline: none;
+
+        &::placeholder {
+            opacity: 0;
+        }
+    }
+}
+
+textarea {
+    height: 200px;
+    padding: {
+        top: 12px;
+        bottom: 12px;
+    };
+    resize: none;
 }

@@ -8,6 +8,12 @@
         padding: 0;
     }
 
+    li {
+        a {        
+            font-weight: 500;
+        }
+    }
+
     &[data-mode='simple'] {
         ul {
             align-items: center;

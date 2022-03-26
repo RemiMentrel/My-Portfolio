@@ -7,6 +7,7 @@
     gap: 10px;
     padding: 0 20px;
     font-size: 16px;
+    font-weight: 500;
     text-align: center;
     text-decoration: none;
     color: color(light);
@@ -44,6 +45,7 @@
     $opened1Transformed: rotate(-45deg) translate(-0.9px, 1.8px);
     $opened2Transformed: rotate(45deg) translate(-0.9px, -1.8px);
 
+    // Arrow
     i {
         flex: 0 0 13px;
         position: relative;

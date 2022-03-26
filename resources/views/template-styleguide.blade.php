@@ -17,6 +17,10 @@ Template Post Type: page
             @include('components.btn', ['type' => 'button', 'mode' => 'minimal', 'text' => 'En savoir plus', 'arrow' => 'down'])
 
             <h2>Formulaires</h2>
+            <input type="text" name="lastname" placeholder="Nom" value="" /><br>
+            <input type="text" name="firstname" placeholder="Prénom" value="" /><br>
+            <input type="email" name="email" placeholder="Addresse e-mail " value="" /><br>
+            <textarea name="message" placeholder="À votre tour..."></textarea>
 
             <h2>Onglets</h2>
             @include('components.tabs', ['mode' => 'simple', 'tabs' => [ ['name' => 'Introduction', 'url' => '#'], ['name' => 'Description', 'url' => '#'] ]])
