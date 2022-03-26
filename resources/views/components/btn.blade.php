@@ -13,7 +13,6 @@
     @endif
     
     @if (!empty($arrow) && in_array($arrow, ['up', 'next', 'down', 'back']))
-        <i data-dir="{{ $arrow }}"><b></b></i>
+        <i data-dir="{{ $arrow }}"></i>
     @endif
-
 </{{ $type }}>
