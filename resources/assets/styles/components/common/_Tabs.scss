@@ -1,0 +1,102 @@
+.rm-c-Tabs {
+    display: flex;
+    justify-content: center;
+
+    ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+    }
+
+    &[data-mode='simple'] {
+        ul {
+            align-items: center;
+        }
+
+        li {
+            &:not(:first-child) {
+                display: flex;
+                align-items: center;
+                margin-left: 32px;
+
+                &::before {
+                    content: '';
+                    width: 1px;
+                    height: 17px;
+                    margin-right: 32px;
+                    background-color: color(light);
+                }
+            }
+
+            a {
+                font-size: 12px;
+                line-height: 24/16;
+                text-decoration: none;
+                transition: all .2s ease;
+            }
+
+            
+            &:not([data-selected='true']) a {
+                opacity: .5;
+
+                &:hover, &:focus-within {
+                    opacity: .75;
+                }
+            }
+        }
+    }
+
+    &[data-mode='switch'] {
+        li {
+            flex: 1 1 0;
+            min-height: 50px;
+            overflow: hidden;
+
+            a {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 4px;
+                padding: 5px 30px;
+                border: 1px solid transparent;
+                background: color(light, 0.1);
+                font-size: 12px;
+                line-height: 24/12;
+                text-transform: uppercase;
+                text-decoration: none;
+                white-space: nowrap;
+                transition: border .2s ease, 
+                            background .65s ease-out;
+
+                &:hover, &:focus {
+                    background: color(light, 0.2);
+                }
+
+                i {
+                    flex: 0 0 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 40px;
+                    width: 40px;
+                }
+            }
+
+            &:first-child a {
+                border-radius: 10px 0 0 10px;
+            }
+            
+            
+            &:last-child a {
+                border-radius: 0 10px 10px 0;
+            }
+
+            &[data-selected='true'] {
+                a {
+                    border-color: color(light, 0.65);
+                }
+            }
+        }
+    }
+}

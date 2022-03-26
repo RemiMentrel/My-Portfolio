@@ -6,7 +6,8 @@
 
 <{{ $type }} class="rm-c-Btn" data-mode="{{ $mode }}"
     @if (!empty($href)) href="{{ $href }}" @endif
-    @if (!empty($blank)) target="_blank" rel="noreferrer" @endif>
+    @if (!empty($blank)) target="_blank" rel="noreferrer" @endif
+    @if (!empty($text) && ($mode === 'minimal')) title="{{ $text }}" @endif>
     
     @if (!empty($text))
         <span @if ($mode === 'minimal') class="rm-u-a11yhidden" @endif>{!! $text !!}</span>

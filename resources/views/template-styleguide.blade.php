@@ -19,8 +19,8 @@ Template Post Type: page
             <h2>Formulaires</h2>
 
             <h2>Onglets</h2>
-            - onglets simples
-            - switch
+            @include('components.tabs', ['mode' => 'simple', 'tabs' => [ ['name' => 'Introduction', 'url' => '#'], ['name' => 'Description', 'url' => '#'] ]])
+            @include('components.tabs', ['mode' => 'switch', 'tabs' => [ ['name' => 'Projets', 'url' => '#', 'icon' => 'cup'], ['name' => 'Le labo', 'url' => '#', 'icon' => 'erlenmeyer'] ]])
 
             <h2>Pagination</h2>
             - pagination slider
