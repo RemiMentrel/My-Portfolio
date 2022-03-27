@@ -1,10 +1,11 @@
 @php
     $type = in_array($type, ['a', 'button', 'div']) ? $type : 'div';
     $mode = $mode ?: 'classic';
+    $style = $style ?: 'primary';
     $text = $text ?: 'Texte par défaut';
 @endphp
 
-<{{ $type }} class="rm-c-Btn" data-mode="{{ $mode }}"
+<{{ $type }} class="rm-c-Btn" data-mode="{{ $mode }}" data-style="{{ $style }}"
     @if (!empty($href)) href="{{ $href }}" @endif
     @if (!empty($blank)) target="_blank" rel="noreferrer" @endif
     @if (!empty($text) && ($mode === 'minimal')) title="{{ $text }}" @endif>

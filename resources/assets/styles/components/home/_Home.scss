@@ -1,0 +1,71 @@
+.rm-c-Home {
+    &-top {
+        min-height: 0;
+        padding: {
+            top: 118px;
+            bottom: 118px;
+        };
+        transition: all .6s ease;
+
+        &-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        &-logo {
+            flex: 0 1 473px;
+
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        &-shortcuts {
+            flex: 0 1 232px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding: 0;
+        }
+    }
+
+    
+    @include mq-from(medium) {
+        &-top {
+            display: flex;
+            align-items: center;
+            min-height: 750px;
+        }
+    }
+
+
+    @include mq-from(large) {
+        &-top {
+            min-height: 800px;
+        }
+    }
+
+
+    @include mq-to(small) {
+        &-top {
+            --hspace: 63px;
+
+            &-wrapper {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 50px;
+            }
+
+            &-logo, &-shortcuts {
+                flex: 1 1 auto;
+            }
+
+            &-shortcuts { 
+                gap: 20px;
+            }
+        }
+    }
+}

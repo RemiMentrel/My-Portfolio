@@ -13,7 +13,8 @@ Template Post Type: page
             <h1>{!! App::title() !!}</h1>
 
             <h2>Boutons</h2>
-            @include('components.btn', ['type' => 'button', 'mode' => 'classic', 'text' => 'En savoir plus', 'arrow' => 'next'])
+            @include('components.btn', ['type' => 'button', 'mode' => 'classic', 'text' => 'Bouton principal', 'arrow' => 'next'])
+            @include('components.btn', ['type' => 'button', 'mode' => 'classic', 'style' => 'secondary', 'text' => 'Bouton secondaire', 'arrow' => 'next'])
             @include('components.btn', ['type' => 'button', 'mode' => 'minimal', 'text' => 'En savoir plus', 'arrow' => 'down'])
 
             <h2>Formulaires</h2>
