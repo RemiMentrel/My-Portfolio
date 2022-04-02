@@ -21,5 +21,23 @@
             </div>
         </div>
 
+        <div class="rm-c-Home-featured rm-u-hspace">
+            <div class="rm-c-Home-featured-wrapper rm-u-wrapper">
+                <h2 class="rm-c-Home-featured-heading">
+                    À la une !
+                </h2>
+
+                <ul class="rm-c-Home-featured-list">
+                    @foreach ($home['featured_posts'] as $post)
+                        <li>
+                            <a href="{{ get_permalink($post->ID) }}" title="{{ $post->post_title }}">
+                                {{ $post->post_title }}
+                                {!! get_the_post_thumbnail($post->ID) !!}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
     </div>
 @endsection

@@ -1,11 +1,29 @@
 .rm-c-Home {
     &-top {
+        z-index: 0;
+        position: relative;
         min-height: 0;
         padding: {
             top: 118px;
             bottom: 118px;
         };
         transition: all .6s ease;
+
+        &::before {       
+            content: '';     
+            display: block;    
+            position: absolute;
+            top: calc(100% - 620px);
+            right: calc(50% - 300px);
+            width: 974px;
+            height: 832px;
+            background: {
+                image: url('../images/patterns/phone.svg');
+                position: center;
+                size: contain;
+                repeat: no-repeat;
+            };
+        }
 
         &-wrapper {
             display: flex;
@@ -32,6 +50,11 @@
         }
     }
 
+    &-featured {
+        z-index: 1;
+        position: relative;
+    }
+
     
     @include mq-from(medium) {
         &-top {
@@ -45,6 +68,13 @@
     @include mq-from(large) {
         &-top {
             min-height: 800px;
+
+            &::before {
+                width: 1358px;
+                height: 1189px;
+                top: calc(100% - 780px);
+                right: calc(50% - 450px);
+            }
         }
     }
 
