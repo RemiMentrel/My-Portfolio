@@ -53,6 +53,46 @@
     &-featured {
         z-index: 1;
         position: relative;
+        margin-bottom: 200px;
+
+        &-heading {
+            margin: 0 0 53px;
+            font-size: 33px;
+            line-height: 47px;
+            font-family: font(title);
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        &-list {
+            ul {
+                display: flex;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+
+                &:not(.swiper-slide) {
+                    gap: 22px;
+                }
+            }
+
+            li {
+                flex: 1 1 auto;
+                
+                &.swiper-slide {
+                    flex: 0 0 362px;
+
+                    &-active {
+                        flex-basis: 400px;
+                    }
+                }
+
+                &:not(.swiper-slide) li:nth-child(n+5) {
+                    display: none;
+                }
+            }
+        }
     }
 
     

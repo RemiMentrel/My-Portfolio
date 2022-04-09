@@ -4,15 +4,25 @@
     flex-direction: column;
     min-height: 100vh;
     color: color(light);
-    background-color: color(background);
-    //TODO: add texture
+    background: {
+        color: color(background);
+        image: url('../images/patterns/texture.png');
+        attachment: fixed;
+        size: cover;
+    };
 
     &-header {
         flex: 0 0 auto;
+        z-index: 1;
         position: -webkit-sticky;
         position: sticky;
         top: 0;
         left: 0;
+    }
+
+    &-main, &-footer {
+        z-index: 0;
+        position: relative;
     }
 
     &-main {
@@ -21,5 +31,10 @@
 
     &-footer {
         flex: 0 0 auto;
+    }
+
+    
+    @include mq-to(small) {
+        background-image: url('../images/patterns/texture_small.png');
     }
 }

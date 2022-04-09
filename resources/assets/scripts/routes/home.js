@@ -1,8 +1,30 @@
+import Swiper from 'swiper/bundle';
+
 export default {
-  init() {
-    // JavaScript to be fired on the home page
+  init () {
+    this.DOM = {
+      featuredList: document.querySelector('.rm-c-Home-featured-list'),
+    };
+
+    this.setupSlider();
   },
-  finalize() {
-    // JavaScript to be fired on the home page, after the init JS
+
+  setupSlider () {
+    this.DOM.featuredList.querySelector('ul').classList.add('swiper-wrapper');
+    // eslint-disable-next-line
+    for (const item of this.DOM.featuredList.querySelectorAll('li')) {
+      item.classList.add('swiper-slide');
+    }
+
+    this.slider = new Swiper( this.DOM.featuredList, {
+      loop: true,
+      slidesPerView: 1,    
+      speed: 700,
+      spaceBetween: 22,
+      navigation: {
+        prevEl: '[data-slider="prev"]',
+        nextEl: '[data-slider="next"]',
+      },
+    });
   },
 };
