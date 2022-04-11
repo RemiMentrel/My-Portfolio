@@ -15,37 +15,39 @@
 
                 <ul class="rm-c-Home-top-shortcuts">
                     @foreach ($home['top']['shortcuts'] as $shortcut)
-                        @include('components.btn', ['type' => 'a', 'mode' => 'classic', 'style' => 'secondary', 'text' => $shortcut['cta']['title'], 'href' => $shortcut['cta']['url'], 'target' => $shortcut['cta']['target'],  'arrow' => 'next'])
+                        @include('components.btn', ['type' => 'a', 'mode' => 'classic', 'style' => 'secondary', 'text' => $shortcut['cta']['title'], 'href' => $shortcut['cta']['url'], 'target' => $shortcut['cta']['target'],  'arrow' => 'next', 'animationDelay' => ($loop->iteration * 0.4) + 1 ])
                     @endforeach
                 </ul>
             </div>
         </div>
 
         <div class="rm-c-Home-featured rm-u-hspace">
-            <div class="rm-c-Home-featured-wrapper rm-u-wrapper" data-size="large">
+            <div class="rm-c-Home-featured-wrapper rm-u-wrapper">
                 <h2 class="rm-c-Home-featured-heading">
                     À la une !
                 </h2>
 
                 <div class="rm-c-Home-featured-list">
-                    <ul>
-                        @for ($i = 0; $i < 10; $i++)
-                            @foreach ($home['featured_posts'] as $post)
-                                <li>
-                                    <a class="rm-c-ProjectMiniature"
-                                    href="{{ get_permalink($post->ID) }}"
-                                    title="{{ $post->post_title }}">
+                    <div class="rm-c-Home-featured-list-wrapper">
+                        <ul>
+                            @for ($i = 0; $i < 10; $i++)
+                                @foreach ($home['featured_posts'] as $post)
+                                    <li class="rm-c-ProjectMiniature">
+                                        <a class="rm-c-ProjectMiniature-wrapper"
+                                        href="{{ get_permalink($post->ID) }}"
+                                        title="{{ $post->post_title }}">
 
-                                        <span>{{ $post->post_title }}</span>
-                                        {!! get_the_post_thumbnail($post->ID) !!}
-                                    </a>
-                                </li>
-                            @endforeach
-                        @endfor
-                    </ul>
+                                            <span>{{ $post->post_title }}</span>
+                                            {!! get_the_post_thumbnail($post->ID) !!}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @endfor
+                        </ul>
+                    </div>
 
-                    <div data-slider="prev">Précédent</div>
-                    <div data-slider="next">Suivant</div>
+                    <button data-slider="prev"> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
+                    <button data-slider="next"> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </button>
                 </div>
             </div>
         </div>

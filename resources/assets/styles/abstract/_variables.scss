@@ -35,3 +35,39 @@ $breakpoints: (
     repeat: no-repeat;
   };
 }
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+@keyframes appearsDown {
+  from {
+    opacity: 0;
+    transform: translateY(-70%);
+    pointer-events: none;
+  }
+}
+@keyframes appearsDownLittle {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+    pointer-events: none;
+  }
+}
+@keyframes appearsUp {
+  from {
+    opacity: 0;
+    transform: translateY(70%);
+    pointer-events: none;
+  }
+}
+@keyframes appearsUpLittle {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+    pointer-events: none;
+  }
+}

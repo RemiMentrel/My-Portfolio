@@ -32,10 +32,41 @@
         background: linear-gradient(135deg, color(accent) 50%, color(accent, 0.4) 100%);
         background-size: 200%;
         background-position: 100% 50%;
+        animation: {
+            name: primaryHovered;
+            duration: .4s;
+            fill-mode: backwards;
+            delay: 1s;
+        };
     }
 
-    &[data-style='secondary'] {
+    @mixin primaryHovered {
+        background-position: 0% 100%;
+        transition-duration: .5s;
+    }
+    @keyframes primaryHovered {
+        from {
+            @include primaryHovered;
+        }
+    }
+
+    @mixin secondaryHovered {
+        background: color(light, 0.2);
+    }
+    @keyframes secondaryHovered {
+        from {
+            @include secondaryHovered;
+        }
+    }
+
+    &[data-style='secondary'], &[data-mode='minimal'] {
         background: color(light, 0.1);
+        animation: {
+            name: secondaryHovered;
+            duration: .4s;
+            fill-mode: backwards;
+            delay: 1s;
+        };
     }
 
     &[data-mode='minimal'] {
@@ -67,18 +98,18 @@
             transform: rotate(90deg);
         }
 
-        &[data-dir='prev'] {
+        &[data-dir='back'] {
             transform: rotate(180deg);
         }
 
-        &, &::before, &::after {    
+        &, b:first-child, b:last-child {    
             display: block;        
             height: 1.9px;
             border-radius: 1px;
             background-color: color(light);
         }
 
-        &::before, &::after {
+        b:first-child, b:last-child {
             content: '';
             position: absolute;
             top: 0;
@@ -94,11 +125,11 @@
             };
         }
 
-        &::before {
+        b:first-child {
             animation-name: openingCollapse1;
         }
 
-        &::after {
+        b:last-child {
             animation-name: openingCollapse2;
         }
 
@@ -127,20 +158,19 @@
         transition-timing-function: normal;
 
         &[data-style='primary'] {
-            background-position: 0% 100%;
-            transition-duration: .5s;
+            @include primaryHovered;
         }
             
         &[data-style='secondary'], &[data-mode='minimal'] {
-            background: color(light, 0.2);
+            @include secondaryHovered;
         }
 
         i {
-            &::before {
+            b:first-child {
                 transform: $opened1Transformed;
             }
             
-            &::after {
+            b:last-child {
                 transform: $opened2Transformed;
             }
         }
