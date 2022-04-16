@@ -61,6 +61,8 @@
 
     &[data-style='secondary'], &[data-mode='minimal'] {
         background: color(light, 0.1);
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
         animation: {
             name: secondaryHovered;
             duration: .4s;

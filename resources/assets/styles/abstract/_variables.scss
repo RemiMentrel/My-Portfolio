@@ -29,9 +29,9 @@ $breakpoints: (
 // Utils
 @mixin placeholderBg {
   background: {
-    image: url('../images/logo/logo_mini_mono-light.svg'), linear-gradient(to right, #{color(light)}, #{color(attenuated)});
+    image: /**url('../images/logo/logo_mini_mono-light.svg'), **/linear-gradient(to right, #{color(light)}, #{color(attenuated)});
     position: center;
-    size: 35%, cover;
+    size: /**35%, **/cover;
     repeat: no-repeat;
   };
 }

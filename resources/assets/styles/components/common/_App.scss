@@ -6,7 +6,7 @@
     color: color(light);
     background: {
         color: color(background);
-        image: url('../images/patterns/texture.png');
+        // image: url('../../../images/patterns/texture.png');
         attachment: fixed;
         size: cover;
     };
@@ -41,6 +41,6 @@
 
     
     @include mq-to(small) {
-        background-image: url('../images/patterns/texture_small.png');
+        // background-image: url('../../images/patterns/texture_small.png');
     }
 }

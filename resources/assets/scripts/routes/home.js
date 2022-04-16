@@ -1,4 +1,4 @@
-import Swiper from 'swiper/bundle';
+import Swiper, { Navigation, Pagination, EffectCreative } from 'swiper';
 
 export default {
   init () {
@@ -11,32 +11,35 @@ export default {
 
   setupSlider () {
     this.DOM.featuredList.querySelector('ul').classList.add('swiper-wrapper');
-    // eslint-disable-next-line
-    for (const item of this.DOM.featuredList.querySelectorAll('li')) {
+    const slides = this.DOM.featuredList.querySelectorAll('li');
+    for (const item of slides) {
       item.classList.add('swiper-slide');
     }
 
     this.slider = new Swiper( this.DOM.featuredList.querySelector('ul').parentElement, {
+      modules: [Navigation, Pagination, EffectCreative],
+      effect: 'creative',
+      creativeEffect: {
+        limitProgress: slides.length,
+        prev: {
+          opacity: 0.6,
+          translate: ['-108%', 0, -50],
+        },
+        next: {
+          opacity: 0.6,
+          translate: ['108%', 0, -50],
+        },
+      },
       slidesPerView: 1,
-      loop: false,
+      centeredSlides: true,
       speed: 700,
       spaceBetween: 22,
+      pagination: {
+        el: '[data-slider="pagination"]',
+      },
       navigation: {
         prevEl: '[data-slider="prev"]',
         nextEl: '[data-slider="next"]',
-      },
-      breakpoints: {
-        768: {
-          effect: 'coverflow',
-          coverflowEffect: {
-            rotate: 0,
-            stretch: 0,
-            depth: 80,
-            modifier: 1,
-            slideShadows: true,
-          },
-          spaceBetween: 44,
-        },
       },
     });
   },
