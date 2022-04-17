@@ -1,17 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="rm-c-ProjectList rm-u-hspace">
-        <div class="rm-c-ProjectList-wrapper rm-u-wrapper">
-            <h1 class="rm-c-ProjectList-heading rm-c-Heading" data-lvl="1">
-                Projets <img src="@asset('images/headings/projets.svg')" alt="" />
+    <div class="rm-c-Labo rm-u-hspace">
+        <div class="rm-c-Labo-wrapper rm-u-wrapper">
+            <h1 class="rm-c-Labo-heading rm-c-Heading" data-lvl="1">
+                Projets <img src="@asset('images/headings/labo.svg')" alt="" />
             </h1>
 
-            <div class="rm-c-ProjectList-list">
+            <div class="rm-c-Labo-list">
                 @foreach ($projects as $key=>$project)
                     <article class="rm-c-ProjectMiniature">
-                        <a class="rm-c-ProjectMiniature-wrapper" href="{{ $project['link'] }}" style="animation-delay: {{ ($loop->iteration * 0.4) + 0.4 }}s">
-                            <div class="rm-c-ProjectMiniature-content" data-counter="{{ sprintf('%02d', $key+1) }}">
+                        <a class="rm-c-ProjectMiniature-wrapper"
+                           href="{{ $project['link'] }}"
+                           title="{{ $post->post_title }}"
+                           style="animation-delay: {{ ($loop->iteration * 0.4) + 0.4 }}s">
+
+                            <div class="rm-c-ProjectMiniature-desc">
                                 <h2 class="rm-c-ProjectMiniature-name">
                                     {{ $project['title'] }}
                                 </h2>
@@ -24,10 +28,8 @@
                                     @endif
                                 </ul>
                             </div>
-
-                            <div class="rm-c-ProjectMiniature-image">
-                                <img src="{{ $project['image'] }}" alt="miniature projet" loading="lazy" />
-                            </div>
+                                
+                            <img src="{{ $project['image'] }}" alt="miniature projet" loading="lazy" />
                         </a>
                     </article>
                 @endforeach

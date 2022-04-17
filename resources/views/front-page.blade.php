@@ -37,7 +37,7 @@
                                         href="{{ get_permalink($post->ID) }}"
                                         title="{{ $post->post_title }}">
 
-                                            <span>{{ $post->post_title }}</span>
+                                            <div class="rm-c-ProjectMiniature-desc">{{ $post->post_title }}</div>
                                             {!! get_the_post_thumbnail($post->ID) !!}
                                         </a>
                                     </li>

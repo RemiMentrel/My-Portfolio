@@ -2,42 +2,57 @@
     border-radius: 10px;
     overflow: hidden;
 
+    $this: &;
+
     &-wrapper {
         position: relative;
         display: block;
-    }
 
-    &::before, &::after {
-        content: '';
-        display: block;
+        &::before, &::after {
+            content: '';
+            display: block;
+        }
+
+        // Spacer & img placeholder
+        &::before {
+            content: '';
+            display: block;
+            padding-top: 95%;
+            @include placeholderBg;
+        }
     }
     
-    img, span {
+    img, video {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+        object: {
+            fit: cover;
+            position: center;
+        }
     }
 
-    // Spacer & img placeholder
-    &::before {
-        content: '';
-        display: block;
-        padding-top: 95%;
-        @include placeholderBg;
+    img {
+        z-index: 0;
     }
 
-    span {
+    video {
         z-index: 1;
+    }
+
+    &-desc {
+        z-index: 2;
         position: absolute;
-        bottom: 0;
+        top: 0;
         left: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100%;
+        height: 100%;
         padding: 10px 20px;
         font-size: 20px;
         font-family: font(title);
@@ -54,24 +69,15 @@
         }
     }
 
-    img {
-        z-index: 0;
-        display: none;
-        object: {
-            fit: cover;
-            position: center;
-        };
-    }
-
 
     @media (hover: hover) {
-        span {
+        &-desc {
             opacity: 0;
             transition: all .3s ease-in-out;
         }
         
         &:hover, &:focus {
-            span {
+            #{$this}-desc {
                 opacity: 1;
             }
         }
