@@ -18,12 +18,6 @@
         position: sticky;
         top: 0;
         left: 0;
-        animation: {
-            name: appearsDown;
-            duration: .6s;
-            delay: .5s;
-            fill-mode: both;
-        };
     }
 
     &-main, &-footer {
@@ -40,6 +34,17 @@
     }
 
     
+    @include mq-from(medium) {
+        &-header {
+            animation: {
+                name: appearsDown;
+                duration: .6s;
+                delay: .5s;
+                fill-mode: both;
+            };
+        }
+    }
+
     @include mq-to(small) {
         // background-image: url('../../images/patterns/texture_small.png');
     }

@@ -11,8 +11,72 @@
         &-logo {
             img {
                 display: block;
-                width: 50px;
+                width: 59px;
                 height: auto;
+                margin-left: -5px;
+            }
+        }
+
+        &-toggler {
+            z-index: 2;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+
+            &::before, &::after {
+                content: '';
+                position: absolute;
+                top: 50%;  
+                left: 50%;  
+                transform: translate(-50%, -50%);   
+                height: 2px;
+                background-color: color(light);
+                border-radius: 2px;
+                transition: all .3s ease;
+            }
+
+            // Not crossed
+            &:not([data-shown='true']) {
+                &::before {
+                    width: 30px;
+                    transform: translate(-50%, calc(-50% - 5.5px));   
+                }
+
+                &::after {
+                    width: 20px;
+                    transform: translate(calc(-50% + 5px), calc(-50% + 5.5px));
+                }
+            }
+
+            // Crossed
+            &[data-shown='true'] {
+                &::before {
+                    width: 30px;
+                    transform: translate(-50%, -50%) rotate(45deg);   
+                }
+
+                &::after {
+                    width: 30px;
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                }
+            }
+        }
+    }
+
+
+    @include mq-from(medium) {
+        &-navigation {
+            &-toggler {
+                display: none;
+            }
+        }
+    }
+
+    @include mq-to(medium) {
+        &-navigation {
+            &-wrapper {
+                position: absolute;
             }
         }
     }
