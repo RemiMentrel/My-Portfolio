@@ -7,32 +7,78 @@
                 Projets <img src="@asset('images/headings/labo.svg')" alt="" />
             </h1>
 
-            <div class="rm-c-Labo-list">
-                @foreach ($projects as $key=>$project)
-                    <article class="rm-c-ProjectMiniature">
-                        <a class="rm-c-ProjectMiniature-wrapper"
-                           href="{{ $project['link'] }}"
-                           title="{{ $post->post_title }}"
-                           style="animation-delay: {{ ($loop->iteration * 0.4) + 0.4 }}s">
-
-                            <div class="rm-c-ProjectMiniature-desc">
-                                <h2 class="rm-c-ProjectMiniature-name">
-                                    {{ $project['title'] }}
-                                </h2>
-
-                                <ul class="rm-c-ProjectMiniature-tags">
-                                    @if(!empty($project['tags']))
-                                        @foreach ($project['tags'] as $tag)
-                                            <li>#{{ $tag->name }}</li>
-                                        @endforeach
-                                    @endif
-                                </ul>
-                            </div>
-                                
-                            <img src="{{ $project['image'] }}" alt="miniature projet" loading="lazy" />
+            <nav class="rm-c-Labo-filters" aria-label="Types de projets">
+                <ul>
+                    <li>
+                        <a href="{{ get_post_type_archive_link('experience') }}"
+                           @if (get_queried_object_id() === 0) class="active" @endif>
+                            Voir tout
                         </a>
-                    </article>
-                @endforeach
+                    </li>
+                    @foreach ($categories as $category)
+                        <li>
+                            <a href="{{ $category['link'] }}"
+                               @if ($category['current']) class="active" @endif>
+                                {{ $category['name'] }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </nav>
+
+            <div class="rm-c-Labo-list">
+                <div class="rm-c-Labo-list-group">
+                    @foreach ($experiences as $key=>$experience)
+                        @if ($key % 8 === 0 && $key !== 0)
+                            </div><div class="rm-c-Labo-list-group">
+                        @endif
+
+                        <article class="rm-c-ProjectMiniature"
+                                    style="animation-delay: {{ ($loop->iteration * 0.4) + 0.4 }}s">
+                            <div class="rm-c-ProjectMiniature-wrapper"
+                                    data-href="{{ $experience['link'] }}"
+                                    title="{{ $experience['title'] }}">
+
+                                <div class="rm-c-ProjectMiniature-desc">
+                                    <h2>{{ $experience['title'] }}</h2>
+
+                                    <ul class="rm-c-ProjectMiniature-categories">
+                                        @if(!empty($experience['categories']))
+                                            @foreach ($experience['categories'] as $category)
+                                                <li>{{ $category->name }}</li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                                    
+                                <figure>
+                                    @if (empty($experience['media']['video']))
+                                        <img src="{{ $experience['media']['image']['url'] }}" alt="miniature projet" loading="lazy" />
+                                    @else
+                                        <video poster="{{ $experience['media']['image']['url']}}"
+                                               muted autoplay loading="lazy" loop playsinline>
+                                            <source src="{{ $experience['media']['video']['url'] }}" type="{{ $experience['media']['video']['mime_type'] }}">    
+                                        </video>
+                                    @endif
+                                    <figcaption>{!! $experience['description'] !!}</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
+                            
+                <aside class="rm-c-Popin rm-u-hspace" data-display="false" aria-hidden="true">
+                    <b class="rm-c-Popin-mask"></b>
+                    <div class="rm-c-Popin-wrapper rm-u-wrapper">
+                        <div class="rm-c-Gallery">
+                            <div class="rm-c-Gallery-list">
+                                <div class="rm-c-Gallery-list-wrapper" data-popin-content>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </div>
     </div>

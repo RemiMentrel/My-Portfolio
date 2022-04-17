@@ -108,7 +108,7 @@ function cpt_experience() {
 		'label'                 => __( 'Expérience', 'portfolio' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'custom-fields' ),
-		'taxonomies'            => array( 'post_tag' ),
+		'taxonomies'            => array( 'category' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
