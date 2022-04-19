@@ -49,6 +49,20 @@
                 fill-mode: both;
             };
         }
+
+        &.post-type-archive-project {
+            #{$this}-header {
+                z-index: 1;
+                position: fixed;
+                width: 100%;
+            }
+
+            #{$this}-footer {
+                position: absolute;
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
     }
 
     @include mq-to(small) {

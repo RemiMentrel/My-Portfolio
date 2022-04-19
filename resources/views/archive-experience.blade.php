@@ -81,5 +81,9 @@
                 </aside>
             </div>
         </div>
+        
+        <div class="rm-c-ProjectList-switch">
+            @include('components.tabs', ['mode' => 'switch', 'tabs' => [ ['name' => 'Projets', 'url' => '/projets', 'icon' => 'cup'], ['name' => 'Le labo', 'url' => '/labo', 'selected' => 'true', 'icon' => 'erlenmeyer'] ]])
+        </div>
     </div>
 @endsection

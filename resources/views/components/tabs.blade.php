@@ -7,8 +7,8 @@
     
      <ul>
         @foreach ($tabs as $i=>$tab)
-            <li @if ($i === 0) data-selected="true" @endif>
-                <a href="{{ $tab['link'] }}">
+            <li @if ($tab['selected']) data-selected="true" @endif>
+                <a href="{{ $tab['url'] }}">
                     @if (!empty($tab['icon']))
                         <i><img src="@asset('images/icons/'.$tab['icon'].'.svg')" alt="" /></i>
                     @endif

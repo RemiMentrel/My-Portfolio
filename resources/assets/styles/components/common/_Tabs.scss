@@ -31,6 +31,8 @@
                     height: 17px;
                     margin-right: 32px;
                     background-color: color(light);
+                    -webkit-backdrop-filter: blur(3px);
+                    backdrop-filter: blur(3px);
                 }
             }
 

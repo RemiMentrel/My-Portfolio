@@ -18,11 +18,14 @@ class Archive extends Controller
         if(!empty($projects)) {
             foreach($projects as $project) {
                 $projects_clean[] = [
-                    'title'   => $project->post_title,
-                    'slug'    => $project->post_name,
-                    'image'   => get_the_post_thumbnail_url($project->ID, 'project-miniature'),
-                    'link'    => get_permalink($project->ID),
-                    'tags'    => get_the_tags($project->ID)
+                    'title'       => $project->post_title,
+                    'slug'        => $project->post_name,
+                    'logo'        => get_field('logo', $project->ID),
+                    'color'       => get_field('color', $project->ID),
+                    'preview'     => get_field('preview_visual', $project->ID),
+                    'description' => get_field('introduction', $project->ID)['content']['title'],
+                    'link'        => get_permalink($project->ID),
+                    'tags'        => get_the_tags($project->ID)
                 ];
             }
         }

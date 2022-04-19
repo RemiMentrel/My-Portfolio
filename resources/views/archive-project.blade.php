@@ -1,36 +1,57 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1 class="rm-u-a11yhidden">Projets</h1>
+
     <div class="rm-c-ProjectList rm-u-hspace">
-        <div class="rm-c-ProjectList-wrapper rm-u-wrapper">
-            <h1 class="rm-c-ProjectList-heading rm-c-Heading" data-lvl="1">
-                Projets <img src="@asset('images/headings/projets.svg')" alt="" />
-            </h1>
+        <div class="rm-c-ProjectList-wrapper">
+            <nav class="rm-c-ProjectList-nav rm-c-Breadcrumb">
+                <ul>                        
+                    @foreach ($projects as $project)
+                        <li @if ($loop->iteration === 1)  data-selected="true" @endif>
+                            <a href="#{{ $project['slug'] }}">
+                                {{ $project['title'] }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </nav>
 
-            <div class="rm-c-ProjectList-list">
-                @foreach ($projects as $key=>$project)
-                    <article class="rm-c-ProjectMiniature">
-                        <a class="rm-c-ProjectMiniature-wrapper" href="{{ $project['link'] }}" style="animation-delay: {{ ($loop->iteration * 0.4) + 0.4 }}s">
-                            <div class="rm-c-ProjectMiniature-content" data-counter="{{ sprintf('%02d', $key+1) }}">
-                                <h2 class="rm-c-ProjectMiniature-name">
-                                    {{ $project['title'] }}
-                                </h2>
+            <div class="rm-c-ProjectList-visual">
+                @foreach ($projects as $project)
+                    <article id="{{ $project['slug'] }}" class="rm-c-ProjectList-project" @if ($loop->iteration === 1)  data-selected="true" @endif>
+                        <div class="rm-c-ProjectList-project-wrapper">
+                            <h2 class="rm-c-ProjectList-project-logo">
+                                <img src="{{ $project['logo']['url'] }}" alt="" loading="lazy" />
+                                {{ $project['title'] }}
+                            </h2>
 
-                                <ul class="rm-c-ProjectMiniature-tags">
-                                    @if(!empty($project['tags']))
-                                        @foreach ($project['tags'] as $tag)
-                                            <li>#{{ $tag->name }}</li>
-                                        @endforeach
-                                    @endif
-                                </ul>
+                            <p class="rm-c-ProjectList-project-description">
+                                {{ $project['description'] }}
+                            </p>
+
+                            <ul class="rm-u-a11yhidden">
+                                @if(!empty($project['tags']))
+                                    @foreach ($project['tags'] as $tag)
+                                        <li>#{{ $tag->name }}</li>
+                                    @endforeach
+                                @endif
+                            </ul>
+
+                            <div class="rm-c-ProjectList-project-cta">
+                                @include('components.btn', ['type' => 'a', 'href' => $project['link'], 'mode' => 'minimal', 'text' => 'Voir le projet', 'arrow' => 'next'])
                             </div>
 
-                            <div class="rm-c-ProjectMiniature-image">
-                                <img src="{{ $project['image'] }}" alt="miniature projet" loading="lazy" />
+                            <div class="rm-c-ProjectList-project-preview">
+                                <img src="{{ $project['preview']['url'] }}" alt="" loading="lazy" />
                             </div>
-                        </a>
+                        </div>
                     </article>
                 @endforeach
+            </div>
+
+            <div class="rm-c-ProjectList-switch">
+                @include('components.tabs', ['mode' => 'switch', 'tabs' => [ ['name' => 'Projets', 'url' => '/projets', 'selected' => 'true', 'icon' => 'cup'], ['name' => 'Le labo', 'url' => '/labo', 'icon' => 'erlenmeyer'] ]])
             </div>
         </div>
     </div>
