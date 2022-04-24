@@ -51,7 +51,7 @@ Template Post Type: page
           </div>
 
           <div class="rm-c-Contact-cta">
-            <a href="{{ App::cv() }}" class="rm-c-Btn" target="_blank" rel="noreferrer noopener"><span>Voir mon CV</span></a>
+            @include('components.btn', ['type' => 'a', 'mode' => 'classic', 'style' => 'primary', 'text' => 'Voir mon CV', 'href' => App::cv(), 'target' => '_blank' ])
           </div>
         </div>
     </div>
