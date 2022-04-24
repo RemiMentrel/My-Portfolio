@@ -3,7 +3,35 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 60px;
+    margin-top: 221px;
+    margin-top: clamp(100px, 20vh, 221px);
+
+    &::before {       
+        content: '';     
+        display: block;    
+        z-index: 0;
+        position: absolute;
+        top: calc(100% - 620px);
+        right: calc(50% - 300px);
+        width: 974px;
+        height: 832px;
+        background: {
+            image: url($phonePattern);
+            position: center;
+            size: contain;
+            repeat: no-repeat;
+        };
+        animation: {
+            name: appearsUpLittle;
+            duration: 2s;
+            fill-mode: both;
+        };
+    }
+
+    > * {
+        z-index: 1;
+        position: relative;
+    }
 
     &-infos {
         display: flex;

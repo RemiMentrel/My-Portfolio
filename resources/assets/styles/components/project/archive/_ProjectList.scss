@@ -1,4 +1,4 @@
-.rm-c-ProjectList {
+.rm-c-ProjectList {    
     &-wrapper {
         display: flex;
         width: 100%;
@@ -6,34 +6,41 @@
 
     &-nav {
         flex: 0 0 auto;
-        margin-right: 60px;
+        margin-right: var(--hspace);
     }
-
+    
     &-visual {
         flex: 1 1 auto;
+        z-index: 0;
+        position: relative;
     }
 
     &-project {
-        &-logo {
-            font-size: 0;
-
+        &-logo, &-preview {
             img {
+                display: block;
                 max-width: 100%;
                 height: auto;
+                margin: auto;
             }
+        }
+
+        &-logo {
+            font-size: 0;
         }
     }
 
     &-switch {
+        z-index: 1;
         position: fixed;
         bottom: 40px;
-        bottom: clamp(40px, 8vh, 90px);
+        bottom: clamp(20px, var(--switchVhPosition), 90px);
         left: 0;
         width: 100%;
     }
 
 
-    @include mq-from(medium) {
+    @include mq-from(large) {
         position: fixed;
         top: 0;
         left: 0;
@@ -43,36 +50,37 @@
 
         --hspace: 60px;
 
-        &-visual {
-            position: relative;
-
-            &::before {
-                content: '';
-                z-index: 0;
-                position: absolute;
-                top: 0;
-                left: 0;
-                display: block;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(to left, var(--project-color), transparent);
-                transition: all .2s ease;
-            }
-        }
-
         &-project {
             z-index: 1;
             position: relative;
             width: 100%;
             height: 100%;
-            transition: all .8s ease .8s;
 
+            $project: &;
+
+            // Hiding
             &:not([data-selected='true']) {
                 position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
                 opacity: 0;
-                transform: translateY(3%);
                 pointer-events: none;
-                transition-delay: 0s;
+                transition: all .18s ease;
+
+                #{$project}-wrapper > * {
+                    animation: none;
+                }
+
+
+                #{$project}-cta {
+                    .rm-c-Btn[data-mode='minimal'] {
+                        &, i b:first-child, i b:last-child {
+                            animation: none;
+                        }
+                    }
+                }
             }
             
             &-wrapper {
@@ -87,6 +95,17 @@
                 height: 100%;
             }
 
+            &-logo,
+            &-description,
+            &-cta,
+            &-preview {
+                animation: {
+                    name: appearsUpLittle;
+                    duration: 1s;
+                    fill-mode: both;
+                };
+            }
+
             &-logo {
                 grid-area: logo;
                 align-self: end;
@@ -95,16 +114,22 @@
 
             &-description {
                 grid-area: desc;
+                animation-delay: .12s;
             }
 
             &-cta {
                 grid-area: link;
                 margin-top: 60px;
+                animation-delay: .3s;
             }
 
             &-preview {
                 grid-area: preview;
                 align-self: center;
+                animation: {
+                    name: appearsLeftLittle;
+                    duration: 1.7s;
+                };
 
                 img {
                     max-width: 100%;
@@ -119,7 +144,68 @@
     }
 
     
-    @include mq-to(medium) {
+    @include mq-to(large) {
+        overflow: hidden;
+
+        &-nav {
+            align-self: flex-end;
+
+            &::before {
+                top: auto;
+                bottom: 0;
+                left: 0;
+                height: calc(100vh - 85px);
+            }
+
+            ul {
+                position: absolute;
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+
+        &-visual {
+            height: 100vh;
+            overflow: auto;
+            scroll-snap-type: y mandatory;
+
+            > * {
+                height: 100vh;
+                scroll-snap-align: start;
+            }
+        }
         
+        &-project {
+            &-wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 100%;
+            }
+
+            &-logo {
+                order: 1;
+                width: 70%;
+                max-width: 350px;
+            }
+
+            &-description {
+                position: absolute;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            &-cta {
+                order: 3;
+            }
+
+            &-preview {
+                order: 2;
+                width: 90%;
+                max-width: 480px;
+                margin: 40px 0;
+            }
+        }
     }
 }

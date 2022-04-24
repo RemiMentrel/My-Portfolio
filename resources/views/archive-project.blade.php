@@ -9,7 +9,7 @@
                 <ul>                        
                     @foreach ($projects as $project)
                         <li @if ($loop->iteration === 1)  data-selected="true" @endif>
-                            <a href="#{{ $project['slug'] }}">
+                            <a href="#{{ $project['slug'] }}" data-color="{{ $project['color'] }}">
                                 {{ $project['title'] }}
                             </a>
                         </li>

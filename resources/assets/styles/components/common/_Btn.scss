@@ -119,52 +119,53 @@
             display: block;
             width: 6.5px;
             transition: all .2s ease;
-            transform: $neutralTransform;
-            animation: {
-                duration: .4s;
-                fill-mode: backwards;
-                delay: 1s;
-            };
-        }
 
-        b:first-child {
-            animation-name: openingCollapse1;
-        }
-
-        b:last-child {
-            animation-name: openingCollapse2;
-        }
-
-        @keyframes openingCollapse1 {
-            from {
-                transform: $opened1Transformed;
-            }
-
-            to {
+            @media (hover: hover) {
                 transform: $neutralTransform;
+                animation: {
+                    duration: .4s;
+                    fill-mode: backwards;
+                    delay: 1s;
+                };
             }
         }
 
-        @keyframes openingCollapse2 {
-            from {
-                transform: $opened2Transformed;
+        @media (hover: hover) {
+            b:first-child {
+                animation-name: openingCollapse1;
             }
 
-            to {
-                transform: $neutralTransform;
+            b:last-child {
+                animation-name: openingCollapse2;
+            }
+
+            @keyframes openingCollapse1 {
+                from {
+                    transform: $opened1Transformed;
+                }
+
+                to {
+                    transform: $neutralTransform;
+                }
+            }
+
+            @keyframes openingCollapse2 {
+                from {
+                    transform: $opened2Transformed;
+                }
+
+                to {
+                    transform: $neutralTransform;
+                }
             }
         }
     }
 
-    &:hover, &:focus, a:hover &, a:focus &, button:hover &, a:hover & {
+    @mixin openedArrow ($permanent: '') {
         transition-timing-function: normal;
 
         &[data-style='primary'] {
             @include primaryHovered;
-        }
-            
-        &[data-style='secondary'], &[data-mode='minimal'] {
-            @include secondaryHovered;
         }
 
         i {
@@ -176,6 +177,19 @@
                 transform: $opened2Transformed;
             }
         }
+    }
+
+    &:hover, &:focus, a:hover &, a:focus &, button:hover &, a:hover & {
+        @include openedArrow;
+        
+        &[data-style='secondary'], &[data-mode='minimal'] {
+            @include secondaryHovered;
+        }   
+    }
+
+    
+    @media (hover: none) {
+        @include openedArrow;
     }
 
 

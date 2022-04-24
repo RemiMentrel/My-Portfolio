@@ -6,10 +6,45 @@
     color: color(light);
     background: {
         color: color(background);
-        // image: url('../../../images/patterns/texture.png');
+        image: url($grainyTexture);
         attachment: fixed;
-        size: cover;
+        size: 60px;
+        repeat: repeat;
     };
+
+    --switchVhPosition: 8vh;
+
+    --gradient-deg: -45deg;
+    --accent-gradient-color: #363733;
+
+    &.post-type-archive-project {
+        --accent-gradient-color: var(--project-color, #363733);
+    }
+
+    &::before, &::after {
+        content: '';
+        z-index: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: all 1s ease;
+    }
+
+    &::before {
+        background-image: linear-gradient(var(--gradient-deg), transparent 40%, color(background));
+    }
+
+    &::after {
+        background-image: linear-gradient(var(--gradient-deg), var(--accent-gradient-color), transparent 70%);
+        opacity: 0.7;
+        mix-blend-mode: plus-lighter;
+
+        html[data-project-updating='true'] & {
+            opacity: 0;
+        }
+    }
 
     $this: &;
 
@@ -19,7 +54,7 @@
 
     &-header {
         flex: 0 0 auto;
-        z-index: 0;
+        z-index: 2;
         position: -webkit-sticky;
         position: sticky;
         top: 0;
@@ -27,7 +62,7 @@
     }
 
     &-main, &-footer {
-        z-index: 0;
+        z-index: 1;
         position: relative;
     }
 
@@ -39,8 +74,22 @@
         flex: 0 0 auto;
     }
 
+
+    &.post-type-archive-project {
+        #{$this}-header {
+            position: fixed;
+            width: 100%;
+        }
+
+        #{$this}-footer {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
     
-    @include mq-from(medium) {
+    @include mq-from(large) {
         &-header {
             animation: {
                 name: appearsDown;
@@ -49,23 +98,20 @@
                 fill-mode: both;
             };
         }
+    }
 
-        &.post-type-archive-project {
-            #{$this}-header {
-                z-index: 1;
-                position: fixed;
-                width: 100%;
-            }
 
-            #{$this}-footer {
-                position: absolute;
-                opacity: 0;
-                pointer-events: none;
-            }
+    @media (orientation: portrait) {
+        --gradient-deg: -30deg;
+    }
+
+    @include mq-to(large) {
+        &::before, &::after {
+            transition-duration: 0.2s;
         }
     }
 
-    @include mq-to(small) {
-        // background-image: url('../../images/patterns/texture_small.png');
+    @media screen and (max-height: 757px) {
+        --switchVhPosition: 4vh;
     }
 }

@@ -26,7 +26,7 @@
             width: 974px;
             height: 832px;
             background: {
-                // image: url('../../../images/patterns/phone.svg');
+                image: url($phonePattern);
                 position: center;
                 size: contain;
                 repeat: no-repeat;
