@@ -31,10 +31,18 @@
 
 
 
-    @include mq-to(small) {
+    @include mq-to(large) {
         &[data-lvl='1'] {
             img {
                 max-height: 70px;
+            }
+        }
+    }
+
+    @include mq-to(medium) {
+        &[data-lvl='1'] {
+            img {
+                max-height: 50px;
             }
         }
     }
