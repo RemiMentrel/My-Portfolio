@@ -33,7 +33,7 @@
                             </div><div class="rm-c-Labo-list-group">
                         @endif
 
-                        <article class="rm-c-ProjectMiniature"
+                        <article class="rm-c-ProjectMiniature" @if (!empty($experience['media']['video'])) data-video="true" @endif
                                     style="animation-delay: {{ ($loop->iteration * 0.4) + 0.4 }}s">
                             <div class="rm-c-ProjectMiniature-wrapper"
                                     data-href="{{ $experience['link'] }}"
