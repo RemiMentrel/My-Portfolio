@@ -9,25 +9,36 @@
 
 // Base
 @import 'base/_fonts'; 
-@import 'base/_generic';
 @import 'base/_normalize';
+@import 'base/_generic';
+
+// Utils
+@import 'utils/_wrapper';
+@import 'utils/_hspace';
+@import 'utils/_a11yhidden';
 
 // Vendors
 @import '~swiper/swiper-bundle.css';
 @import 'vendors/_swiper';
 
 // Components
+@import 'components/common/_App';
+@import 'components/common/_Styleguide';
 @import 'components/common/_Page';
 @import 'components/common/_Header';
 @import 'components/common/_Navigation';
 @import 'components/common/_Footer';
 @import 'components/common/_Heading';
 @import 'components/common/_Btn';
-@import 'components/common/_Lines';
+@import 'components/common/_Tabs';
+@import 'components/common/_Breadcrumb';
 @import 'components/common/_Popin';
 @import 'components/common/_Gallery';
 @import 'components/common/_Contact';
 
+@import 'components/home/_Home';
+
+@import 'components/about/_About';
 @import 'components/about/_AboutIntroduction';
 
 @import 'components/project/single/_Project';
@@ -35,7 +46,4 @@
 @import 'components/project/single/_ProjectDetail';
 @import 'components/project/archive/_ProjectList';
 @import 'components/project/archive/_ProjectMiniature';
-
-// Utils
-@import 'utils/_wrapper';
-@import 'utils/_hspace';
+@import 'components/project/archive/_Labo';

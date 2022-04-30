@@ -3,16 +3,35 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 60px;
+    margin-top: 140px;
+    margin-top: clamp(100px, 12vh, 221px);
+
+    &::before {       
+        content: '';     
+        display: block;    
+        z-index: 0;
+        position: absolute;
+        background: {
+            position: center;
+            size: contain;
+            repeat: no-repeat;
+        };
+        opacity: 50%;
+    }
+
+    > * {
+        z-index: 1;
+        position: relative;
+    }
 
     &-infos {
         display: flex;
         flex-flow: wrap;
-        margin: -12.5px;
+        margin: -20px;
         font-size: 15px;
 
         .rm-c-Footer-section {
-            margin: 12.5px;
+            margin: 20px;
 
             &-title {
                 font-size: 14px;
@@ -26,5 +45,47 @@
 
     &-cta {
         margin-top: 40px;
+
+        .rm-c-Btn {
+            min-width: 200px;
+            justify-content: center;
+        }
+    }
+
+    
+
+    @include mq-from(large) {
+        &::before {
+            top: calc(100% - 540px);
+            right: calc(50% - 450px);
+            width: 1358px;
+            height: 1189px;
+            background-image: url($phonePattern);
+            animation: {
+                name: appearsUpLittle;
+                duration: 2s;
+                fill-mode: both;
+            };
+        }
+    }
+
+    
+    @include mq-to(large) {
+        &::before {
+            bottom: calc(100% - 125px);
+            right: calc(50% - 440px);
+            width: 393px;
+            height: 180px;
+            background-image: url($phonePatternSmall);
+            transform: rotate(-150deg);
+        }
+    }
+
+    @include mq-to(small) {
+        &::before {
+            bottom: calc(100% - 115px);
+            right: calc(50% - 370px);
+            transform: rotate(-150deg) scale(.78);
+        }
     }
 }

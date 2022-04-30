@@ -8,20 +8,22 @@
         position: relative;
         margin: 10px;
 
-        &::after {
-            content: '';
-            position: absolute;
-            top: calc(100% + 4px);
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: color(accent);
-            transition: all .4s .1s ease-in-out;
-        }
-
-        &:hover, &:focus-within, &.current-menu-item {
+        @media (hover: hover) {
             &::after {
-                width: 100%;
+                content: '';
+                position: absolute;
+                top: calc(100% + 4px);
+                left: 0;
+                width: 0;
+                height: 1px;
+                background-color: color(accent);
+                transition: all .4s .1s ease-in-out;
+            }
+
+            &:hover, &:focus-within, &.current-menu-item {
+                &::after {
+                    width: 100%;
+                }
             }
         }
 
@@ -34,6 +36,92 @@
             font-size: 0.87rem;
             font-weight: 600;
             text-transform: uppercase;
+        }
+    }
+
+    
+    @include mq-to(medium) {
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+
+        $this: &;
+
+        // Bg fade
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: color(dark, 0.8);
+            transition: all .6s ease;
+        }
+
+        li {
+            display: block;
+            width: 100%;
+            margin: 15px;
+            text-align: center;
+            transition: all .6s ease .6s;
+
+            // &::after {
+            //     content: '';
+            //     position: absolute;
+            //     top: 100%;
+            //     left: 0;
+            //     display: block;
+            //     width: 100%;
+            //     height: 1px;
+            //     margin-left: auto;
+            //     background-color: color(accent);
+            // }
+            
+            a {
+                font-size: 1.923rem;
+                font-weight: 200;
+                text-transform: none;
+            }
+        }
+
+        @at-root {
+            // Close
+            .rm-c-Header-navigation-wrapper:not([data-shown='true']) #{$this} {
+                pointer-events: none;
+                transition: opacity 0s 1.2s;
+
+                &::before {      
+                    transform: translateX(-100%);
+                    transition-delay: .6s;
+                }
+
+                li {
+                    opacity: 0;
+                    transform: translateY(10px);
+
+                    &:nth-of-type(1) { transition-delay: 0s; }
+                    &:nth-of-type(2) { transition-delay: .2s; }
+                    &:nth-of-type(3) { transition-delay: .4s; }
+                }
+            }
+
+            // Open
+            .rm-c-Header-navigation-wrapper[data-shown='true'] #{$this} {
+                li {
+                    &:nth-of-type(1) { transition-delay: .6s; }
+                    &:nth-of-type(2) { transition-delay: .8s; }
+                    &:nth-of-type(3) { transition-delay: 1s; }
+                }
+            }
         }
     }
 }

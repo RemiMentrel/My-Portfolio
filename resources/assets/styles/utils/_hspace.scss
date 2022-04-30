@@ -1,9 +1,14 @@
-.rm-u-hspace {
-    padding-left: 20px;
-    padding-right: 20px;
+:root {
+    --hspace: 20px;
     
     @include mq-from(small) {
-        padding-left: 40px;
-        padding-right: 40px;
+        --hspace: 40px;
     }
+}
+
+.rm-u-hspace {
+    padding: {
+        left: var(--hspace);
+        right: var(--hspace);
+    };
 }
