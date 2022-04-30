@@ -44,19 +44,19 @@
                         </ul>
                     </div>
 
-                    {{-- @if (count($home['featured_posts']) > 2) --}}
+                    @if (count($home['featured_posts']) > 2)
                         <button class="swiper-arrow" data-slider="prev" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
                         <button class="swiper-arrow" data-slider="next" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </button>
-                    {{-- @endif --}}
+                    @endif
                 </div>
 
-                {{-- @if (count($home['featured_posts']) > 2) --}}
+                @if (count($home['featured_posts']) > 2)
                     <div class="rm-c-Home-featured-listPagination">
                         <button class="swiper-arrow" data-slider="prev"> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
                         <div data-slider="pagination"></div>
                         <button class="swiper-arrow" data-slider="next"> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </buttonass=>
                     </div>
-                {{-- @endif --}}
+                @endif
             </div>
         </div>
     </div>
