@@ -9,6 +9,9 @@ import Router from './util/Router';
 import common from './routes/common';
 import home from './routes/home';
 import singleProject from './routes/project';
+import postTypeArchiveProject from './routes/archiveProject';
+import postTypeArchiveExperience from './routes/labo';
+import category from './routes/labo';
 
 /** Populate Router instance with DOM routes */
 const routes = new Router({
@@ -16,8 +19,12 @@ const routes = new Router({
   common,
   // Home page
   home,
-  // Project page.
+  // Project pagee
   singleProject,
+  postTypeArchiveProject,
+  // Labo
+  postTypeArchiveExperience,
+  category,
 });
 
 // Load Events

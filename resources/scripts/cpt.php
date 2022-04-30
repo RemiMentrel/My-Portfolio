@@ -64,4 +64,70 @@ function cpt_project() {
 }
 add_action( 'init', 'cpt_project', 0 );
 
+
+
+// Register Custom Post Type "Project"
+function cpt_experience() {
+
+	$labels = array(
+		'name'                  => _x( 'Le labo', 'Post Type General Name', 'portfolio' ),
+		'singular_name'         => _x( 'Expérience', 'Post Type Singular Name', 'portfolio' ),
+		'menu_name'             => __( 'Le labo', 'portfolio' ),
+		'name_admin_bar'        => __( 'Expérience', 'portfolio' ),
+		'archives'              => __( 'Archives', 'portfolio' ),
+		'attributes'            => __( 'Attributs', 'portfolio' ),
+		'parent_item_colon'     => __( 'Expérience parente :', 'portfolio' ),
+		'all_items'             => __( 'Tous le labo', 'portfolio' ),
+		'add_new_item'          => __( 'Ajouter une nouvelle expérience', 'portfolio' ),
+		'add_new'               => __( 'Ajouter', 'portfolio' ),
+		'new_item'              => __( 'Nouvelle expérience', 'portfolio' ),
+		'edit_item'             => __( 'Modifier', 'portfolio' ),
+		'update_item'           => __( 'Mettre à jour', 'portfolio' ),
+		'view_item'             => __( 'Voir l\'expérience', 'portfolio' ),
+		'view_items'            => __( 'Voir les expériences', 'portfolio' ),
+		'search_items'          => __( 'Chercher une expérience', 'portfolio' ),
+		'not_found'             => __( 'Non trouvé', 'portfolio' ),
+		'not_found_in_trash'    => __( 'Non trouvé dans la corbeille', 'portfolio' ),
+		'featured_image'        => __( 'Image en avant', 'portfolio' ),
+		'set_featured_image'    => __( 'Définir une image en avant', 'portfolio' ),
+		'remove_featured_image' => __( 'Supprimer l\'image en avant', 'portfolio' ),
+		'use_featured_image'    => __( 'Utiliser comme image en avant', 'portfolio' ),
+		'insert_into_item'      => __( 'Insérer dans l\'expérience', 'portfolio' ),
+		'uploaded_to_this_item' => __( 'Importé dans cette expérience', 'portfolio' ),
+		'items_list'            => __( 'Liste des expériences', 'portfolio' ),
+		'items_list_navigation' => __( 'Navigation dans le labo', 'portfolio' ),
+		'filter_items_list'     => __( 'Filtrer la liste d\'expériences', 'portfolio' ),
+	);
+	$rewrite = array(
+		'slug'                  => 'experience',
+		'with_front'            => true,
+		'pages'                 => true,
+		'feeds'                 => true,
+	);
+	$args = array(
+		'label'                 => __( 'Expérience', 'portfolio' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'custom-fields' ),
+		'taxonomies'            => array( 'category' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-color-picker',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => 'labo',
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'rewrite'               => $rewrite,
+		'capability_type'       => 'page',
+		'show_in_rest'          => true,
+	);
+	register_post_type( 'experience', $args );
+
+}
+add_action( 'init', 'cpt_experience', 0 );
+
 ?>

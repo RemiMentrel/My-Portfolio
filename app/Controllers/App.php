@@ -42,4 +42,9 @@ class App extends Controller
     {
         return get_field('cv', 'option');
     }
+
+    public static function gtag()
+    {
+        return get_field('gtag', 'option');
+    }
 }

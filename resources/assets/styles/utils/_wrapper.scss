@@ -1,10 +1,15 @@
 .rm-u-wrapper {
     width: 100%;
-    max-width: 815px;
+    max-width: 830px;
     margin-inline-start: auto;
     margin-inline-end: auto;
+    transition: all .6s ease;
 
-    // &[data-size='large'] {
-    //     max-width: px;
-    // }
+    @include mq-from(large) {
+        max-width: 860px;
+
+        &[data-size='large'] {
+            max-width: 1156px;
+        }
+    }
 }

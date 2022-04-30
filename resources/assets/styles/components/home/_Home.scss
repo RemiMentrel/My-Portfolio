@@ -1,0 +1,211 @@
+.rm-c-Home {
+    overflow: hidden;
+    
+    &-top {
+        z-index: 0;
+        position: relative;
+        min-height: 0;
+        padding: {
+            top: 118px;
+            bottom: 118px;
+        };
+        animation: {
+            name: fadeIn;
+            duration: 2s;
+            delay: .2s;
+            fill-mode: both;
+        };
+        transition: all .6s ease;
+
+        &::before {       
+            content: '';     
+            display: block;    
+            position: absolute;
+            top: calc(100% - 620px);
+            right: calc(50% - 300px);
+            width: 974px;
+            height: 832px;
+            background: {
+                image: url($phonePattern);
+                position: center;
+                size: contain;
+                repeat: no-repeat;
+            };
+            opacity: 50%;
+            animation: {
+                name: appearsUpLittle;
+                duration: 2s;
+                fill-mode: both;
+            };
+        }
+
+        &-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        &-logo {
+            flex: 0 1 473px;
+
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        &-shortcuts {
+            flex: 0 1 232px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding: 0;
+        }
+    }
+
+    &-featured {
+        z-index: 1;
+        position: relative;
+        margin: {
+            top: 10vh;
+            bottom: 19vh;
+        };
+        overflow: hidden;
+        animation: {
+            name: appearsUpLittle;
+            duration: 2s;
+            delay: 1s;
+            fill-mode: both;
+        };
+
+        &-wrapper.rm-u-wrapper {
+            max-width: 1715px;
+        }
+
+        &-heading {
+            margin: 0 0 53px;
+            font-size: 33px;
+            line-height: 47px;
+            font-family: font(title);
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        &-list {
+            position: relative;
+            &-wrapper {
+                &.swiper-initialized {
+                    z-index: 0;
+                    position: relative;
+                    max-width: 400px;
+                    margin: 0 auto;
+                }
+            }
+
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+
+                &:not(.swiper-wrapper) {
+                    display: flex;
+                    gap: 22px;
+                }
+            }
+
+            li {
+                &:not(.swiper-slide) {
+                    flex: 1 1 auto;
+
+                    li:nth-child(n+5) {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &-listPagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+
+            [data-slider='pagination'] {
+                margin: 0;
+            }
+        }
+    }
+
+    
+    @include mq-from(medium) {
+        &-top {
+            display: flex;
+            align-items: center;
+            min-height: 750px;
+        }
+
+        &-featured {
+            &-list {
+                position: relative;
+    
+                &-wrapper {
+                    &.swiper-container-initialized {
+                        transform: translateX(-45%);
+                    }
+                }
+            }
+
+            &-listPagination {
+                display: none;
+            }
+        }
+    }
+
+
+    @include mq-from(large) {
+        &-top {
+            min-height: 800px;
+
+            &::before {
+                width: 1358px;
+                height: 1189px;
+                top: calc(100% - 780px);
+                right: calc(50% - 450px);
+            }
+        }
+    }
+
+    
+    @include mq-to(medium) {
+        &-featured {
+            &-list {
+                [data-slider='prev'],
+                [data-slider='next'] {
+                    display: none;
+                }
+            }
+        }
+    }
+
+
+    @include mq-to(small) {
+        &-top {
+            &-wrapper {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 50px;
+                max-width: 232px;
+            }
+
+            &-logo, &-shortcuts {
+                flex: 1 1 auto;
+            }
+
+            &-shortcuts { 
+                gap: 20px;
+            }
+        }
+    }
+}

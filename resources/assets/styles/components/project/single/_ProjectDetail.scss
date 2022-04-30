@@ -1,7 +1,7 @@
 .rm-c-ProjectDetail {
     margin: 200px 0 0;
-    color: black;
-    background-color: white;
+    color: color(dark);
+    background-color: color(light);
     overflow: hidden;
 
     &-wrapper {
@@ -15,16 +15,21 @@
     }
 
     &-list {
+        position: relative;
         overflow: visible;
 
-        .swiper-arrow-left {
-            left: 50%;
-            transform: translateX(-50vw) rotate(180deg);
-        }
+        .swiper-arrow {
+            &[data-slider='prev'] {
+                left: 50%;
+                padding-left: var(--hspace);
+                transform: translateX(-50vw);
+            }
 
-        .swiper-arrow-right {
-            right: 50%;
-            transform: translateX(50vw);
+            &[data-slider='next'] {
+                right: 50%;
+                padding-right: var(--hspace);
+                transform: translateX(50vw);
+            }
         }
     }
 
@@ -33,6 +38,10 @@
         align-items: center;
 
         $p: &;
+
+        &:not(.swiper-slide-active) {
+            pointer-events: none;
+        }
 
         &-content {
             flex: 1 1 375px;
@@ -51,7 +60,8 @@
         &-image {
             flex: 1 1 632px;
             position: relative;
-            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
             transition: all .6s ease;
 
             #{$p}:not(.swiper-slide-active) & {
@@ -80,6 +90,8 @@
                 height: 100%;
                 font-size: 17px;
                 color: color(light);
+                -webkit-backdrop-filter: blur(2px);
+                backdrop-filter: blur(2px);
                 opacity: 0;
                 transition: all .3s ease-in-out;
 
@@ -96,7 +108,7 @@
                 }
             }
 
-            &:hover, &:focus {
+            @mixin hovered {
                 #{$p}-image-fader {
                     opacity: 1;
                 }
@@ -104,6 +116,14 @@
                 &[data-popin-trigger] img {
                     opacity: .9;
                 }
+            }
+
+            &:hover, &:focus {
+                @include hovered;
+            }
+
+            @media (hover: none) {
+                @include hovered;
             }
     
             > img {

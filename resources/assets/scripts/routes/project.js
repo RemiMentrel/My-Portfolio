@@ -1,4 +1,4 @@
-import Swiper from 'swiper/bundle';
+import Swiper, { Navigation, Pagination } from 'swiper';
 
 export default {
   init () {
@@ -36,6 +36,7 @@ export default {
 
     // Setup slider
     this.slider = new Swiper( DOM.container, {
+      modules: [Navigation, Pagination],
       slidesPerView: 1,    
       speed: 700,
       spaceBetween: 20,
@@ -114,6 +115,7 @@ export default {
     });
 
     this.popinSlider = new Swiper( DOM.container, {
+      modules: [Navigation, Pagination],
       slidesPerView: 1,    
       speed: 700,
       spaceBetween: 0,

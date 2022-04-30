@@ -1,3 +1,9 @@
-.nq-c-Page {
+.rm-c-Page {
+    position: relative;
+    margin-top: 155px;
+    margin-top: clamp(80px, 14vh, 155px);
+    margin-bottom: 278px;
+    margin-bottom: clamp(160px, 35vh, 278px);
+
     &-wrapper {}
 }
