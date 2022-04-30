@@ -21,6 +21,7 @@
         }
     
         > img, > video {
+            z-index: 0;
             position: absolute;
             top: 0;
             left: 0;
@@ -32,6 +33,7 @@
         }
 
         figcaption {
+            z-index: 1;
             padding-bottom: 50px;
         }
     }
