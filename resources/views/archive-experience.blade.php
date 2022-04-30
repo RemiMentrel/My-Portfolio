@@ -52,14 +52,12 @@
                                 </div>
                                     
                                 <figure>
-                                    @if (empty($experience['media']['video']))
-                                        <img src="{{ $experience['media']['image']['url'] }}" alt="miniature projet" loading="lazy" />
-                                    @else
-                                        <video poster="{{ $experience['media']['image']['url']}}"
-                                               muted autoplay loading="lazy" loop playsinline>
-                                            <source src="{{ $experience['media']['video']['url'] }}" type="{{ $experience['media']['video']['mime_type'] }}">    
-                                        </video>
-                                    @endif
+                                    <img src="{{ $experience['media']['image']['url'] }}" alt="miniature projet" loading="lazy"
+                                         @if (!empty($experience['media']['video']))
+                                            data-video-url="{{ $experience['media']['video']['url'] }}"
+                                            data-video-mime="{{ $experience['media']['video']['mime_type'] }}"
+                                         @endif />
+                                    
                                     <figcaption>{!! $experience['description'] !!}</figcaption>
                                 </figure>
                             </div>
