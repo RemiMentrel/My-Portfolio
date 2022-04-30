@@ -26,4 +26,13 @@ function wpdocs_theme_setup() {
 }
 add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
 
+
+function redirect_experience_cpt() {
+  if ( is_singular( 'experience' ) ) {
+    wp_redirect( home_url(), 301 );
+    exit;
+  }
+}
+add_action( 'template_redirect', 'redirect_experience_cpt' );
+
 ?>
