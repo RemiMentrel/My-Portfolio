@@ -1,8 +1,25 @@
 .rm-c-ProjectMiniature {
+    position: relative;
     border-radius: 10px;
     overflow: hidden;
 
     $this: &;
+
+    // Video icon
+    &[data-video]::after {
+        content: '';
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        background: {
+            image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNzUycHQiIGhlaWdodD0iNzUycHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDc1MiA3NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8ZGVmcz4KICA8Y2xpcFBhdGggaWQ9ImEiPgogICA8cGF0aCBkPSJtMTM5LjIxIDIzMGg0NzMuNTh2MjkyaC00NzMuNTh6Ii8+CiAgPC9jbGlwUGF0aD4KIDwvZGVmcz4KIDxnIGNsaXAtcGF0aD0idXJsKCNhKSI+CiAgPHBhdGggZD0ibTU3OS45MyAyNTAuNDYtOTUuMjM4IDU0Ljc0MnYtMTcuNjY0YzAtMTUuMDctNS45ODgzLTI5LjUyNy0xNi42NDUtNDAuMTg0cy0yNS4xMTMtMTYuNjQ1LTQwLjE4NC0xNi42NDVoLTIzMS44MmMtMTUuMDcgMC0yOS41MjcgNS45ODgzLTQwLjE4NCAxNi42NDVzLTE2LjY0NSAyNS4xMTMtMTYuNjQ1IDQwLjE4NHYxNzYuOTNjMCAxNS4wNzQgNS45ODgzIDI5LjUyNyAxNi42NDUgNDAuMTg4IDEwLjY1NiAxMC42NTYgMjUuMTEzIDE2LjY0NSA0MC4xODQgMTYuNjQ1aDIzMS44MmMxNS4wNyAwIDI5LjUyNy01Ljk4ODMgNDAuMTg0LTE2LjY0NSAxMC42NTYtMTAuNjYgMTYuNjQ1LTI1LjExMyAxNi42NDUtNDAuMTg4di0xNy42NjRsOTUuMjM4IDU0Ljc0NmMxOC4wNDMgMTAuMzcxIDMyLjg2NyAxLjg0NzcgMzIuODY3LTE4Ljk0MXYtMjEzLjExYzAtMjAuODgzLTE0Ljc3Ny0yOS40MS0zMi44NjctMTkuMDM1eiIgZmlsbD0iI2ZmZiIvPgogPC9nPgo8L3N2Zz4K");
+            position: center;
+            size: contain;
+            repeat: no-repeat;
+        };
+    }
 
     &-wrapper {
         position: relative;
