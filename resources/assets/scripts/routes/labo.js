@@ -36,7 +36,7 @@ export default {
     const media = miniature.querySelector('figure').cloneNode(true);
     media.classList.add('rm-c-Gallery-image');
 
-    this.DOM.popinContent.appendChild(media);
+    this.DOM.popinContent.appendChild(this.prepareVideo(media));
 
     document.body.dataset.popinDisplayed = 'true';
     this.DOM.popin.dataset.display = 'true';
@@ -51,5 +51,36 @@ export default {
     delete document.body.dataset.popinDisplayed;
 
     this.state.popinOpened = false;
+  },
+
+  prepareVideo (media) {
+    const img = media.querySelector('img');
+    const videoUrl = img.dataset.videoUrl;
+    const videoMime = img.dataset.videoMime;
+
+    if (videoUrl && videoMime) {
+      const DOMvideo = document.createElement('video');
+      const DOMvideoSource = document.createElement('source');
+
+      [ {name: 'poster', value: img.src},
+        {name: 'muted', value: ''},
+        /**{name: 'autoplay', value: ''},**/
+        {name: 'controls', value: ''},
+        {name: 'loading', value: 'lazy'},
+        {name: 'loop', value: ''},
+        {name: 'playsinline', value: ''},
+      ].forEach( (attr) => {
+        DOMvideo.setAttribute(attr.name, attr.value);
+      });
+
+      DOMvideoSource.setAttribute('src', videoUrl);
+      DOMvideoSource.setAttribute('type', videoMime);
+      DOMvideo.appendChild(DOMvideoSource);
+
+      img.remove();
+      media.appendChild(DOMvideo);
+    }
+    
+    return media;
   },
 };
