@@ -7,6 +7,7 @@ export default {
 
     this.state = {
       currentProject: this.getSlugFromUrl(this.DOM.navLinks[0].href),
+      updateVisualDebounce: false,
     };
 
     this.setupNav();
@@ -18,15 +19,28 @@ export default {
       link.addEventListener('click', this.handleUpdateVisual.bind(this));
     });
 
-    // const root = document.querySelector(':root');
-    let timer;
+    let wheelDebounce;
+    document.addEventListener('wheel', (event) => {
+      clearTimeout(wheelDebounce);
+      wheelDebounce = setTimeout(() => {
+        const link = document.querySelector(`a[href="#${this.state.currentProject}"]`).parentElement;
+        let newLink;
+
+        if (event.deltaY < 0) {
+          newLink = (link.previousElementSibling) ? link.previousElementSibling : link.parentElement.lastElementChild;
+        } else {
+          newLink = (link.nextElementSibling) ? link.nextElementSibling : link.parentElement.firstElementChild;
+        }
+
+        this.updateVisual(this.getSlugFromUrl(newLink.querySelector('a').href));
+      }, 200);
+    });
+
+    let scrollDebounce;
     this.DOM.visualsContainer.scrollTop = 0;
     this.DOM.visualsContainer.addEventListener('scroll', () => {
-      clearTimeout(timer);
-      // root.dataset.projectUpdating = true;
-      // root.style.removeProperty('--project-color');
-      //Renew timer
-      timer = setTimeout(() => {
+      clearTimeout(scrollDebounce);
+      scrollDebounce = setTimeout(() => {
         for (const visual of this.DOM.visualsContainer.children) {
           if (this.isElementInViewport(visual)) {
             this.updateVisual(visual.id);
@@ -45,15 +59,18 @@ export default {
   },
 
   updateVisual (newSlug) {
-    if (this.state.currentProject === newSlug)
-      return;
+    clearTimeout(this.state.updateVisualDebounce);
+    this.state.updateVisualDebounce = setTimeout(() => {
+      if (this.state.currentProject === newSlug)
+        return;
 
-    // Unselect previous project
-    this.toggleProject(this.state.currentProject);
+      // Unselect previous project
+      this.toggleProject(this.state.currentProject);
 
-    // Select new project
-    this.toggleProject(newSlug);
-    this.state.currentProject = newSlug;
+      // Select new project
+      this.toggleProject(newSlug);
+      this.state.currentProject = newSlug;
+    }, 200);
   },
 
   toggleProject (slug) {
