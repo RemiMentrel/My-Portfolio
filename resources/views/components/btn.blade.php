@@ -1,8 +1,8 @@
 @php
     $type = in_array($type, ['a', 'button', 'div']) ? $type : 'div';
-    $mode = $mode ?: 'classic';
-    $style = $style ?: 'primary';
-    $text = $text ?: 'Texte par défaut';
+    $mode = !empty($mode) ? $mode : 'classic';
+    $style = !empty($style) ? $style : 'primary';
+    $text = !empty($text) ? $text : 'Texte par défaut';
 @endphp
 
 <{{ $type }} class="rm-c-Btn" data-mode="{{ $mode }}" data-style="{{ $style }}"
