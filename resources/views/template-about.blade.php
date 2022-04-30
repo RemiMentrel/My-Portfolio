@@ -20,9 +20,13 @@ Template Post Type: page
                     <img src="{{ $about['introduction']['content']['logo']['url'] }}" alt="{{ $about['introduction']['content']['logo']['alt'] }}" />
                 </div>
 
-                <p class="rm-c-AboutIntroduction-text">
-                    {{ $about['introduction']['content']['text'] }}
-                </p>
+                <div class="rm-c-AboutIntroduction-text">
+                    <p>
+                        {{ $about['introduction']['content']['text'] }}
+                    </p>
+
+                    @include('components.btn', ['type' => 'a', 'href' => '/projets', 'mode' => 'classic', 'text' => 'Mes projets', 'arrow' => 'next'])
+                </div>
 
                 <img class="rm-c-AboutIntroduction-portrait" src="{{ $about['introduction']['image']['url'] }}" alt="{{ $about['introduction']['image']['alt'] }}" />
             </div>

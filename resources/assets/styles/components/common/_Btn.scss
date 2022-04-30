@@ -17,7 +17,7 @@
     -webkit-appearance: none;
     overflow: hidden;
     transition: background .65s ease-out;
-
+    
     span {
         z-index: 1;
         position: relative;
@@ -50,12 +50,21 @@
         }
     }
 
-    @mixin secondaryHovered {
-        background: color(light, 0.2);
+    @mixin secondaryHovered($theme: 'dark') {
+        @if $theme == 'dark' {
+            background: color(light, 0.2);
+        } @else {
+            background: color(attenuated, 0.4);
+        }
     }
-    @keyframes secondaryHovered {
+    @keyframes secondaryHovered--dark {
         from {
-            @include secondaryHovered;
+            @include secondaryHovered('dark');
+        }
+    }
+    @keyframes secondaryHovered--light {
+        from {
+            @include secondaryHovered('light');
         }
     }
 
@@ -64,11 +73,15 @@
         -webkit-backdrop-filter: blur(3px);
         backdrop-filter: blur(3px);
         animation: {
-            name: secondaryHovered;
+            name: secondaryHovered--dark;
             duration: .4s;
             fill-mode: backwards;
             delay: 1s;
         };
+
+        [data-theme='light'] & {
+            background: color(attenuated, 0.2);
+        }
     }
 
     &[data-mode='minimal'] {
@@ -78,6 +91,10 @@
         justify-content: center;
         border-radius: 50%;
         background: color(light, 0.1);
+
+        [data-theme='light'] & {
+            background: color(attenuated, 0.2);
+        }
     }
 
     
@@ -108,7 +125,7 @@
             display: block;        
             height: 1.9px;
             border-radius: 1px;
-            background-color: color(light);
+            background-color: currentColor;
         }
 
         b:first-child, b:last-child {
@@ -179,11 +196,17 @@
         }
     }
 
-    &:hover, &:focus, a:hover &, a:focus &, button:hover &, a:hover & {
+    &:hover, &:focus,
+    a:hover &, a:focus &,
+    button:hover &, button:focus & {
         @include openedArrow;
         
         &[data-style='secondary'], &[data-mode='minimal'] {
-            @include secondaryHovered;
+            @include secondaryHovered('dark');
+
+            [data-theme='light'] & {
+                @include secondaryHovered('light');
+            }
         }   
     }
 

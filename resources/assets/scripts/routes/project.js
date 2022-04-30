@@ -115,6 +115,7 @@ export default {
     });
 
     this.popinSlider = new Swiper( DOM.container, {
+      modules: [Navigation, Pagination],
       slidesPerView: 1,    
       speed: 700,
       spaceBetween: 0,

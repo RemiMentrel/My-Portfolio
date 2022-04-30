@@ -35,7 +35,7 @@
         </section>
 
         @if(!empty($project['has_detail']))
-          <div class="rm-c-ProjectDetail rm-u-hspace">
+          <div class="rm-c-ProjectDetail rm-u-hspace" data-theme="light">
             <div class="rm-c-ProjectDetail-wrapper rm-u-wrapper">
               <h2 class="rm-c-ProjectDetail-heading rm-c-Heading" data-lvl="2">{{ $project['detail_title'] }}</h2>
 
@@ -73,8 +73,8 @@
                   @endforeach
                 </div>
 
-                <div class="swiper-arrow-left" data-slider="prev"></div>
-                <div class="swiper-arrow-right" data-slider="next"></div>
+                <button class="swiper-arrow" data-slider="prev" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
+                <button class="swiper-arrow" data-slider="next" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </button>
               </div>
 
               <div class="rm-c-ProjectDetail-pagination" data-slider="pagination"></div>
@@ -89,7 +89,7 @@
           <div class="rm-c-Popin-wrapper rm-u-wrapper">
             @foreach ($project['detail'] as $key=>$section)
               @if(!empty($section['image']['more_images']))
-                <div id="gallery_{{ $key }}" class="rm-c-Gallery" data-shown="false">
+                <div id="gallery_{{ $key }}" class="rm-c-Gallery" data-shown="false" data-theme="light">
                   <div class="rm-c-Gallery-list" data-slider="container">
                     <div class="rm-c-Gallery-list-wrapper" data-slider="wrapper">
                       @if(!empty($section['image']['image']))
@@ -115,8 +115,8 @@
                       @endforeach
                     </div>
                       
-                    <div class="swiper-arrow-left" data-slider="prev"></div>
-                    <div class="swiper-arrow-right" data-slider="next"></div>
+                    <button class="swiper-arrow" data-slider="prev" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
+                    <button class="swiper-arrow" data-slider="next" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </button>
 
                     <div class="rm-c-Gallery-pagination" data-slider="pagination_gallery_{{ $key }}"></div>
                   </div>
@@ -132,9 +132,9 @@
           <h2 class="rm-c-Project-footer-heading rm-c-Heading" data-lvl="2">Cet article vous a plu ?</h2>
 
           <div class="rm-c-Project-footer-ctas">
-            <a href="/contact" class="rm-c-Btn"><span>Me contacter</span></a>
+            @include('components.btn', ['type' => 'a', 'href' => '/contact', 'mode' => 'classic', 'text' => 'Me contacter'])
 
-            <span>ou</span>
+            <span class="rm-c-Project-footer-ctas-sep">ou</span>
 
             <div class="rm-c-Project-footer-ctas-network">
               <a href="https://www.facebook.com/sharer/sharer.php?u={{ get_permalink() }}"

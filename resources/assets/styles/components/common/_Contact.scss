@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 140px;
-    margin-top: clamp(100px, 14vh, 221px);
+    margin-top: clamp(100px, 12vh, 221px);
 
     &::before {       
         content: '';     
@@ -27,11 +27,11 @@
     &-infos {
         display: flex;
         flex-flow: wrap;
-        margin: -12.5px;
+        margin: -20px;
         font-size: 15px;
 
         .rm-c-Footer-section {
-            margin: 12.5px;
+            margin: 20px;
 
             &-title {
                 font-size: 14px;

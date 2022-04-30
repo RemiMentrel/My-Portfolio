@@ -61,17 +61,18 @@
         left: 0;
     }
 
-    &-main, &-footer {
-        z-index: 1;
+    &-main, &-footer { 
         position: relative;
     }
 
     &-main {
+        z-index: 1;
         flex: 1 1 auto;
         overflow: hidden;
     }
 
     &-footer {
+        z-index: 0;
         flex: 0 0 auto;
     }
 

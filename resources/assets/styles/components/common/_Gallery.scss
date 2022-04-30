@@ -3,6 +3,11 @@
         display: none;
     }
 
+    &-list {
+        position: relative;
+        overflow: hidden;
+    }
+
     &-image {
         position: relative;
         overflow: hidden;
@@ -35,5 +40,16 @@
         z-index: 1;
         position: absolute;
         margin: 0 auto 15px;
+    }
+
+    
+    .swiper-arrow {
+        &[data-slider='prev'] {
+            padding-left: var(--hspace);
+        }
+
+        &[data-slider='next'] {
+            padding-right: var(--hspace);
+        }
     }
 }

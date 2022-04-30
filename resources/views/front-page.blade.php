@@ -30,31 +30,33 @@
                 <div class="rm-c-Home-featured-list">
                     <div class="rm-c-Home-featured-list-wrapper">
                         <ul>
-                            @for ($i = 0; $i < 5; $i++)
-                                @foreach ($home['featured_posts'] as $post)
-                                    <li class="rm-c-ProjectMiniature">
-                                        <a class="rm-c-ProjectMiniature-wrapper"
-                                        href="{{ get_permalink($post->ID) }}"
-                                        title="{{ $post->post_title }}">
+                            @foreach ($home['featured_posts'] as $post)
+                                <li class="rm-c-ProjectMiniature">
+                                    <a class="rm-c-ProjectMiniature-wrapper"
+                                    href="{{ get_permalink($post->ID) }}"
+                                    title="{{ $post->post_title }}">
 
-                                            <div class="rm-c-ProjectMiniature-desc">{{ $post->post_title }}</div>
-                                            {!! get_the_post_thumbnail($post->ID) !!}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            @endfor
+                                        <div class="rm-c-ProjectMiniature-desc">{{ $post->post_title }}</div>
+                                        {!! get_the_post_thumbnail($post->ID) !!}
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
 
-                    <button class="swiper-arrow" data-slider="prev" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
-                    <button class="swiper-arrow" data-slider="next" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </button>
+                    {{-- @if (count($home['featured_posts']) > 2) --}}
+                        <button class="swiper-arrow" data-slider="prev" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
+                        <button class="swiper-arrow" data-slider="next" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </button>
+                    {{-- @endif --}}
                 </div>
 
-                <div class="rm-c-Home-featured-listPagination">
-                    <button class="swiper-arrow" data-slider="prev"> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
-                    <div data-slider="pagination"></div>
-                    <button class="swiper-arrow" data-slider="next"> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </buttonass=>
-                </div>
+                {{-- @if (count($home['featured_posts']) > 2) --}}
+                    <div class="rm-c-Home-featured-listPagination">
+                        <button class="swiper-arrow" data-slider="prev"> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
+                        <div data-slider="pagination"></div>
+                        <button class="swiper-arrow" data-slider="next"> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </buttonass=>
+                    </div>
+                {{-- @endif --}}
             </div>
         </div>
     </div>

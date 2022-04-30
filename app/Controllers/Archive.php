@@ -62,7 +62,7 @@ class Archive extends Controller
     public function categories() {
         $categories = get_terms( array(
             'taxonomy' => 'category',
-            'hide_empty' => false,
+            'hide_empty' => true,
         ) );
         $categories_clean = [];
 

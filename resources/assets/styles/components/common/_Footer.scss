@@ -2,80 +2,112 @@
     color: color(dark);
     background-color: color(light);
 
-    &-wrapper {
-        padding: 56px 0 100px;
-    }
-
-    &-logo {
-        img {
-            display: block;
-            width: 60px;
-            height: auto;
-        }
-    }
-
-    &-section {
-        &-title {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 12px;
-            font-weight: 400;
-            color: color(attenuated);
-        }
-
-        &[data-type='network'] &-content {
-            font-size: 0;
-
-            > a {
-                text-decoration: none;
-
-                &:not(:last-child) {
-                    margin-right: 8px;
-                }
-
-                &::before {
-                    font-size: 1rem;
-                    text-decoration: underline;
-                }
-            }
-
-            [title='Linkedin']::before { content: 'In'; }
-            [title='Facebook']::before { content: 'Fb'; }
-            [title='Instagram']::before { content: 'IG'; } 
-        }
-    }
-
-
-    @include mq-from(xsmall) {
+    &-main {
         &-wrapper {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(auto, 160px));
-            margin-right: auto; 
-            grid-gap: 55px 13%;
-        }
-    }
-
-    @include mq-to(small) {
-        &-wrapper {
-            grid-template-columns: auto auto;
-            grid-row-gap: 40px;
+            display: flex;
+            max-width: 1008px;
+            padding: {
+                top: 60px;
+                bottom: 55px;
+            };
         }
 
         &-logo {
-            grid-column: 1 / span 2;
+            img {
+                display: block;
+                width: 60px;
+                height: auto;
+            }
         }
-
+    
         &-section {
-            &[data-type='mail'] { order: 1; }
-            &[data-type='telephone'] { order: 3; }
-            &[data-type='network'] { order: 2; }
+            &-title {
+                display: block;
+                margin-bottom: 6px;
+                font-size: 12px;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+    
+            &[data-type='network'] &-content {
+                > a {
+                    display: block;
+                }
+            }
         }
     }
 
-    @include mq-to(xsmall) {
+    &-bottom {
+        color: color(light);
+        background-color: color(accent);
+
         &-wrapper {
-            > *:not(:last-child) {
-                margin-bottom: 15px;
+            padding: 2.5px 0;
+            text-align: center;
+            font-size: 10px;
+        }
+    }
+
+
+    @include mq-from(medium) {    
+        &-main {
+            &-wrapper {
+                > *:not(:last-child) {
+                    margin-right: 105px;
+                }
+            }
+        }
+    }
+
+    
+    @include mq-from(large) {    
+        &-main {
+            &-wrapper {
+                justify-content: flex-start;
+                max-width: 1648px;
+
+                > * {
+                    flex: 1 1 0;
+                    max-width: 254px;
+
+                    &:not(:last-child) {
+                        margin-right: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    @include mq-to(medium) {
+        &-main {
+            &-wrapper {
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-row-gap: 40px;
+                gap: 40px 13%;
+                padding-bottom: 95px;
+            }
+
+            &-logo {
+                grid-column: 1 / span 2;
+            }
+    
+            &-section {
+                &[data-type='mail'] { order: 3; }
+                &[data-type='telephone'] { order: 1; }
+                &[data-type='network'] { order: 2; }
+            }
+        }
+    }
+
+    @include mq-to(xsmall) {    
+        &-main {
+            &-wrapper {
+                display: block;
+
+                > *:not(:last-child) {
+                    margin-bottom: 30px;
+                }
             }
         }
     }

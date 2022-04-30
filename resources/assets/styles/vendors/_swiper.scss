@@ -7,6 +7,10 @@
     appearance: none;
     transition: all .2s ease;
 
+    &:active, &:focus {
+        outline: none;
+    }
+
     &.swiper-button-disabled {
         opacity: .4;
         pointer-events: none;
@@ -51,6 +55,10 @@
         background-color: color(light);
         opacity: 1;
         transition: all .4s ease;
+
+        [data-theme='light'] &:not(&-active) {
+            background-color: color(dark, 0.2);
+        }
 
         --swiper-pagination-bullet-horizontal-gap: 7.5px;
 
