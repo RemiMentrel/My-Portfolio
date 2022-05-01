@@ -3,7 +3,8 @@ import Swiper, { Navigation, Pagination } from 'swiper';
 export default {
   init () {
     this.DOM = {
-      mainSlider: document.querySelector('.rm-c-ProjectDetail'),
+      anchors: this.getAnchors(),
+      detailSlider: document.querySelector('.rm-c-ProjectDetail'),
       popin: document.querySelector('.rm-c-Popin'),
       popinMask: document.querySelector('.rm-c-Popin-mask'),
       popinTriggers: document.querySelectorAll('[data-popin-trigger]'),
@@ -13,18 +14,57 @@ export default {
       popinOpened: false,
     }
 
-    this.setupMainSlider();
+    this.setupProjectNav();
+    this.setupDetailSlider();
     this.setupPopin();
   },
 
-  setupMainSlider () {
+  getAnchors () {
+    let anchorsClean = [];
+    const anchors = document.querySelectorAll('a[href*="#"]');
+
+    for (const anchor of anchors) {
+      if (!this.getAnchorTarget(anchor))
+        continue;
+      
+      anchorsClean.push(anchor);
+    }
+
+    return anchorsClean;
+  },
+
+  setupProjectNav () {
+    for (let currentAnchor of this.DOM.anchors) {
+      currentAnchor.addEventListener('click', (event) => {
+        event.preventDefault();
+            
+        // Hide previous displayed
+        for (const anchor of this.DOM.anchors) { 
+          if (anchor.parentElement.dataset.selected) {
+            delete anchor.parentElement.dataset.selected;
+            delete this.getAnchorTarget(anchor).dataset.shown;
+          }
+        }
+
+        // Show the one wanted
+        const currentSlug = this.getSlugFromUrl(currentAnchor.getAttribute('href'));
+        if (!currentAnchor.closest('.rm-c-Tabs'))
+          currentAnchor = document.querySelector(`.rm-c-Tabs a[href="#${currentSlug}"]`);
+        
+        currentAnchor.parentElement.dataset.selected = true;
+        this.getAnchorTarget(currentAnchor).dataset.shown = true;
+      });
+    }
+  },
+
+  setupDetailSlider () {
     const DOM = {
-      container: this.DOM.mainSlider.querySelector('[data-slider="container"]'),
-      wrapper: this.DOM.mainSlider.querySelector('[data-slider="wrapper"]'),
-      pagination: this.DOM.mainSlider.querySelector('[data-slider="pagination"]'),
-      prev: this.DOM.mainSlider.querySelector('[data-slider="prev"]'),
-      next: this.DOM.mainSlider.querySelector('[data-slider="next"]'),
-      slides: this.DOM.mainSlider.querySelectorAll('[data-slider="slide"]'),
+      container: this.DOM.detailSlider.querySelector('[data-slider="container"]'),
+      wrapper: this.DOM.detailSlider.querySelector('[data-slider="wrapper"]'),
+      pagination: this.DOM.detailSlider.querySelector('[data-slider="pagination"]'),
+      prev: this.DOM.detailSlider.querySelector('[data-slider="prev"]'),
+      next: this.DOM.detailSlider.querySelector('[data-slider="next"]'),
+      slides: this.DOM.detailSlider.querySelectorAll('[data-slider="slide"]'),
     };
 
     // Prepare classes before setup
@@ -39,7 +79,7 @@ export default {
       modules: [Navigation, Pagination],
       slidesPerView: 1,    
       speed: 700,
-      spaceBetween: 20,
+      spaceBetween: 20, 
       pagination: {
         el: '[data-slider="pagination"]',
       },
@@ -127,5 +167,13 @@ export default {
         nextEl: '[data-slider="next"]',
       },
     });
+  },
+
+  getAnchorTarget (anchor) {
+    return document.getElementById(this.getSlugFromUrl(anchor.getAttribute('href')));
+  },
+
+  getSlugFromUrl (url) {
+    return url.split('#')[1];
   },
 };

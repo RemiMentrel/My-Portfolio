@@ -1,12 +1,11 @@
 .rm-c-ProjectDetail {
-    margin: 200px 0 0;
-    color: color(dark);
-    background-color: color(light);
+    // color: color(dark);
+    // background-color: color(light);
     overflow: hidden;
 
     &-wrapper {
         align-items: center;
-        padding: 50px 0 73px;
+        // padding: 50px 0 73px;
     }
 
     &-heading {
@@ -152,6 +151,17 @@
         }
     }
 
+    @include mq-from(large) {
+        &-heading {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    @include mq-to(large) {
+        margin-top: 200px;
+    }
     
     @include mq-to(medium) {
         &-section {

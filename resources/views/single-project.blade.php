@@ -8,80 +8,93 @@
     @endphp
 
     <article @php post_class('rm-c-Project') @endphp>
-      <header class="rm-c-Project-header rm-u-hspace">
+      <header class="rm-c-Project-header">
           <h1>{{ get_the_title() }}</h1>
-          <img src="{{ $project['logo']['url'] }}" alt="{{ $project['logo']['alt'] }}" @if(!empty($project['is_logo_large'])) data-logo-large="true" @endif />
       </header>
 
-      <div class="rm-c-Project-content">
-        <section class="rm-c-ProjectIntroduction rm-u-hspace">
-          <div class="rm-c-ProjectIntroduction-wrapper rm-u-wrapper">
-            <div class="rm-c-ProjectIntroduction-content">
-              <h2 class="rm-c-Heading" data-lvl="2">{{ $project['introduction']['content']['title'] }}</h2>
-              {!! $project['introduction']['content']['text'] !!}
-            </div>
-
-            <figure class="rm-c-ProjectIntroduction-image">
-              @if(!empty($project['introduction']['image']))
-                <img src="{{ $project['introduction']['image']['sizes']['project-image'] }}" alt="{{ $project['introduction']['image']['alt'] }}" loading="lazy" />
-                @if ( !empty($project['introduction']['image']['caption']) )
-                  <figcaption>
-                    {{ $project['introduction']['image']['caption'] }}
-                  </figcaption>
-                @endif
-              @endif
-            </figure>
+      @if(!empty($project['has_detail']))
+        <div class="rm-c-Project-nav rm-u-hspace">
+          <div class="rm-c-Project-nav-wrapper rm-u-wrapper" data-size="large">
+            @include('components.tabs', ['mode' => 'simple', 'tabs' => [ ['name' => 'Introduction', 'url' => '#introduction', 'selected' => 'true'], ['name' => $project['detail_title'], 'url' => '#detail'] ]])
           </div>
-        </section>
+        </div>
+      @endif
 
-        @if(!empty($project['has_detail']))
-          <div class="rm-c-ProjectDetail rm-u-hspace" data-theme="light">
-            <div class="rm-c-ProjectDetail-wrapper rm-u-wrapper">
-              <h2 class="rm-c-ProjectDetail-heading rm-c-Heading" data-lvl="2">{{ $project['detail_title'] }}</h2>
+      <section id="introduction" class="rm-c-ProjectIntroduction rm-u-hspace" data-shown="true">
+        <div class="rm-c-ProjectIntroduction-wrapper rm-u-wrapper">
+          <div class="rm-c-ProjectIntroduction-content">
+            <h2 class="rm-c-Heading" data-lvl="2">{{ $project['introduction']['content']['title'] }}</h2>
+            {!! $project['introduction']['content']['text'] !!}
 
-              <div class="rm-c-ProjectDetail-list" data-slider="container">
-                <div class="rm-c-ProjectDetail-list-wrapper" data-slider="wrapper">
-                  @foreach ($project['detail'] as $key=>$section)
-                    <section class="rm-c-ProjectDetail-section" data-slider="slide">
-                      @if(!empty($section['image']['more_images']))
-                        <div class="rm-c-ProjectDetail-section-image" role="button" data-popin-trigger="gallery_{{ $key }}" aria-title="Voir plus">
-                          @if(!empty($section['image']['image']))
-                            <img src="{{ $section['image']['image']['sizes']['project-image'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
-                          @endif
+            <div class="rm-c-ProjectIntroduction-content-ctas">
+              @include('components.btn', ['type' => 'a', 'style' => 'secondary', 'text' => 'Retour aux projets', 'href' => '/projets',  'arrow' => 'back'])
 
-                          <span class="rm-c-ProjectDetail-section-image-fader">Voir plus</span>
-                        </div>
-                      @else
-                        <figure class="rm-c-ProjectDetail-section-image">
-                          @if(!empty($section['image']['image']))
-                            <img src="{{ $section['image']['image']['sizes']['project-image'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
-                          @endif
-                          @if ( !empty($section['image']['image']['caption']) )
-                            <figcaption>
-                              {{ $section['image']['image']['caption'] }}
-                            </figcaption>
-                          @endif
-                        </figure>
-                      @endif
-                      
+              @if(!empty($project['has_detail']))
+                @include('components.btn', ['type' => 'a', 'style' => 'primary', 'text' => 'Voir le détail', 'href' => '#detail',  'arrow' => 'next'])
+              @endif
+            </div>
+          </div>
 
-                      <div class="rm-c-ProjectDetail-section-content">
-                        <h3 class="rm-c-Heading" data-lvl="3">{{ $section['content']['title'] }}</h3>
-                        {!! $section['content']['text'] !!}
+          <figure class="rm-c-ProjectIntroduction-image">
+            @if(!empty($project['introduction']['image']))
+              <img src="{{ $project['introduction']['image']['sizes']['project-image'] }}" alt="{{ $project['introduction']['image']['alt'] }}" loading="lazy" />
+              @if ( !empty($project['introduction']['image']['caption']) )
+                <figcaption>
+                  {{ $project['introduction']['image']['caption'] }}
+                </figcaption>
+              @endif
+            @endif
+          </figure>
+        </div>
+      </section>
+
+      @if(!empty($project['has_detail']))
+        <div id="detail" class="rm-c-ProjectDetail rm-u-hspace">
+          <div class="rm-c-ProjectDetail-wrapper rm-u-wrapper">
+            <h2 class="rm-c-ProjectDetail-heading rm-c-Heading" data-lvl="2">{{ $project['detail_title'] }}</h2>
+
+            <div class="rm-c-ProjectDetail-list" data-slider="container">
+              <div class="rm-c-ProjectDetail-list-wrapper" data-slider="wrapper">
+                @foreach ($project['detail'] as $key=>$section)
+                  <section class="rm-c-ProjectDetail-section" data-slider="slide">
+                    @if(!empty($section['image']['more_images']))
+                      <div class="rm-c-ProjectDetail-section-image" role="button" data-popin-trigger="gallery_{{ $key }}" aria-title="Voir plus">
+                        @if(!empty($section['image']['image']))
+                          <img src="{{ $section['image']['image']['sizes']['project-image'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
+                        @endif
+
+                        <span class="rm-c-ProjectDetail-section-image-fader">Voir plus</span>
                       </div>
-                    </section>
-                  @endforeach
-                </div>
+                    @else
+                      <figure class="rm-c-ProjectDetail-section-image">
+                        @if(!empty($section['image']['image']))
+                          <img src="{{ $section['image']['image']['sizes']['project-image'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
+                        @endif
+                        @if ( !empty($section['image']['image']['caption']) )
+                          <figcaption>
+                            {{ $section['image']['image']['caption'] }}
+                          </figcaption>
+                        @endif
+                      </figure>
+                    @endif
+                    
 
-                <button class="swiper-arrow" data-slider="prev" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
-                <button class="swiper-arrow" data-slider="next" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </button>
+                    <div class="rm-c-ProjectDetail-section-content">
+                      <h3 class="rm-c-Heading" data-lvl="3">{{ $section['content']['title'] }}</h3>
+                      {!! $section['content']['text'] !!}
+                    </div>
+                  </section>
+                @endforeach
               </div>
 
-              <div class="rm-c-ProjectDetail-pagination" data-slider="pagination"></div>
+              <button class="swiper-arrow" data-slider="prev" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
+              <button class="swiper-arrow" data-slider="next" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </button>
             </div>
+
+            <div class="rm-c-ProjectDetail-pagination" data-slider="pagination"></div>
           </div>
-        @endempty
-      </div>
+        </div>
+      @endempty
 
       @if(!empty($project['has_detail']))
         <div class="rm-c-Popin rm-u-hspace" data-display="false">
@@ -129,7 +142,7 @@
 
       <footer class="rm-c-Project-footer rm-u-hspace">
         <div class="rm-c-Project-footer-wrapper rm-u-wrapper">
-          <h2 class="rm-c-Project-footer-heading rm-c-Heading" data-lvl="2">Cet article vous a plu ?</h2>
+          <h2 class="rm-c-Project-footer-heading rm-c-Heading" data-lvl="2">Ce projet vous a plu ?</h2>
 
           <div class="rm-c-Project-footer-ctas">
             @include('components.btn', ['type' => 'a', 'href' => '/contact', 'mode' => 'classic', 'text' => 'Me contacter'])
