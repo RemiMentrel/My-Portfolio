@@ -59,18 +59,18 @@ export default {
   },
 
   updateVisual (newSlug) {
-    clearTimeout(this.state.updateVisualDebounce);
-    this.state.updateVisualDebounce = setTimeout(() => {
-      if (this.state.currentProject === newSlug)
-        return;
+    if (document.querySelector(':root').dataset.projectUpdating === 'true')
+      return;
+    
+    if (this.state.currentProject === newSlug)
+      return;
 
-      // Unselect previous project
-      this.toggleProject(this.state.currentProject);
+    // Unselect previous project
+    this.toggleProject(this.state.currentProject);
 
-      // Select new project
-      this.toggleProject(newSlug);
-      this.state.currentProject = newSlug;
-    }, 200);
+    // Select new project
+    this.toggleProject(newSlug);
+    this.state.currentProject = newSlug;
   },
 
   toggleProject (slug) {
