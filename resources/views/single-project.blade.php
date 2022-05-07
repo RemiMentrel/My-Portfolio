@@ -1,11 +1,18 @@
 @extends('layouts.app')
 
+@php
+  $project = get_fields();
+@endphp
+
+@section('documentStyle')
+    @if (!empty($project['color']))
+        --project-color: {{ $project['color'] }}
+    @endif
+@endsection
+
 @section('content')
   @while(have_posts()) @php the_post() @endphp
 
-    @php
-      $project = get_fields();
-    @endphp
 
     <article @php post_class('rm-c-Project') @endphp>
       <header class="rm-c-Project-header">
@@ -14,16 +21,16 @@
 
       @if(!empty($project['has_detail']))
         <div class="rm-c-Project-nav rm-u-hspace">
-          <div class="rm-c-Project-nav-wrapper rm-u-wrapper" data-size="large">
+          <div class="rm-c-Project-nav-wrapper rm-u-wrapper">
             @include('components.tabs', ['mode' => 'simple', 'tabs' => [ ['name' => 'Introduction', 'url' => '#introduction', 'selected' => 'true'], ['name' => $project['detail_title'], 'url' => '#detail'] ]])
           </div>
         </div>
       @endif
 
       <section id="introduction" class="rm-c-ProjectIntroduction rm-u-hspace" data-shown="true">
-        <div class="rm-c-ProjectIntroduction-wrapper rm-u-wrapper">
+        <div class="rm-c-ProjectIntroduction-wrapper rm-u-wrapper" data-size="xlarge">
           <div class="rm-c-ProjectIntroduction-content">
-            <h2 class="rm-c-Heading" data-lvl="2">{{ $project['introduction']['content']['title'] }}</h2>
+            <h2 class="rm-c-Heading" data-lvl="1">{{ $project['introduction']['content']['title'] }}</h2>
             {!! $project['introduction']['content']['text'] !!}
 
             <div class="rm-c-ProjectIntroduction-content-ctas">
@@ -50,13 +57,20 @@
 
       @if(!empty($project['has_detail']))
         <div id="detail" class="rm-c-ProjectDetail rm-u-hspace">
-          <div class="rm-c-ProjectDetail-wrapper rm-u-wrapper">
-            <h2 class="rm-c-ProjectDetail-heading rm-c-Heading" data-lvl="2">{{ $project['detail_title'] }}</h2>
+          <div class="rm-c-ProjectDetail-wrapper rm-u-wrapper" data-size="xlarge">
+            <h2 class="rm-c-ProjectDetail-heading rm-c-Heading" data-lvl="1">{{ $project['detail_title'] }}</h2>
 
             <div class="rm-c-ProjectDetail-list" data-slider="container">
               <div class="rm-c-ProjectDetail-list-wrapper" data-slider="wrapper">
                 @foreach ($project['detail'] as $key=>$section)
                   <section class="rm-c-ProjectDetail-section" data-slider="slide">
+                    <div class="rm-c-ProjectDetail-section-content">
+                      <div class="rm-c-ProjectDetail-section-content-wrapper">
+                        <h3 class="rm-c-Heading" data-lvl="2">{{ $section['content']['title'] }}</h3>
+                        {!! $section['content']['text'] !!}
+                      </div>
+                    </div>
+
                     @if(!empty($section['image']['more_images']))
                       <div class="rm-c-ProjectDetail-section-image" role="button" data-popin-trigger="gallery_{{ $key }}" aria-title="Voir plus">
                         @if(!empty($section['image']['image']))
@@ -77,21 +91,44 @@
                         @endif
                       </figure>
                     @endif
-                    
-
-                    <div class="rm-c-ProjectDetail-section-content">
-                      <h3 class="rm-c-Heading" data-lvl="3">{{ $section['content']['title'] }}</h3>
-                      {!! $section['content']['text'] !!}
-                    </div>
                   </section>
                 @endforeach
+
+                <div class="rm-c-ProjectDetail-section" data-slider="slide">
+                  <footer class="rm-c-Project-footer rm-u-hspace">
+                    <div class="rm-c-Project-footer-wrapper rm-u-wrapper">
+                      <h2 class="rm-c-Project-footer-heading rm-c-Heading" data-lvl="2">Ce projet vous a plu ?</h2>
+            
+                      <div class="rm-c-Project-footer-ctas">
+                        @include('components.btn', ['type' => 'a', 'href' => '/contact', 'mode' => 'classic', 'text' => 'Me contacter'])
+            
+                        <span class="rm-c-Project-footer-ctas-sep">ou</span>
+            
+                        <div class="rm-c-Project-footer-ctas-network">
+                          <a href="https://www.facebook.com/sharer/sharer.php?u={{ get_permalink() }}"
+                            onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ get_permalink() }}','popup','width=600,height=600'); return false;"
+                            target="_blank" rel="noreferrer noopener">Facebook<img src="@asset('images/icons/network/facebook.svg')" alt="" /></a>
+            
+                          <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ get_permalink() }}&source={{ site_url() }}"
+                            onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url={{ get_permalink() }}&source={{ site_url() }}','popup','width=600,height=600'); return false;"
+                            target="_blank" rel="noreferrer noopener">Linkedin<img src="@asset('images/icons/network/linkedin.svg')" alt="" /></a>
+                        </div>
+                      </div>
+                    </div>
+                  </footer>
+                </div>
               </div>
 
               <button class="swiper-arrow" data-slider="prev" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
               <button class="swiper-arrow" data-slider="next" data-floating> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </button>
-            </div>
+            
 
-            <div class="rm-c-ProjectDetail-pagination" data-slider="pagination"></div>
+              <div class="rm-c-ProjectDetail-pagination">
+                <button class="swiper-arrow" data-slider="prev"> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Précédent', 'arrow' => 'back']) </button>
+                <div data-slider="pagination"></div>
+                <button class="swiper-arrow" data-slider="next"> @include('components.btn', ['type' => 'div', 'mode' => 'minimal', 'text' => 'Suivant', 'arrow' => 'next']) </buttonass=>
+              </div>
+            </div>
           </div>
         </div>
       @endempty
@@ -140,27 +177,6 @@
         </div>
       @endif
 
-      <footer class="rm-c-Project-footer rm-u-hspace">
-        <div class="rm-c-Project-footer-wrapper rm-u-wrapper">
-          <h2 class="rm-c-Project-footer-heading rm-c-Heading" data-lvl="2">Ce projet vous a plu ?</h2>
-
-          <div class="rm-c-Project-footer-ctas">
-            @include('components.btn', ['type' => 'a', 'href' => '/contact', 'mode' => 'classic', 'text' => 'Me contacter'])
-
-            <span class="rm-c-Project-footer-ctas-sep">ou</span>
-
-            <div class="rm-c-Project-footer-ctas-network">
-              <a href="https://www.facebook.com/sharer/sharer.php?u={{ get_permalink() }}"
-                onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ get_permalink() }}','popup','width=600,height=600'); return false;"
-                target="_blank" rel="noreferrer noopener">Facebook<img src="@asset('images/icons/network/facebook.svg')" alt="" /></a>
-
-              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ get_permalink() }}&source={{ site_url() }}"
-                onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url={{ get_permalink() }}&source={{ site_url() }}','popup','width=600,height=600'); return false;"
-                target="_blank" rel="noreferrer noopener">Linkedin<img src="@asset('images/icons/network/linkedin.svg')" alt="" /></a>
-            </div>
-          </div>
-        </div>
-      </footer>
     </article>
 
   @endwhile

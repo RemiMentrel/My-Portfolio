@@ -15,11 +15,7 @@
     --switchVhPosition: 8vh;
 
     --gradient-deg: -45deg;
-    --accent-gradient-color: #363733;
-
-    &.post-type-archive-project {
-        --accent-gradient-color: var(--project-color, #363733);
-    }
+    --accent-gradient-color: var(--project-color, #363733);
 
     &::before, &::after {
         content: '';

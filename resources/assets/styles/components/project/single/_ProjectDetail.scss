@@ -1,15 +1,13 @@
 .rm-c-ProjectDetail {
-    // color: color(dark);
-    // background-color: color(light);
     overflow: hidden;
 
     &-wrapper {
+        position: relative;
         align-items: center;
-        // padding: 50px 0 73px;
     }
 
     &-heading {
-        margin-bottom: 66px;
+        margin-bottom: 35px;
         text-align: center;
     }
 
@@ -17,7 +15,7 @@
         position: relative;
         overflow: visible;
 
-        .swiper-arrow {
+        > .swiper-arrow {
             &[data-slider='prev'] {
                 left: 50%;
                 padding-left: var(--hspace);
@@ -34,46 +32,46 @@
 
     &-section {
         display: flex;
-        align-items: center;
+        align-items: stretch;
+        transition: all .6s ease;
 
         $p: &;
 
         &:not(.swiper-slide-active) {
+            padding: {
+                left: 0;
+                right: 0;
+            };
             pointer-events: none;
         }
 
         &-content {
-            flex: 1 1 375px;
-            transition: all .6s ease;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            transition: opacity .4s ease .6s, padding .6s ease, max-width .6s ease;
 
-            // heading
-            > *:first-child {
+            .rm-c-Heading {
                 margin-bottom: 35px;
-            }
-        
-            #{$p}:not(.swiper-slide-active) & {
-                opacity: 0;
             }
         }
     
         &-image {
-            flex: 1 1 632px;
+            align-self: center;
             position: relative;
             border-radius: 10px;
             overflow: hidden;
             transition: all .6s ease;
 
-            #{$p}:not(.swiper-slide-active) & {
-                opacity: 0.4;
-                transform: translateX(232px);
-            }
-    
             &::before {
                 content: '';
                 display: block;
                 width: 100%;
-                padding-top: 63%;
+                padding-top: 74%;
                 background-color: color(dark);
+                transition: all .6s ease;
             }
 
             &-fader {
@@ -137,19 +135,15 @@
             }
         }
     }
-    
-    @include mq-from(medium) {
-        &-section {
-            &-content {
-                margin-left: 40px;
-            }
 
-            &-image {
-                max-width: 632px;
-                margin-left: -232px;
-            }
-        }
+    &-pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 30px;
     }
+
 
     @include mq-from(large) {
         &-heading {
@@ -157,13 +151,88 @@
             opacity: 0;
             pointer-events: none;
         }
+
+        &-section {   
+            padding: {
+                left: calc(var(--hspace) + 50px);
+                right: calc(var(--hspace) + 50px);
+            };
+
+            $p: &;  
+            
+            &:not(.swiper-slide-active) {
+                #{$p}-image {
+                    opacity: 0.4;
+                    transform: scale(0.83);
+                }
+            }
+
+            &.swiper-slide-prev {
+                padding: {
+                    left: calc((var(--hspace) + 50px) * 2);
+                    right: 0;
+                };
+                transform: translateX(calc(var(--hspace) + 50px));
+                
+                #{$p}-image {
+                    transform-origin: center right;
+                }
+            }
+
+            &.swiper-slide-next {
+                padding: {
+                    left: 0;
+                    right: calc((var(--hspace) + 50px) * 2);
+                };
+                transform: translateX(calc((var(--hspace) + 50px) * -1));
+
+                #{$p}-content {
+                    max-width: 0%;
+                    padding: 0;
+                    opacity: 0;
+                    transition: opacity .4s ease, padding .8s ease .6s, max-width .8s ease .6s;
+                }
+
+                #{$p}-image {
+                    transform-origin: center left;
+                }
+            }
+
+            &-content {
+                max-width: 47%;
+                padding-right: 70px;
+                overflow-y: auto;
+            }
+
+            &-image {
+                flex: 0 0 53%;
+            }
+        }
+
+        &-pagination {
+            position: absolute;
+            top: 100%;
+            left: 0;
+
+            .swiper-arrow {
+                display: none;
+            }
+        }
     }
 
     @include mq-to(large) {
         margin-top: 200px;
-    }
-    
-    @include mq-to(medium) {
+
+        &-wrapper {
+            max-width: 632px;
+        }
+
+        &-list {
+            > .swiper-arrow {
+                display: none;
+            }
+        }
+
         &-section {
             display: block;
 
@@ -173,15 +242,20 @@
                 #{$p}:not(.swiper-slide-active) & {
                     opacity: .4;
                 }
+
+                .rm-c-Heading {
+                    margin-bottom: 25px;
+                }
             }
 
             &-image {
-                margin-bottom: 30px;
-                transform: translate(-40px);
+                margin-top: 30px;
+            }
+        }
 
-                #{$p}:not(.swiper-slide-active) & {
-                    transform: translateX(-20px);
-                }
+        &-pagination {
+            [data-slider='pagination'] {
+                margin: 0;
             }
         }
     }

@@ -1,5 +1,5 @@
 <!doctype html>
-<html {!! get_language_attributes() !!} @if (!empty($projects)) style="--project-color: {{ $projects[0]['color'] }}" @endif>
+<html {!! get_language_attributes() !!} style="@yield('documentStyle')" >
   @include('partials.head')
   
   <body @php body_class('rm-c-App') @endphp>

@@ -78,8 +78,8 @@ export default {
     this.slider = new Swiper( DOM.container, {
       modules: [Navigation, Pagination],
       slidesPerView: 1,    
-      speed: 700,
-      spaceBetween: 20, 
+      speed: 600,
+      spaceBetween: 40, 
       pagination: {
         el: '[data-slider="pagination"]',
       },
@@ -88,9 +88,9 @@ export default {
         nextEl: '[data-slider="next"]',
       },
       breakpoints: {
-        // when window width is >= 320px
-        769: {
+        991: {
           spaceBetween: 100,
+          speed: 1200,
         },
       },
     });

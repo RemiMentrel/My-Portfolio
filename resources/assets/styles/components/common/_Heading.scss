@@ -6,43 +6,53 @@
     line-height: 1.1;
 
     &[data-lvl='1'] {
-        text-align: center;
-        font-size: 0;
+        font-size: 45px;
+        text-transform: uppercase;
 
-        img {
-            display: block;
-            margin: 0 auto;
-            width: auto;
-            height: auto;
-            max-width: 100%;
-            max-height: 90px;
-            transition: all .2s ease;
+        &[data-replaced] {
+            text-align: center;
+            font-size: 0;
+
+            img {
+                display: block;
+                margin: 0 auto;
+                width: auto;
+                height: auto;
+                max-width: 100%;
+                max-height: 90px;
+                transition: all .2s ease;
+            }
         }
     }
 
     &[data-lvl='2'] {
-        font-size: 30px;
-        text-transform: uppercase;
-    }
-
-    &[data-lvl='3'] {
-        font-size: 24px; // Todo: may be wrong size
+        font-size: 40px;
     }
 
 
 
     @include mq-to(large) {
         &[data-lvl='1'] {
-            img {
-                max-height: 70px;
+            font-size: 28px;
+
+            &[data-replaced] {
+                img {
+                    max-height: 70px;
+                }
             }
+        }
+
+        &[data-lvl='2'] {
+            font-size: 25px;
         }
     }
 
     @include mq-to(medium) {
         &[data-lvl='1'] {
-            img {
-                max-height: 50px;
+            &[data-replaced] {
+                img {
+                    max-height: 50px;
+                }
             }
         }
     }

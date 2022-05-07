@@ -3,7 +3,7 @@
 @section('content')
     <div class="rm-c-Labo rm-u-hspace">
         <div class="rm-c-Labo-wrapper rm-u-wrapper">
-            <h1 class="rm-c-Labo-heading rm-c-Heading" data-lvl="1">
+            <h1 class="rm-c-Labo-heading rm-c-Heading" data-lvl="1" data-replaced>
                 Projets <img src="@asset('images/headings/labo.svg')" alt="" />
             </h1>
 

@@ -5,7 +5,7 @@
     }
 
     &-content {
-        flex: 1 1 375px;
+        flex: 1 1 auto;
 
         // heading
         > *:first-child {
@@ -15,26 +15,25 @@
         &-ctas {
             display: flex;
             margin: 30px -5px -5px;
+            max-width: 440px;
 
             > * {
                 flex: 1 1 0;
                 margin: 5px;
+                max-width: 50%;
             }
         }
     }
 
     &-image {
-        flex: 1 1 632px;
+        flex: 0 0 53%;
         position: relative;
-        width: 100%;
-        max-width: 632px;
-        margin-right: -232px;
 
         &::before {
             content: '';
             display: block;
             width: 100%;
-            padding-top: 63%;
+            padding-top: 74%;
         }
 
         img {
@@ -50,8 +49,15 @@
 
 
     @include mq-from(large) {
+        &-wrapper {      
+            padding: {
+                left: calc(var(--hspace) + 50px);
+                right: calc(var(--hspace) + 50px);
+            };
+        }
+        
         &-content {
-            margin-right: 40px;
+            padding-right: 70px;
         }
     }
 
@@ -78,11 +84,7 @@
     }
 
 
-    @include mq-to(small) {
-        // &-image {
-        //     width: calc(100% + 40px);
-        //     max-width: none;
-        //     margin: 0 -20px;
-        // }
+    @include mq-to(medium) {
+        margin-top: 60px;
     }
 }
