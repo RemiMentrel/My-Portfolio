@@ -29,7 +29,6 @@
         width: 100%;
 
         &-wrapper {
-            margin-top: 170px;
             text-align: center;
         }
 
@@ -174,10 +173,6 @@
         }
 
         &-footer {
-            &-wrapper {    
-                margin-top: 60px;
-            }
-
             &-ctas {
                 flex-direction: column;
             }
