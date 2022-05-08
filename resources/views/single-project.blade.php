@@ -135,7 +135,7 @@
 
       @if(!empty($project['has_detail']))
         <div class="rm-c-Popin rm-u-hspace" data-display="false">
-          <b class="rm-c-Popin-mask"></b>
+          <b class="rm-c-Popin-mask" title="Fermer la galerie"></b>
           <div class="rm-c-Popin-wrapper rm-u-wrapper">
             @foreach ($project['detail'] as $key=>$section)
               @if(!empty($section['image']['more_images']))
