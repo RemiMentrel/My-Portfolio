@@ -82,14 +82,14 @@ export default {
     this.slider = new Swiper( DOM.container, {
       modules: [Navigation, Pagination],
       slidesPerView: 1,    
-      speed: 600,
+      speed: 800,
       spaceBetween: 40, 
       pagination: {
-        el: '[data-slider="pagination"]',
+        el: DOM.pagination,
       },
       navigation: {
-        prevEl: '[data-slider="prev"]',
-        nextEl: '[data-slider="next"]',
+        prevEl: DOM.prev,
+        nextEl: DOM.next,
       },
       breakpoints: {
         991: {
@@ -110,7 +110,7 @@ export default {
 
     document.addEventListener('keydown', (event) => {
       if(event.key === 'Escape' && this.state.popinOpened) {
-        this.hidePopin.bind(this); // Todo: debug why not working
+        this.hidePopin();
       }
     });
   },
@@ -135,6 +135,7 @@ export default {
   hidePopin () {
     this.state.popinOpened = false;
     this.DOM.popin.setAttribute('data-display', 'false');
+    this.DOM.popin.querySelector('.rm-c-Gallery[data-shown="true"]').setAttribute('data-shown', 'false');
   },
 
   setupGallery(gallery) {
@@ -145,7 +146,7 @@ export default {
     const DOM = {
       container: gallery.querySelector('[data-slider="container"]'),
       wrapper: gallery.querySelector('[data-slider="wrapper"]'),
-      pagination: gallery.querySelector('[data-slider="pagination"]'),
+      pagination: gallery.querySelector(`[data-slider="pagination_${galleryID}"]`),
       prev: gallery.querySelector('[data-slider="prev"]'),
       next: gallery.querySelector('[data-slider="next"]'),
       slides: gallery.querySelectorAll('[data-slider="slide"]'),
@@ -158,17 +159,17 @@ export default {
       slide.classList.add('swiper-slide');
     });
 
-    this.popinSlider = new Swiper( DOM.container, {
+    new Swiper( DOM.container, {
       modules: [Navigation, Pagination],
       slidesPerView: 1,    
       speed: 700,
       spaceBetween: 0,
       pagination: {
-        el: `[data-slider="pagination_${galleryID}"]`,
+        el: DOM.pagination,
       },
       navigation: {
-        prevEl: '[data-slider="prev"]',
-        nextEl: '[data-slider="next"]',
+        prevEl: DOM.prev,
+        nextEl: DOM.next,
       },
     });
   },
