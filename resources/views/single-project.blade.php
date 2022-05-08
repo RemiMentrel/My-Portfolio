@@ -43,7 +43,12 @@
           </div>
 
           <figure class="rm-c-ProjectIntroduction-image">
-            @if(!empty($project['introduction']['image']))
+            @if(!empty($project['introduction']['video']))
+              <video poster="{{ $project['introduction']['image']['sizes']['project-image'] }}" playsinline autoplay muted loop loading="lazy">
+                <source src="{{ $project['introduction']['video']['url'] }}"
+                        type="{{ $project['introduction']['video']['mime_type'] }}">
+              </video>
+            @else
               <img src="{{ $project['introduction']['image']['sizes']['project-image'] }}" alt="{{ $project['introduction']['image']['alt'] }}" loading="lazy" />
               @if ( !empty($project['introduction']['image']['caption']) )
                 <figcaption>
@@ -81,9 +86,15 @@
                       </div>
                     @else
                       <figure class="rm-c-ProjectDetail-section-image">
-                        @if(!empty($section['image']['image']))
+                        @if(!empty($section['image']['video']))
+                          <video poster="{{ $section['image']['image']['sizes']['project-image'] }}" playsinline autoplay muted loop loading="lazy">
+                            <source src="{{ $section['image']['video']['url'] }}"
+                                    type="{{ $section['image']['video']['mime_type'] }}">
+                          </video>
+                        @else
                           <img src="{{ $section['image']['image']['sizes']['project-image'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
                         @endif
+
                         @if ( !empty($section['image']['image']['caption']) )
                           <figcaption>
                             {{ $section['image']['image']['caption'] }}
@@ -142,20 +153,34 @@
                 <div id="gallery_{{ $key }}" class="rm-c-Gallery" data-shown="false" data-theme="light">
                   <div class="rm-c-Gallery-list" data-slider="container">
                     <div class="rm-c-Gallery-list-wrapper" data-slider="wrapper">
-                      @if(!empty($section['image']['image']))
-                        <figure class="rm-c-Gallery-image" data-slider="slide">
+                      <figure class="rm-c-Gallery-image" data-slider="slide">
+                        @if(!empty($section['image']['video']))
+                          <video poster="{{ $section['image']['image']['sizes']['project-image'] }}" playsinline controls loading="lazy">
+                            <source src="{{ $section['image']['video']['url'] }}"
+                                    type="{{ $section['image']['video']['mime_type'] }}">
+                          </video>
+                        @else
                           <img src="{{ $section['image']['image']['url'] }}" alt="{{ $section['image']['image']['alt'] }}" loading="lazy" />
-                          @if ( !empty($section['image']['image']['caption']) )
-                            <figcaption>
-                              {{ $section['image']['image']['caption'] }}
-                            </figcaption>
-                          @endif
-                        </figure>
-                      @endif
+                        @endif
+                        
+                        @if ( !empty($section['image']['image']['caption']) )
+                          <figcaption>
+                            {{ $section['image']['image']['caption'] }}
+                          </figcaption>
+                        @endif
+                      </figure>
 
                       @foreach ($section['image']['gallery'] as $item)
                         <figure class="rm-c-Gallery-image" data-slider="slide">
-                          <img src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] }}" loading="lazy" />
+                          @if(!empty($item['video']))
+                            <video poster="{{ $item['image']['sizes']['project-image'] }}" playsinline controls loading="lazy">
+                              <source src="{{ $item['video']['url'] }}"
+                                      type="{{ $item['video']['mime_type'] }}">
+                            </video>
+                          @else
+                            <img src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] }}" loading="lazy" />
+                          @endif
+
                           @if ( !empty($item['image']['caption']) )
                             <figcaption>
                               {{ $item['image']['caption'] }}
