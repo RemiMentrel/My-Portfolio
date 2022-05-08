@@ -73,14 +73,8 @@
                 background-color: color(dark);
                 transition: all .6s ease;
             }
-
-            &:hover, &:focus {
-                > img {
-                    transform: scale(1.04);
-                }
-            }
     
-            > img {
+            > img, > video {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -123,8 +117,16 @@
                 }
             }
 
-            &[data-popin-trigger] img {
-                opacity: .9;
+            &[data-popin-trigger] {
+                > img {
+                    opacity: .9;
+                }
+
+                &:hover, &:focus {
+                    > img {
+                        transform: scale(1.04);
+                    }
+                }
             }
         }
     }

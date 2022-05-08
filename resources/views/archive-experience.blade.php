@@ -52,7 +52,7 @@
                                 </div>
                                     
                                 <figure>
-                                    <img src="{{ $experience['media']['image']['url'] }}" alt="miniature projet" loading="lazy"
+                                    <img src="{{ $experience['media']['image']['sizes']['project-image'] }}" alt="miniature projet" loading="lazy"
                                          @if (!empty($experience['media']['video']))
                                             data-video-url="{{ $experience['media']['video']['url'] }}"
                                             data-video-mime="{{ $experience['media']['video']['mime_type'] }}"
