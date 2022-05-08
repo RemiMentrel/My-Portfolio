@@ -1,27 +1,35 @@
 .rm-c-Project {
     &-header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 73vh;
-        min-height: 600px;
-        max-height: 800px;
-        font-size: 0;
-        overflow: hidden;
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
 
-        img {
-            display: block;
-            transition: all .3s ease-in-out;
+    &-nav {
+        z-index: 2;
+        position: fixed;
+        top: clamp(60px, 11vh, 120px);
+        left: 0;
+        display: none;
+        width: 100%;
+
+        &-wrapper {
+            position: relative;
+            
+            > .rm-c-Btn {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
         }
     }
 
-    &-content {
-        overflow: hidden;
-    }
+    &-footer {       
+        width: 100%;
 
-    &-footer {
         &-wrapper {
-            padding: 200px 0;
+            margin-top: 170px;
             text-align: center;
         }
 
@@ -66,7 +74,72 @@
         }
     }
 
-    
+
+    @include mq-from(large) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: 100%;
+        height: 100%;
+
+        &-nav {
+            display: block;
+            animation: {
+                name: fadeIn;
+                duration: .6s;
+                delay: .2s;
+                fill-mode: both;
+            };
+        }
+
+        .rm-c-ProjectIntroduction, .rm-c-ProjectDetail {
+            z-index: 1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 1.5s ease, opacity .8s ease .4s;
+            
+            &:not([data-shown='true']) {
+                opacity: 0;
+                pointer-events: none;
+                transition-delay: 0s;
+
+                .rm-c-Btn {
+                    &, i b {
+                        animation: none;
+                    }
+                }
+            }
+        }
+
+        .rm-c-ProjectIntroduction {
+            html[data-project-loaded='false'] & {
+                animation: {
+                    name: appearsLeftLittle;
+                    duration: 2s;
+                    delay: 1s;
+                    fill-mode: both;
+                    timing-function: ease;
+                };
+            }
+
+            &:not([data-shown='true']) {
+                transform: translateX(-70%);
+            }
+        }
+
+        .rm-c-ProjectDetail {
+            &:not([data-shown='true']) {
+                transform: translateX(70%);
+            }
+        }
+    }
 
     @include mq-from(xxxlarge) {
         &-header {
@@ -77,6 +150,8 @@
     }
 
     @include mq-to(large) {
+        padding-bottom: 50px;
+
         &-header {
             img[data-logo-large='true'] {
                 transform: scale(0.8);
@@ -99,6 +174,10 @@
         }
 
         &-footer {
+            &-wrapper {    
+                margin-top: 60px;
+            }
+
             &-ctas {
                 flex-direction: column;
             }

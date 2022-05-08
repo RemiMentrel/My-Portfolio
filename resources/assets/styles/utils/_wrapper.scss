@@ -11,5 +11,9 @@
         &[data-size='large'] {
             max-width: 1156px;
         }
+
+        &[data-size='xlarge'] {
+            max-width: 1520px;
+        }
     }
 }

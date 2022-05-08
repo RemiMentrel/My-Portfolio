@@ -58,7 +58,7 @@
 
             $project: &;
 
-            // Hiding
+            // Hiding to switch
             &:not([data-selected='true']) {
                 position: absolute;
                 top: 0;
@@ -102,8 +102,12 @@
                 animation: {
                     name: appearsUpLittle;
                     duration: 1s;
-                    fill-mode: both;
                 };
+                transition: all 0.4s ease 0.8s;
+
+                html[data-project-loading='true'] & {
+                    opacity: 0;
+                }
             }
 
             &-logo {
@@ -115,12 +119,14 @@
             &-description {
                 grid-area: desc;
                 animation-delay: .12s;
+                transition-delay: calc(.8s + .12s);
             }
 
             &-cta {
                 grid-area: link;
                 margin-top: 60px;
                 animation-delay: .3s;
+                transition-delay: calc(.8s + .3s);
             }
 
             &-preview {
@@ -130,6 +136,7 @@
                     name: appearsLeftLittle;
                     duration: 1.7s;
                 };
+                transition-delay: calc(.8s + .5s);
 
                 img {
                     max-width: 100%;
@@ -139,6 +146,14 @@
                         position: center;
                     }
                 }
+            }
+        }
+
+        &-switch {
+            html[data-project-loading='true'] & {
+                opacity: 0;
+                transform: translateY(70%);
+                transition: all 0.8s ease;
             }
         }
     }

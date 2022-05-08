@@ -18,6 +18,11 @@
         width: 1px;
         height: 100%;
         background-color: color(light);
+        
+        html[data-project-loading='true'] & {
+            height: 0;
+            transition: all .7s ease .6s;
+        }
     }
 
     ul {
@@ -56,9 +61,18 @@
             transition: all .65s ease;
         }
 
+        html[data-project-loading='true'] & {
+            opacity: 0;
+            transition: opacity .6s ease;
+        } 
+
         &[data-selected='true'] {
             &::before {
                 background-color: color(light);
+            }
+
+            html[data-project-loading='true'] & {
+                transition-delay: .3s;
             }
         }
 

@@ -12,7 +12,7 @@ Template Post Type: page
 
     <div @php post_class('rm-c-Page') @endphp>
       <header class="rm-c-Page-header rm-u-hspace">
-        <h1 class="rm-c-Heading" data-lvl='1'>
+        <h1 class="rm-c-Heading" data-lvl="1" data-replaced>
           {!! App::title() !!}
           <img src="@asset('images/headings/contact.svg')" alt="" />
         </h1>
