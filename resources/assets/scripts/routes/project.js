@@ -17,6 +17,10 @@ export default {
     this.setupProjectNav();
     this.setupDetailSlider();
     this.setupPopin();
+
+    setTimeout( () => {
+      document.documentElement.dataset.projectLoaded = 'true';
+    }, 3000);
   },
 
   getAnchors () {

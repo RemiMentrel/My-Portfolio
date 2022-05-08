@@ -1,5 +1,5 @@
 <!doctype html>
-<html {!! get_language_attributes() !!} style="@yield('documentStyle')" >
+<html {!! get_language_attributes() !!} style="@yield('documentStyle')" @if (!empty($project)) data-project-loaded="false" @endif>
   @include('partials.head')
   
   <body @php body_class('rm-c-App') @endphp>

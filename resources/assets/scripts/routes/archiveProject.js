@@ -3,6 +3,7 @@ export default {
     this.DOM = {
       navLinks: document.querySelectorAll('.rm-c-ProjectList-nav li a'),
       visualsContainer: document.querySelector('.rm-c-ProjectList-visual'),
+      projectSingleLinks: document.querySelectorAll('.rm-c-ProjectList-project-cta a'),
     };
 
     this.state = {
@@ -17,6 +18,10 @@ export default {
     // Setup triggers
     this.DOM.navLinks.forEach( (link) => {
       link.addEventListener('click', this.handleUpdateVisual.bind(this));
+    });
+
+    this.DOM.projectSingleLinks.forEach( (link) => {
+      link.addEventListener('click', this.handleLoadSingleProject.bind(this));
     });
 
     let wheelDebounce;
@@ -49,6 +54,16 @@ export default {
         }
       }, 10);
     });
+  },
+
+  handleLoadSingleProject (event) {
+    event.preventDefault();
+    
+    document.documentElement.dataset.projectLoading = true;
+
+    setTimeout(() => {
+      window.location.href = event.target.href;
+    }, 1700);
   },
 
   handleUpdateVisual (event) {

@@ -85,6 +85,12 @@
 
         &-nav {
             display: block;
+            animation: {
+                name: fadeIn;
+                duration: .6s;
+                delay: .2s;
+                fill-mode: both;
+            };
         }
 
         .rm-c-ProjectIntroduction, .rm-c-ProjectDetail {
@@ -97,10 +103,40 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            transition: transform 1.5s ease, opacity .8s ease .4s;
             
             &:not([data-shown='true']) {
                 opacity: 0;
                 pointer-events: none;
+                transition-delay: 0s;
+
+                .rm-c-Btn {
+                    &, i b {
+                        animation: none;
+                    }
+                }
+            }
+        }
+
+        .rm-c-ProjectIntroduction {
+            html[data-project-loaded='false'] & {
+                animation: {
+                    name: appearsLeftLittle;
+                    duration: 2s;
+                    delay: 1s;
+                    fill-mode: both;
+                    timing-function: ease;
+                };
+            }
+
+            &:not([data-shown='true']) {
+                transform: translateX(-70%);
+            }
+        }
+
+        .rm-c-ProjectDetail {
+            &:not([data-shown='true']) {
+                transform: translateX(70%);
             }
         }
     }

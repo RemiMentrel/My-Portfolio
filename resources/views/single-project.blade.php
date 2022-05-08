@@ -34,10 +34,10 @@
             {!! $project['introduction']['content']['text'] !!}
 
             <div class="rm-c-ProjectIntroduction-content-ctas">
-              @include('components.btn', ['type' => 'a', 'style' => 'secondary', 'text' => 'Retour aux projets', 'href' => '/projets',  'arrow' => 'back'])
+              @include('components.btn', ['type' => 'a', 'style' => 'secondary', 'text' => 'Retour aux projets', 'href' => '/projets',  'arrow' => 'back', 'animationDelay' => 1.5])
 
               @if(!empty($project['has_detail']))
-                @include('components.btn', ['type' => 'a', 'style' => 'primary', 'text' => 'Voir le détail', 'href' => '#detail',  'arrow' => 'next'])
+                @include('components.btn', ['type' => 'a', 'style' => 'primary', 'text' => 'Voir le détail', 'href' => '#detail',  'arrow' => 'next', 'animationDelay' => 1.8])
               @endif
             </div>
           </div>

@@ -50,8 +50,22 @@ $breakpoints: (
   }
 }
 @keyframes fadeOut {
-  from {
+  to {
     opacity: 0;
+    pointer-events: none;
+  }
+}
+@keyframes fadeOutLeft {
+  to {
+    opacity: 0;
+    transform: translateX(-70%);
+    pointer-events: none;
+  }
+}
+@keyframes fadeOutLeftLittle {
+  to {
+    opacity: 0;
+    transform: translateX(-10%);
     pointer-events: none;
   }
 }
