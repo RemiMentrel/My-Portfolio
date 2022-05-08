@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('documentStyle')
+    @if (!empty($projects))
+        --project-color: {{ $projects[0]['color'] }}
+    @endif
+@endsection
+
 @section('content')
     <h1 class="rm-u-a11yhidden">Projets</h1>
 

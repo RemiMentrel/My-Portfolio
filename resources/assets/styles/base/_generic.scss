@@ -34,12 +34,8 @@ button, [role='button'] {
 
 figure {
     border-radius: 10px;
-    background: color(light, 0.1);
+    @include placeholderBg;
     overflow: hidden;
-
-    [data-color='light'] & {
-        background: color(dark, 0.1);
-    }
 }
 
 figcaption {

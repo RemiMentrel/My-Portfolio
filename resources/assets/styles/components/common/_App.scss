@@ -15,11 +15,7 @@
     --switchVhPosition: 8vh;
 
     --gradient-deg: -45deg;
-    --accent-gradient-color: #363733;
-
-    &.post-type-archive-project {
-        --accent-gradient-color: var(--project-color, #363733);
-    }
+    --accent-gradient-color: var(--project-color, #363733);
 
     &::before, &::after {
         content: '';
@@ -50,6 +46,10 @@
 
     &[data-popin-displayed='true'] {
         overflow: hidden;
+
+        #{$this}-header {
+            z-index: 0;
+        }
     }
 
     &-header {
@@ -77,7 +77,7 @@
     }
 
 
-    &.post-type-archive-project {
+    &.post-type-archive-project, &.single-project {
         #{$this}-header {
             position: fixed;
             width: 100%;
@@ -99,6 +99,15 @@
                 delay: .5s;
                 fill-mode: both;
             };
+        }
+    }
+
+    @include mq-to(large) {
+        &.single-project {
+            #{$this}-header {
+                position: -webkit-sticky;
+                position: sticky;
+            }
         }
     }
 
