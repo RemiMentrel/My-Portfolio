@@ -103,3 +103,10 @@ function wpdocs_remove_menus()
     remove_menu_page( 'edit.php' );
 }
 add_action( 'admin_menu', 'wpdocs_remove_menus' );
+
+add_filter('theme_file_path', function($path, $file) {
+    if($file === 'theme.json') {
+        return false;
+    }
+    return $path;
+}, 0, 2);
