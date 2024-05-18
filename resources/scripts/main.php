@@ -21,8 +21,12 @@ add_filter( 'jpeg_quality', 'custom_jpeg_quality', 10, 2 );
 
 
 function wpdocs_theme_setup() {
-    add_image_size( 'project-miniature', 632, 400, true ); // x2 of 316x200
-    add_image_size( 'project-image', 1264, 800, true ); // x2 of 632x400
+    add_image_size( 'miniature', 420, 420, true );
+    add_image_size( 'miniature-x2', 840, 840, true );
+    add_image_size( 'project', 710, 525, true );
+    add_image_size( 'project-x2', 1420, 1050, true );
+    add_image_size( 'popin', 1080, 680, true );
+    add_image_size( 'popin-x2', 2160, 1360, true );
 }
 add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
 

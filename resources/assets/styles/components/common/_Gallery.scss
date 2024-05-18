@@ -32,6 +32,11 @@
             object-position: center;
         }
 
+        > video {
+            object-fit: contain;
+            background-color: black;
+        }
+
         video + figcaption {
             pointer-events: none; // Prevents trouble using video controls
         }

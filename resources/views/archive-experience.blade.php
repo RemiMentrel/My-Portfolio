@@ -52,7 +52,11 @@
                                 </div>
                                     
                                 <figure>
-                                    <img src="{{ $experience['media']['image']['sizes']['project-image'] }}" alt="miniature projet" loading="lazy"
+                                    <img srcset="{{ $experience['media']['image']['sizes']['miniature'] }}, {{ $experience['media']['image']['sizes']['miniature-x2'] }} x2" 
+                                         src="{{ $experience['media']['image']['sizes']['miniature'] }}" 
+                                         data-large-srcset="{{ $experience['media']['image']['sizes']['popin'] }}, {{ $experience['media']['image']['sizes']['popin-x2'] }} x2"
+                                         data-large-src="{{ $experience['media']['image']['sizes']['popin'] }}"
+                                         alt="miniature projet" loading="lazy"
                                          @if (!empty($experience['media']['video']))
                                             data-video-url="{{ $experience['media']['video']['url'] }}"
                                             data-video-mime="{{ $experience['media']['video']['mime_type'] }}"
