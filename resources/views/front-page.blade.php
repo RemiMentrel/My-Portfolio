@@ -37,7 +37,7 @@
                                     title="{{ $post->post_title }}">
 
                                         <div class="rm-c-ProjectMiniature-desc">{{ $post->post_title }}</div>
-                                        {!! get_the_post_thumbnail($post->ID) !!}
+                                        {!! get_the_post_thumbnail($post->ID, 'miniature') !!}
                                     </a>
                                 </li>
                             @endforeach

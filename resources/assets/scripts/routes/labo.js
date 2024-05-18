@@ -62,7 +62,7 @@ export default {
       const DOMvideo = document.createElement('video');
       const DOMvideoSource = document.createElement('source');
 
-      [ {name: 'poster', value: img.src},
+      [ {name: 'poster', value: img.dataset.largeSrc},
         {name: 'muted', value: ''},
         /**{name: 'autoplay', value: ''},**/
         {name: 'controls', value: ''},
@@ -79,6 +79,9 @@ export default {
 
       img.remove();
       media.appendChild(DOMvideo);
+    } else {
+      img.src = img.dataset.largeSrc;
+      img.srcset = img.dataset.largeSrcset;
     }
     
     return media;
